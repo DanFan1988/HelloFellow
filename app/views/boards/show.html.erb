@@ -1,0 +1,17 @@
+<h1><%= @board.title %></h1>
+
+<% if @lists %>
+
+  <% @lists.each do |list| %>
+    <h2><a href="#"><%= list.title%></a></h2>
+    <ul>
+      <% @cards.each do |card| %>
+        <% if card.list_id = list.id%>
+          <li><a href="#"><%= list.title %></a></li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+
+<% end %>
+

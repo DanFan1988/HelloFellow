@@ -1,0 +1,12 @@
+<h1>Amazing Homepage wow</h1>
+
+<h2>My Boards</h2>
+
+<% if @boards %>
+  <ul>
+  <% @boards.each do |board| %>
+    <li><a href="boards/<%= board.id %>"><%= board.title%></li>
+  <% end %>
+  </ul>
+<% end %>
+
