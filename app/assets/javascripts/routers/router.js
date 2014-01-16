@@ -1,26 +1,27 @@
 HF.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
-    this.$rootEl = options.$rootEl; // questionable decision
-  }
+    this.$rootEl = options.$rootEl;
+  },
 
   routes: {
-    '': 'index'
-    '/api/boards/new': 'boardNew'
-    '/api/boards/:id': 'boardShow'
-    '/api/boards/:id/edit': 'boardEdit'
+    "": "userBoards",
+    "api/boards/:id": "boardShow"
   },
 
-  boardNew: function(){
-    var view = new HF.Views
+  userBoards: function(){
+    var view = new HF.Views.userBoards
+    this._swapView(view)
   },
 
-  boardShow: function(){
-
+  boardShow: function(id){
+    var board = HF.Data.board.get(id)
+    var view = new HF.Views.boardShow({
+      model: board
+    })
+    this._swapView(view)
   },
 
-  boardEdit: function(){
 
-  },
 
 
 
