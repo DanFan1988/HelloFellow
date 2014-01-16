@@ -26,10 +26,11 @@ HF.Views.BoardShow = Backbone.View.extend({
   },
 
   _renderList: function(){
-    new listView = new HF.View.ListShow({
+    console.log("here")
+    var listView = new HF.Views.ListShow({
       collection: this.model.get('lists')
     });
-    this.$el.find('#insert-view').html(listView.render().$el)
+    this.$el.find('#insert-list').html(listView.render().$el)
   },
 
   flipCard: function(event){
