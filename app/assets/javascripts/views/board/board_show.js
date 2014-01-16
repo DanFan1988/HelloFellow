@@ -33,6 +33,7 @@ HF.Views.boardShow = Backbone.View.extend({
 
   renameTitle: function(event){
     event.preventDefault();
+    console.log(event)
     var renameView = new HF.Views.BoardForm
 
     $(event.target).html(renameView.render())
