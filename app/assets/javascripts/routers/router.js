@@ -27,6 +27,10 @@ HF.Routers.Router = Backbone.Router.extend({
     this._swapView(view)
   },
 
+  userShow: function(id){
+
+  },
+
   _swapView: function (view) {
     console.log("SWAPING DA VIEw")
     console.log('adskfjalj;f')
@@ -35,3 +39,8 @@ HF.Routers.Router = Backbone.Router.extend({
     this.$rootEl.html(view.render().$el);
   }
 })
+
+
+//error function(xhr, textStatus, errorThrown)
+//console.log(xhr.responseJSON)
+// find "name" under it is "cant be blank" make that shit red
