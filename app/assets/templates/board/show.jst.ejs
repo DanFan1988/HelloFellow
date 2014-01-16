@@ -1,13 +1,21 @@
-<h1><%= board.get('title')%><hl>
+<h1><button id="rename-title"><%= board.get('title')%></button></h1>
 
-<% lists.each(function(list) { %>
 
-  <h3><a href="#"><%= list.get('title')%></a></h3>
-    <ul>
-    <% cards.each(function(card) { %>
-      <% if (card.get('list_id') == list.id) { %>
-        <li><a href="#"><%= card.get('title') %></a></li>
-      <% }; %>
-    </ul>
-<%    }); %>
-<% }); %>
+<section class="row">
+  <% lists.each(function(list) { %>
+    <div class="col-xs-4">
+      <h3><a href="#"><%=list.get('title')%></a></h3>
+        <ul>
+        <% cards.each(function(card) { %>
+          <% if (card.get('list_id') == list.id) { %>
+            <div class="list-group">
+              <!-- QUESTIONABLE DECISION HREF?! BUTTON? -->
+              <a href="#cards/<%=card.id%>" class="list-group-item">
+                <%= card.get('title') %></a>
+            </div>
+          <% }; %>
+        </ul>
+    <%    }); %>
+    </div>
+  <% }); %>
+</section>

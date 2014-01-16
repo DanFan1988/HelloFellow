@@ -6,8 +6,8 @@ HF.Views.boardShow = Backbone.View.extend({
   },
 
   events: {
-    "click button.flipCard": "flipCard",
-    "click button.change-board-title": "changeTitle"
+    "casd": "flipCard",
+    "click #rename-title": "renameTitle"
   },
 
   template: JST['board/show'],
@@ -30,10 +30,9 @@ HF.Views.boardShow = Backbone.View.extend({
 
   },
 
-  changeTitle: function(event){
+  renameTitle: function(event){
     event.preventDefault();
-    var data = this.$el.serializeJSON();
-    $(event.target).text(someval in here)
+    $(event.target).text()
 
     this.model.save(data, { success: function(){
       //render new view
