@@ -19,6 +19,6 @@ HF.Views.CardShow = Backbone.View.extend({
   		});
   		this.$el.find('#insert-comment').append(commentsView.render());
   	});
-  },
+  }
 
 })

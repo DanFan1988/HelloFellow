@@ -5,7 +5,8 @@ HF.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": "userBoards",
-    "boards/:id": "boardShow"
+    "boards/:id": "boardShow",
+    "users/:id": "userShow"
   },
 
   userBoards: function(){
@@ -25,8 +26,6 @@ HF.Routers.Router = Backbone.Router.extend({
     })
     this._swapView(view)
   },
-
-
 
   _swapView: function (view) {
     console.log("SWAPING DA VIEw")
