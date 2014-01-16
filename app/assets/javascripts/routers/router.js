@@ -18,25 +18,19 @@ HF.Routers.Router = Backbone.Router.extend({
   boardShow: function(id){
     console.log("showing da board")
     var board = HF.Data.boards.get(id)
-    var view = new HF.Views.boardShow({
+    var view = new HF.Views.BoardShow({
       model: board,
-      lists: HF.Data.lists,
-      cards: HF.Data.cards
+      // lists: HF.Data.lists,
+      // cards: HF.Data.cards
     })
     this._swapView(view)
   },
 
 
 
-
-
-
-
-
-
-
   _swapView: function (view) {
     console.log("SWAPING DA VIEw")
+    console.log('adskfjalj;f')
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(view.render().$el);

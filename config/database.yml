@@ -5,7 +5,7 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  database: hello_fellow_dev
+  database: hello_fellow
   host: localhost
   pool: 5
   timeout: 5000

@@ -17,9 +17,9 @@ HF.Views.userBoards = Backbone.View.extend({
   createBoard: function(){
   	var newBoard = new HF.Models.Board
   	newBoard.collection = HF.Data.boards
-  	var newBoard.fetch({
-  		var newMembership = new HF.Models.BoardMemberships
-  		// finish this
-  	})
+    // var newBoard.fetch({
+    //   var newMembership = new HF.Models.BoardMemberships
+    //   // finish this
+    // })
   }
 })

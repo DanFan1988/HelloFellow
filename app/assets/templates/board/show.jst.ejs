@@ -16,30 +16,15 @@
      </ul>
   </div>
 </h1>
-<!-- lists iteration begins -->
-<section class="row">
-  <% lists.each(function(list) { %>
-    <div class="col-xs-4">
-      <h3><a href="#"><%=list.get('title')%></a></h3>
-        <ul>
-        <% cards.each(function(card) { %>
-          <% if (card.get('list_id') == list.id) { %>
-            <li><button class="btn btn-primary btn-lg" data-toggle="modal"
-             data-target="#myModal"><%= card.get('title') %></button>
-          <% }; %>
-          <li><button id="delete-list">Remove List</button>
-        </ul>
-    <%    }); %>
-    </div>
-  <% }); %>
-</section>
+<!-- lists view insertation-->
+<section class="row" id="insert-list">
 <!-- modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel"><%= card.get('title') %></h4>
+        <h4 class="modal-title" id="myModalLabel">SOMETHING</h4>
       </div>
       <div class="modal-body">
         ...

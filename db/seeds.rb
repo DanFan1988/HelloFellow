@@ -31,4 +31,20 @@ ActiveRecord::Base.transaction do
   card1 = Card.create({ title: "Card 1", list_id: 3})
   card1 = Card.create({ title: "Card 2", list_id: 3})
 
+  comment1 = Comment.create({ body: "THIS IS A COMMENT", card_id: 1})
+  comment1 = Comment.create({ body: "THIS IS As COMMENT", card_id: 1})
+  comment1 = Comment.create({ body: "THIS IS A fCOMMENT", card_id: 1})
+  comment1 = Comment.create({ body: "THIS IS A CadsfOMMENT", card_id: 2})
+  comment1 = Comment.create({ body: "THIS IS A COMMEadsfNT", card_id: 2})
+  comment1 = Comment.create({ body: "THIS IS asdfA COMMENT", card_id: 2})
+  comment1 = Comment.create({ body: "THIS IS A CasdfOMMENT", card_id: 3})
+  comment1 = Comment.create({ body: "THIasdfS IS A COMMENT", card_id: 3})
+  comment1 = Comment.create({ body: "THIS ISasdf A COMMENT", card_id: 3})
+  comment1 = Comment.create({ body: "THIS IS A CasdfOMMENT", card_id: 4})
+  comment1 = Comment.create({ body: "THIS IS A COMMasdfENT", card_id: 4})
+  comment1 = Comment.create({ body: "THIS IasdfS A COMMENT", card_id: 4})
+
+
+
+
 end

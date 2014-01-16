@@ -1,4 +1,4 @@
-HF.Views.boardShow = Backbone.View.extend({
+HF.Views.BoardShow = Backbone.View.extend({
 
   initialize: function(options){
     this.lists = options.lists
@@ -15,13 +15,21 @@ HF.Views.boardShow = Backbone.View.extend({
   template: JST['board/show'],
 
   render: function(){
-    var renderedContent = this.template({
+      var renderedContent = this.template({
       board: this.model,
-      lists: this.lists,
-      cards: this.cards
+      // lists: this.model.get('lists'),
+      // cards: this.model.get('lists').first.get('cards')
       })
     this.$el.html(renderedContent);
+    this._renderList()
     return this;
+  },
+
+  _renderList: function(){
+    new listView = new HF.View.ListShow({
+      collection: this.model.get('lists')
+    });
+    this.$el.find('#insert-view').html(listView.render().$el)
   },
 
   flipCard: function(event){
@@ -49,8 +57,6 @@ HF.Views.boardShow = Backbone.View.extend({
   deleteList: function(event){
     event.preventDefault();
     //can i pull from event or do i need to pass a data-id and get?
-
-
   },
 
   deleteCard: function(event){
@@ -61,13 +67,14 @@ HF.Views.boardShow = Backbone.View.extend({
     var newList = new HF.Model.List({
       board_id: this.model.id
     });
-    newList.collection = HF.Data.lists
-    newList.fetch({
-      success: //do i needs this? Can i just use listenTo?
-    })
+    // newList.collection = HF.Data.lists
+    // newList.fetch({
+    //   success: //do i needs this? Can i just use listenTo?
+    // })
   },
 
   renderSidebar: function(){
 
   }
+
 })
