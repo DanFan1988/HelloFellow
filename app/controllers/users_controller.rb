@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
     if @user.save
       self.current_user = @user
+      setup_user(@user)
       redirect_to :root
     else
       render :json => @user.errors.full_messages

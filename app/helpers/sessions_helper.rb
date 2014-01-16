@@ -20,4 +20,24 @@ module SessionsHelper
   def require_no_current_user!
     redirect_to user_url(current_user) unless current_user.nil?
   end
+
+  def setup_user(user)
+    board = Board.create!({ title: "First board", user_id: user.id })
+
+    list1 = List.create!({ title: "To do", board_id: board.id })
+    list2 = List.create!({ title: "Doing", board_id: board.id })
+    list3 = List.create!({ title: "Done", board_id: board.id })
+
+    card1 = Card.create!({ title: "Card 1", list_id: list1.id })
+    card1 = Card.create!({ title: "Card 2", list_id: list1.id })
+    card1 = Card.create!({ title: "Card 3", list_id: list1.id })
+
+    card1 = Card.create!({ title: "Card 1", list_id: list2.id })
+    card1 = Card.create!({ title: "Hire me", list_id: list2.id })
+    card1 = Card.create!({ title: "Card 3", list_id: list2.id })
+
+    card1 = Card.create!({ title: "Card 1", list_id: list3.id })
+    card1 = Card.create!({ title: "Card 2", list_id: list3.id })
+
+  end
 end

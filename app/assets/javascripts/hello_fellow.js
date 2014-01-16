@@ -5,11 +5,11 @@ window.HF = {
   Routers: {},
   Data: {},
   initialize: function() {
-    HF.Data.lists = new HF.Collections.Lists
-    HF.Data.lists.fetch();
-
     HF.Data.cards = new HF.Collections.Cards
     HF.Data.cards.fetch();
+
+    HF.Data.lists = new HF.Collections.Lists
+    HF.Data.lists.fetch();
 
     HF.Data.boards = new HF.Collections.Boards
     HF.Data.boards.fetch({

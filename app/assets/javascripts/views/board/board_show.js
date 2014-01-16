@@ -6,7 +6,7 @@ HF.Views.boardShow = Backbone.View.extend({
   },
 
   events: {
-    "casd": "flipCard",
+    "click #flip-card": "flipCard",
     "click #rename-title": "renameTitle"
   },
 
@@ -18,21 +18,24 @@ HF.Views.boardShow = Backbone.View.extend({
       lists: this.lists,
       cards: this.cards
       })
-
     this.$el.html(renderedContent);
-
     return this;
   },
 
   flipCard: function(event){
     event.preventDefault();
-    //how to have multiple templates / is this the best way to organize?
-
+    console.log(event)
+    var cardView = new HF.Views.cardView({
+      // pass the card
+    })
+    $(event.target).html(cardView.render());
   },
 
   renameTitle: function(event){
     event.preventDefault();
-    $(event.target).text()
+    var renameView = new HF.Views.BoardForm
+
+    $(event.target).html(renameView.render())
 
     this.model.save(data, { success: function(){
       //render new view

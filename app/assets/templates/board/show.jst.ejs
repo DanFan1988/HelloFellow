@@ -1,5 +1,20 @@
-<h1><button id="rename-title"><%= board.get('title')%></button></h1>
-
+<h1>
+  <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle"
+       data-toggle="dropdown"><%= board.get('title')%></button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-board">
+       <li tabindex="-1" href="#" class="dropdown-header"> Rename Board</li>
+       <li role="presentation" class="divider"></li>
+       <li tabindex="-1" href="#">
+         <form>
+           <label>Name</label>
+           <input type="text" value="<%=board.get('title')%>">
+           <input type="submit" value="Rename">
+         </form>
+       </li>
+     </ul>
+  </div>
+</h1>
 
 <section class="row">
   <% lists.each(function(list) { %>
@@ -8,14 +23,29 @@
         <ul>
         <% cards.each(function(card) { %>
           <% if (card.get('list_id') == list.id) { %>
-            <div class="list-group">
-              <!-- QUESTIONABLE DECISION HREF?! BUTTON? -->
-              <a href="#cards/<%=card.id%>" class="list-group-item">
-                <%= card.get('title') %></a>
-            </div>
+            <li><button class="btn btn-primary btn-lg" data-toggle="modal"
+             data-target="#myModal"><%= card.get('title') %></button>
           <% }; %>
         </ul>
     <%    }); %>
     </div>
   <% }); %>
 </section>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
