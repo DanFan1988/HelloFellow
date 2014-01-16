@@ -1,11 +1,12 @@
 HF.Views.cardView = Backbone.View.extend({
+
+  events:{},
+
   template: JST['card'/'show'],
 
   render: function(){
     var renderedContent = this.template({
-      board: this.model,
-      lists: this.lists,
-      cards: this.cards
+      card: this.model
       })
     this.$el.html(renderedContent);
     return this;

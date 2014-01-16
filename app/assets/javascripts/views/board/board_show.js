@@ -7,7 +7,9 @@ HF.Views.boardShow = Backbone.View.extend({
 
   events: {
     "click #flip-card": "flipCard",
-    "click #rename-title": "renameTitle"
+    "click #rename-title": "renameTitle",
+    "click #delete-list": "deleteList",
+    "click #create-list": "createList"
   },
 
   template: JST['board/show'],
@@ -41,6 +43,27 @@ HF.Views.boardShow = Backbone.View.extend({
     this.model.save(data, { success: function(){
       //render new view
       }
+    })
+  },
+
+  deleteList: function(event){
+    event.preventDefault();
+    //can i pull from event or do i need to pass a data-id and get?
+
+
+  },
+
+  deleteCard: function(event){
+    event.preventDefault();
+  },
+
+  createList: function(event){
+    var newList = new HF.Model.List({
+      board_id: this.model.id
+    });
+    newList.collection = HF.Data.lists
+    newList.fetch({
+      success: //do i needs this? Can i just use listenTo?
     })
   },
 

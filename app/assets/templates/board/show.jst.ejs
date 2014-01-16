@@ -1,3 +1,4 @@
+<!-- dropdown title renamer -->
 <h1>
   <div class="btn-group">
     <button type="button" class="btn btn-default dropdown-toggle"
@@ -15,7 +16,7 @@
      </ul>
   </div>
 </h1>
-
+<!-- lists iteration begins -->
 <section class="row">
   <% lists.each(function(list) { %>
     <div class="col-xs-4">
@@ -26,12 +27,13 @@
             <li><button class="btn btn-primary btn-lg" data-toggle="modal"
              data-target="#myModal"><%= card.get('title') %></button>
           <% }; %>
+          <li><button id="delete-list">Remove List</button>
         </ul>
     <%    }); %>
     </div>
   <% }); %>
 </section>
-
+<!-- modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

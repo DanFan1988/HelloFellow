@@ -23,10 +23,13 @@ module SessionsHelper
 
   def setup_user(user)
     board = Board.create!({ title: "First board", user_id: user.id })
+    
+    Board_Membership.create!(user_id: user.id, board_id: board.id)
 
     list1 = List.create!({ title: "To do", board_id: board.id })
     list2 = List.create!({ title: "Doing", board_id: board.id })
     list3 = List.create!({ title: "Done", board_id: board.id })
+
 
     card1 = Card.create!({ title: "Card 1", list_id: list1.id })
     card1 = Card.create!({ title: "Card 2", list_id: list1.id })
