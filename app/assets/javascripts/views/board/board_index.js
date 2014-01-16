@@ -1,8 +1,8 @@
-HF.Views.userBoard = Backbone.View.extend({
+HF.Views.userBoards = Backbone.View.extend({
 
   events:{},
 
-  templates: JST['board/index'],
+  template: JST['board/index'],
 
   render: function(){
     var renderedContent = this.template({
@@ -10,5 +10,5 @@ HF.Views.userBoard = Backbone.View.extend({
     })
     this.$el.html(renderedContent);
     return this;
-  },
+  }
 })

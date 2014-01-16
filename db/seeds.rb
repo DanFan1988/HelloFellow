@@ -12,6 +12,10 @@ ActiveRecord::Base.transaction do
   board2 = Board.create({ title: "Second board", user_id: 1})
   board3 = Board.create({ title: "Third board", user_id: 1})
 
+  board4 = Board.create({ title: "First board", user_id: 2})
+  board5 = Board.create({ title: "Second board", user_id: 2})
+  board6 = Board.create({ title: "Third board", user_id: 2})
+
   list1 = List.create({ title: "List 1", board_id: 1 })
   list2 = List.create({ title: "List 2", board_id: 1 })
   list3 = List.create({ title: "List 3", board_id: 1 })

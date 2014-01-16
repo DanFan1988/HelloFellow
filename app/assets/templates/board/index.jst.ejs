@@ -1,4 +1,8 @@
 <h1>Amazing Homepage wow</h1>
 
 <h2>My Boards</h2>
-
+<ul>
+<% boards.each(function(board){ %>
+  <li><a href="#boards/<%= board.id%>"><%= board.get('title') %></a>
+<% }) %>
+</ul>

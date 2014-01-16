@@ -1,0 +1,13 @@
+<h1><%= board.get('title')%><hl>
+
+<% lists.each(function(list) { %>
+
+  <h3><a href="#"><%= list.get('title')%></a></h3>
+    <ul>
+    <% cards.each(function(card) { %>
+      <% if (card.get('list_id') == list.id) { %>
+        <li><a href="#"><%= card.get('title') %></a></li>
+      <% }; %>
+    </ul>
+<%    }); %>
+<% }); %>

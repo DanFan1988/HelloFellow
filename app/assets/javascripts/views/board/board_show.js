@@ -1,7 +1,7 @@
 HF.Views.boardShow = Backbone.View.extend({
 
   initialize: function(options){
-    this.posts = options.posts
+    this.lists = options.lists
     this.cards = options.cards
   },
 
@@ -10,12 +10,12 @@ HF.Views.boardShow = Backbone.View.extend({
     "click button.change-board-title": "changeTitle"
   },
 
-  templates: JST['board/show'],
+  template: JST['board/show'],
 
   render: function(){
     var renderedContent = this.template({
       board: this.model,
-      posts: this.posts,
+      lists: this.lists,
       cards: this.cards
       })
 

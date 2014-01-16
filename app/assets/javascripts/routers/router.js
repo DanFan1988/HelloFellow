@@ -5,18 +5,23 @@ HF.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": "userBoards",
-    "api/boards/:id": "boardShow"
+    "boards/:id": "boardShow"
   },
 
   userBoards: function(){
-    var view = new HF.Views.userBoards
+    var view = new HF.Views.userBoards({
+      collection: HF.Data.boards
+    });
     this._swapView(view)
   },
 
   boardShow: function(id){
-    var board = HF.Data.board.get(id)
+    console.log("showing da board")
+    var board = HF.Data.boards.get(id)
     var view = new HF.Views.boardShow({
-      model: board
+      model: board,
+      lists: HF.Data.lists,
+      cards: HF.Data.cards
     })
     this._swapView(view)
   },
@@ -30,8 +35,9 @@ HF.Routers.Router = Backbone.Router.extend({
 
 
 
-  _swapView: function(view) {
-    this._currentView & this._currentView.remove();
+  _swapView: function (view) {
+    console.log("SWAPING DA VIEw")
+    this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(view.render().$el);
   }
