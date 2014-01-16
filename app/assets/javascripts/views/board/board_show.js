@@ -42,5 +42,9 @@ HF.Views.boardShow = Backbone.View.extend({
       //render new view
       }
     })
+  },
+
+  renderSidebar: function(){
+
   }
 })

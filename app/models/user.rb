@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :boards, :dependent => :destroy
   has_many :lists, :through => :boards, :source => :lists
   has_many :cards, :through => :lists, :source => :cards
-
+  has_many :board_memberships
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
 
