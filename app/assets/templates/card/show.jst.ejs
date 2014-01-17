@@ -1,7 +1,7 @@
 
 <% if (card.get('list_id') == list_id) { %>
-<a href="#" class="list-group-item" data-toggle="modal"
-   data-target="#myModal<%=card.id%>"><%= card.get('title') %></a>
+<button type="button" class="btn btn-primary" data-toggle="modal"
+   data-target="#myModal<%=card.id%>"><%= card.get('title') %></button>
 <% }; %>
 
 <div class="modal fade" id="myModal<%=card.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
