@@ -5,8 +5,7 @@ HF.Views.CardShow = Backbone.View.extend({
   },
 
   events:{
-    "click #show-card-form": "showCardForm",
-    "click #create-card": "createCard"
+    "click #submit-card-description": "submitCardDescription" //unfinished
   },
 
   template: JST['card/show'],
@@ -17,6 +16,7 @@ HF.Views.CardShow = Backbone.View.extend({
       list_id: this.list_id
       })
     this.$el.html(renderedContent);
+
     this._renderComments()
     return this;
   },
@@ -28,23 +28,21 @@ HF.Views.CardShow = Backbone.View.extend({
         model: comment,
         card_id: that.model.id
       })
+
       that.$el.find('#insert-comment').append(commentsView.render().$el);
   	});
   },
 
-  showCardForm: function(){
-    console.log("making cardform")
-    var cardForm = new HF.Views.CardForm({
-      list_id: this.list_id,
-      model: this.model,
-      collection: this.collection
-    })
-    console.log(cardForm)
-    $('#place-card-form').append(cardForm.render().$el)
-  },
-
-
-  createCard: function(){
-    event.preventDefault();
+  submitCardDescription: function(event){
+    console.log("we here?")
+      event.preventDefault();
+      var attrs = this.$el.serializeJSON();
+      this.model.set(attrs);
+      this.model.collection = this.collection
+      this.model.save({}, {
+        success: function () {
+          console.log("you are the best")
+        }
+      });
   }
 })

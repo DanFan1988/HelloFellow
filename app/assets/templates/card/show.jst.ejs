@@ -12,8 +12,11 @@
         <h4 class="modal-title" id="myModalLabel"><%= card.get('title')%></h4>
       </div>
       <div class="modal-body" id="insert-comment">
-        <a href="#" id="insert-description" value="<%= card.get('description') %>">Edit description...</a>
-
+        <!-- description form begins -->
+        <form>
+          <textarea row="4" cols="50" style="width: 550px; height: 200px;" name="card[description]" value="<% card.get('description')%>"></textarea>
+          <input id="submit-card-description" type="submit" Value="Save">
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -28,3 +31,5 @@
 <textarea row="4" cols="50" style="width: 550px; height: 200px;" name="card[description]"></textarea>
 <input type="submit" Value="Save">
 </form> -->
+
+        <!-- <a href="#" id="insert-description" value="< card.get('description') %>">Edit description...</a> -->

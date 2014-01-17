@@ -29,20 +29,21 @@ HF.Views.CardForm = Backbone.View.extend({
   addCard: function(event){
     event.preventDefault();
     var attrs = this.$el.serializeJSON();
-
-    function success () {
-      Backbone.history.navigate("", { trigger: true });
-    }
+    // //
+    // function success (data) {
+    //   console.log(data)
+    //   // Backbone.history.navigate("", { trigger: true });
+    // }
     this.model = new HF.Models.Card
 
     this.model.set(attrs);
     if (this.model.isNew()) {
       this.collection.create(this.model, {
-        success: success
+        // success: success
       });
     } else {
       this.model.save({}, {
-        success: success
+        // success: success
       });
     }
   }

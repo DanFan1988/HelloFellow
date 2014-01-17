@@ -1,8 +1,6 @@
 HF.Views.userBoards = Backbone.View.extend({
 
-  events:{
-  	"click create-board": "createBoard"
-  },
+  events:{  },
 
   template: JST['board/index'],
 
@@ -12,14 +10,14 @@ HF.Views.userBoards = Backbone.View.extend({
     })
     this.$el.html(renderedContent);
     return this;
-  },
-
-  createBoard: function(){
-  	var newBoard = new HF.Models.Board
-  	newBoard.collection = HF.Data.boards
-    // var newBoard.fetch({
-    //   var newMembership = new HF.Models.BoardMemberships
-    //   // finish this
-    // })
   }
+  //
+  // createBoard: function(){
+  //   var newBoard = new HF.Models.Board
+  //   newBoard.collection = HF.Data.boards
+  //   // var newBoard.fetch({
+  //   //   var newMembership = new HF.Models.BoardMemberships
+  //   //   // finish this
+  //   // })
+  // }
 })

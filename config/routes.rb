@@ -11,7 +11,7 @@ HelloFellow::Application.routes.draw do
   namespace :api, :defaults => { :format => :json } do
     resources :boards, :only => [:index, :create]
     resources :lists, :only => [:index, :create, :destroy]
-    resources :cards, :only => [:index, :create]
+    resources :cards, :only => [:index, :create, :update]
   end
   root :to => "static_pages#root"
 end
