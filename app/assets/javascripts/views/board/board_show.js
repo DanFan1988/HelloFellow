@@ -1,12 +1,12 @@
 HF.Views.BoardShow = Backbone.View.extend({
 
   initialize: function(options){
-    this.listenTo(this.model.get('lists'), "destroy", this.render)
+    this.listenTo(this.model.get('lists'), "sync destroy", this.render)
   },
 
   events: {
     "click #rename-title": "renameTitle",
-    "click #add-list": "addList"
+    "submit": "addList"
   },
 
   template: JST['board/show'],
@@ -32,6 +32,18 @@ HF.Views.BoardShow = Backbone.View.extend({
   },
 
   addList: function(){
+    console.log('MAKING A NEW LIST OK')
+    event.preventDefault();
+    debugger;
+    var attrs = this.$('#add-list-form').serializeJSON();
+    var newList = new HF.Models.List
+
+    newList.set(attrs);
+    if (newList.isNew()) {
+      this.model.get('lists').create(newList);
+    } else {
+      newList.save({});
+    }
 
   },
 

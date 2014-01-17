@@ -19,6 +19,8 @@ HF.Views.DropdownAdd = Backbone.View.extend({
   newBoardForm: function(){
     console.log("making new board form")
     var content = this.template()
-    this.$el.find('dropdown-menu').append(content)
+    this.$el.find('#new-board').append(content)
+    $('.dropdown-toggle').dropdown()
+
   }
 })

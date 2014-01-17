@@ -28,13 +28,14 @@
   <div class="row" id="insert-list">
     <div class="btn-group">
       <button type="button" class="btn btn-default dropdown-toggle"
-         data-toggle="dropdown"><%= board.get('title')%></button>
+         data-toggle="dropdown">Add a list...</button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-board">
-         <li tabindex="-1" href="#" class="dropdown-header"> Add a list..</li>
+         <li tabindex="-1" href="#" class="dropdown-header"> A shiny new list...</li>
          <li role="presentation" class="divider"></li>
          <li tabindex="-1" href="#">
-           <form>
+           <form id="add-list-form">
              <input type="text" name="list[title]">
+             <input type="hidden" value="<%= board.id %>" name="list[board_id]">
              <input id="add-list" type="submit" value="Add">
            </form>
          </li>
