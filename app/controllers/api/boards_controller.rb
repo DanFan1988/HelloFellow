@@ -25,17 +25,14 @@ class Api::BoardsController < ApplicationController
     @cards = @board.cards
   end
 
-  def edit
-    @board = Board.find(parmas[:id])
-    if @board.update_attributes
+  def update
+    @board = Board.find(params[:id])
+    p params
+    if @board.update_attributes(params[:board])
       render :json => @board
     else
       render :json => @board.errors.full_messages
     end
-  end
-
-  def update
-    @board = Board.find(params[:id])
   end
 
   def destroy

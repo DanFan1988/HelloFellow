@@ -21,6 +21,7 @@ HF.Routers.Router = Backbone.Router.extend({
     var board = HF.Data.boards.get(id)
     var view = new HF.Views.BoardShow({
       model: board,
+      collection: HF.Data.boards
       // lists: HF.Data.lists,
       // cards: HF.Data.cards
     })

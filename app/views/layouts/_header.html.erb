@@ -39,7 +39,7 @@
         <li class="dropdown" id="dropdown-add">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">ADD<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><button id="new-board">New Board...</a></li>
+            <li><a href="#" id="new-board">New Board...</a></li>
             <li class="divider"></li>
             <li><a href="#">New Organization...</a></li>
           </ul>
@@ -64,5 +64,5 @@
   </nav>
 
 <script type="text/javascript" charset="utf-8">
-  var dropdownView = new HF.Views.DropdownAdd({$el: $('#dropdown-add')})
+  var dropdownView = new HF.Views.HeaderAdd({$el: $('#dropdown-add')})
 </script>

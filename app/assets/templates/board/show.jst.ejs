@@ -7,10 +7,10 @@
        <li tabindex="-1" href="#" class="dropdown-header"> Rename Board</li>
        <li role="presentation" class="divider"></li>
        <li tabindex="-1" href="#">
-         <form>
+         <form id="new-title-form">
            <label>Name</label>
-           <input type="text" value="<%=board.get('title')%>">
-           <input type="submit" value="Rename">
+           <input type="text" placeholder="<%=board.get('title')%>" name="board[title]">
+           <button id="rename-title" type="submit">Rename</button>
          </form>
        </li>
      </ul>
@@ -36,7 +36,7 @@
            <form id="add-list-form">
              <input type="text" name="list[title]">
              <input type="hidden" value="<%= board.id %>" name="list[board_id]">
-             <input id="add-list" type="submit" value="Add">
+             <button  id="add-list" type="button">Add</button>
            </form>
          </li>
        </ul>
