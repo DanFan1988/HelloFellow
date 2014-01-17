@@ -7,10 +7,10 @@
        <li tabindex="-1" href="#" class="dropdown-header"> Rename Board</li>
        <li role="presentation" class="divider"></li>
        <li tabindex="-1" href="#">
-         <form>
+         <form class="form-inline" id="edit-board-form">
            <label>Name</label>
-           <input type="text" value="<%=board.get('title')%>">
-           <input type="submit" value="Rename">
+           <input type="text" name="board[title]" value="<%=board.get('title')%>" autofocus>
+           <button type="submit" class="btn btn-sm">Save</button>
          </form>
        </li>
      </ul>

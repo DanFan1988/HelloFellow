@@ -44,23 +44,14 @@ HF.Views.BoardShow = Backbone.View.extend({
     } else {
       newList.save({});
     }
-
   },
 
   renameTitle: function(event){ //editting
     event.preventDefault();
-    console.log(event)
-    var renameView = new HF.Views.BoardForm
-
-    $(event.target).html(renameView.render())
-
-    this.model.save(data, { success: function(){
-      //render new view
-      }
-    })
-  },
-
-
+    var attr = $(event.currentTarget).seralizeJSON()
+    this.model.set(attr)
+    this.model.save({})
+  }
 
   //
   //

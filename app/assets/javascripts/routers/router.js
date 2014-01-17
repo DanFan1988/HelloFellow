@@ -28,7 +28,11 @@ HF.Routers.Router = Backbone.Router.extend({
   },
 
   userShow: function(id){
-
+    var user = HF.Data.users.get(id)
+    var view = new HF.Views.UserShow({
+      model: user
+    })
+    this._swapView(view)
   },
 
   _swapView: function (view) {
