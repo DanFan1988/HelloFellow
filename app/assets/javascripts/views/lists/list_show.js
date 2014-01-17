@@ -3,7 +3,7 @@ HF.Views.ListShow = Backbone.View.extend({
   initialize: function(){},
 
   events: {
-    "click #delete-list": "deleteList"
+    "click #delete-list": "deleteList",
     "click #create-card": "createCard"
   },
 
@@ -37,25 +37,42 @@ HF.Views.ListShow = Backbone.View.extend({
   createCard: function(event){
     event.preventDefault();
 
-    var data = $(event.currentTarget).serializeJSON();
-    var board_id = this.model.id
-
-    this.model
+    var newCard = new HF.Models.Card({
+      title: "new card",
+      list_id: this.model.id,
+    })
+    newCard.save({}, {
+  		success: function () {
+  			Backbone.history.navigate("", { trigger: true });
+  		}
+    })
   }
+});
 
-})
 
-	event.preventDefault();
-
-	var data = $(event.currentTarget).serializeJSON();
-	var title = data.list.title;
-	var board_id = this.model.id
-
-	this.model.get('lists').create(
-		{title: title, board_id: board_id},
-		{wait: true});
-
-	$('#newList').modal('hide');
-	$('.modal-backdrop').remove();
-	$('body').removeClass('modal-open');
-},
+// submit: function (event) {
+//   event.preventDefault();
+//   var attrs = this.$el.serializeJSON();
+//   this.model.set(attrs);
+//   this.model.collection = this.collection
+//   this.model.save({}, {
+//     success: function () {
+//       Backbone.history.navigate("", { trigger: true });
+//     }
+//   });
+// }
+//
+//   event.preventDefault();
+//
+//   var data = $(event.currentTarget).serializeJSON();
+//   var title = data.list.title;
+//   var board_id = this.model.id
+//
+//   this.model.get('lists').create(
+//     {title: title, board_id: board_id},
+//     {wait: true});
+//
+//   $('#newList').modal('hide');
+//   $('.modal-backdrop').remove();
+//   $('body').removeClass('modal-open');
+// },

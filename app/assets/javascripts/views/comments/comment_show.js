@@ -9,7 +9,6 @@ HF.Views.CommentShow = Backbone.View.extend({
   template: JST['comment/show'],
 
   render: function(){
-    console.log("making cards")
     var renderedContent = this.template({
       comment: this.model,
       card_id: this.card_id

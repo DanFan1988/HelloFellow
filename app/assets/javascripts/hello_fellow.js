@@ -5,12 +5,9 @@ window.HF = {
   Routers: {},
   Data: {},
   initialize: function() {
-    // HF.Data.cards = new HF.Collections.Cards
-    // HF.Data.cards.fetch();
-    //
-    // HF.Data.lists = new HF.Collections.Lists
-    // HF.Data.lists.fetch();
-    //
+    // HF.Data.users = new HF.Collections.Users
+    // HF.Data.users.fetch();
+
     HF.Data.boards = new HF.Collections.Boards
     HF.Data.boards.fetch({
       success: function(){
