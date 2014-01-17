@@ -5,8 +5,8 @@ window.HF = {
   Routers: {},
   Data: {},
   initialize: function() {
-    // HF.Data.users = new HF.Collections.Users
-    // HF.Data.users.fetch();
+    HF.Data.users = new HF.Collections.Users
+    HF.Data.users.fetch();
 
     HF.Data.boards = new HF.Collections.Boards
     HF.Data.boards.fetch({

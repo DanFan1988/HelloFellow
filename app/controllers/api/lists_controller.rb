@@ -9,4 +9,5 @@ class Api::ListsController < ApplicationController
     list.destroy
     head :ok
   end
+
 end

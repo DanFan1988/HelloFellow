@@ -14,4 +14,11 @@
 
 @import "bootstrap";
 
-body { padding-top: 70px;}
+body {
+  padding-top: 70px;
+  margin: 0auto;
+}
+
+.modal-body {
+max-height: 800px;
+}

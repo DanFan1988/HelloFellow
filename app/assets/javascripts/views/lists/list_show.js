@@ -1,10 +1,12 @@
 HF.Views.ListShow = Backbone.View.extend({
 
-  initialize: function(){},
+  initialize: function(){
+    this.listenTo(this.model.get('cards'), "add", this.render)
+  },
 
   events: {
-    "click #delete-list": "deleteList",
-    "click #create-card": "createCard"
+    "click button#show-card-form": "showCardForm",
+    "click #delete-list": "deleteList"
   },
 
   template: JST['list/show'],
@@ -23,6 +25,7 @@ HF.Views.ListShow = Backbone.View.extend({
     this.model.get('cards').each(function(card){
       var cardView = new HF.Views.CardShow({
         model: card,
+        collection: that.model.get('lists'),
         list_id: that.model.id
       });
       that.$el.find('#insert-card').append(cardView.render().$el);
@@ -39,14 +42,24 @@ HF.Views.ListShow = Backbone.View.extend({
 
     var newCard = new HF.Models.Card({
       title: "new card",
-      list_id: this.model.id,
+      list_id: this.model.id
     })
     newCard.save({}, {
   		success: function () {
   			Backbone.history.navigate("", { trigger: true });
   		}
     })
-  }
+  },
+
+  showCardForm: function(){
+    console.log("making cardform")
+    var cardForm = new HF.Views.CardForm({
+      collection: this.model.get('cards'),
+      list_id: this.model.id
+    })
+    this.$el.find('#place-card-form').append(cardForm.render().$el)
+  },
+
 });
 
 

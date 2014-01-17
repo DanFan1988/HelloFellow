@@ -1,7 +1,7 @@
 HF.Views.BoardShow = Backbone.View.extend({
 
   initialize: function(options){
-    this.listenTo(this.model.get('lists'), "all", this.render)
+    this.listenTo(this.model.get('lists'), "destroy", this.render)
   },
 
   events: {
