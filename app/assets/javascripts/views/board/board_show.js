@@ -1,13 +1,12 @@
 HF.Views.BoardShow = Backbone.View.extend({
 
   initialize: function(options){
-
+    this.listenTo(this.model.get('lists'), "all", this.render)
   },
 
   events: {
     "click #flip-card": "flipCard",
     "click #rename-title": "renameTitle",
-    "click #delete-list": "deleteList",
     "click #create-list": "createList"
   },
 
@@ -55,10 +54,7 @@ HF.Views.BoardShow = Backbone.View.extend({
     })
   },
 
-  deleteList: function(event){
-    event.preventDefault();
-    //can i pull from event or do i need to pass a data-id and get?
-  },
+
 
   deleteCard: function(event){
     event.preventDefault();

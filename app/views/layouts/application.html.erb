@@ -12,6 +12,8 @@
 
 <% if !current_user.nil? %>
 <%= render :partial => "layouts/header" %>
+<% else %>
+<%= link_to "GOAT APP SIGN UP", new_user_url %>
 <% end %>
 
 <div id="container">

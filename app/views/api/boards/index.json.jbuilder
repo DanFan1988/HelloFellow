@@ -1,7 +1,6 @@
 json.array! @boards do |board|
   json.id board.id
   json.title board.title
-  json.cards board.cards
   json.lists board.lists do |list|
     json.id list.id
     json.title list.title

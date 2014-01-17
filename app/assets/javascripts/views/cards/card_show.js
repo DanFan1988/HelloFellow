@@ -12,16 +12,18 @@ HF.Views.CardShow = Backbone.View.extend({
       list_id: this.list_id
       })
     this.$el.html(renderedContent);
+    this._renderComments()
     return this;
   },
 
   _renderComments: function(){
-  	this.collection.each(function(card){
-  		var commentsView = new HF.Views.ShowComments({
-  		  collection: card.get('comments')
-  		});
-  		this.$el.find('#insert-comment').append(commentsView.render().$el);
+    var that = this;
+    this.model.get('comments').each(function(comment){
+      var commentsView = new HF.Views.CommentShow({
+        model: comment,
+        card_id: that.model.id
+      })
+      that.$el.find('#insert-comment').append(commentsView.render().$el);
   	});
   }
-
 })

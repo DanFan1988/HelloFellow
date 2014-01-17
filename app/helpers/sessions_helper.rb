@@ -30,17 +30,29 @@ module SessionsHelper
     list2 = List.create!({ title: "Doing", board_id: board.id })
     list3 = List.create!({ title: "Done", board_id: board.id })
 
-
     card1 = Card.create!({ title: "Card 1", list_id: list1.id })
-    card1 = Card.create!({ title: "Card 2", list_id: list1.id })
-    card1 = Card.create!({ title: "Card 3", list_id: list1.id })
+    card2 = Card.create!({ title: "Card 2", list_id: list1.id })
+    card3 = Card.create!({ title: "Card 3", list_id: list1.id })
 
-    card1 = Card.create!({ title: "Card 1", list_id: list2.id })
-    card1 = Card.create!({ title: "Hire me", list_id: list2.id })
-    card1 = Card.create!({ title: "Card 3", list_id: list2.id })
+    card4 = Card.create!({ title: "Card 1", list_id: list2.id })
+    card5 = Card.create!({ title: "Hire me", list_id: list2.id })
+    card6 = Card.create!({ title: "Card 3", list_id: list2.id })
 
-    card1 = Card.create!({ title: "Card 1", list_id: list3.id })
-    card1 = Card.create!({ title: "Card 2", list_id: list3.id })
+    card7 = Card.create!({ title: "Card 1", list_id: list3.id })
+    card8 = Card.create!({ title: "Card 2", list_id: list3.id })
+
+    comment1 = Comment.create({ body: "THIS IS A COMMENT", card_id: card1.id})
+    comment1 = Comment.create({ body: "THIS IS As COMMENT", card_id: card1.id})
+    comment1 = Comment.create({ body: "THIS IS A fCOMMENT", card_id: card1.id})
+    comment1 = Comment.create({ body: "THIS IS A CadsfOMMENT", card_id: card2.id})
+    comment1 = Comment.create({ body: "THIS IS A COMMEadsfNT", card_id: card3.id})
+    comment1 = Comment.create({ body: "THIS IS asdfA COMMENT", card_id: card4.id})
+    comment1 = Comment.create({ body: "THIS IS A CasdfOMMENT", card_id: card5.id})
+    comment1 = Comment.create({ body: "THIasdfS IS A COMMENT", card_id: card5.id})
+    comment1 = Comment.create({ body: "pls work", card_id: card5.id})
+    comment1 = Comment.create({ body: "THIS IS A CasdfOMMENT", card_id: card5.id})
+    comment1 = Comment.create({ body: "THIS IS A COMMasdfENT", card_id: card6.id})
+    comment1 = Comment.create({ body: "THIS IasdfS A COMMENT", card_id: card7.id})
 
   end
 end
