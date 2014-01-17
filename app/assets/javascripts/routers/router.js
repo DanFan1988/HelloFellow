@@ -32,8 +32,7 @@ HF.Routers.Router = Backbone.Router.extend({
   },
 
   _swapView: function (view) {
-    console.log("SWAPING DA VIEw")
-    console.log('adskfjalj;f')
+    console.log("SWAPING DA VIEW")
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(view.render().$el);

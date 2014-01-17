@@ -1,12 +1,15 @@
 HF.Views.CardShow = Backbone.View.extend({
 
-  events:{},
+  initialize: function(options){
+    this.list_id = options.list_id
+  },
 
-  template: JST['card'/'show'],
+  template: JST['card/show'],
 
   render: function(){
     var renderedContent = this.template({
-      cards: this.collection
+      card: this.model,
+      list_id: this.list_id
       })
     this.$el.html(renderedContent);
     return this;
@@ -15,9 +18,9 @@ HF.Views.CardShow = Backbone.View.extend({
   _renderComments: function(){
   	this.collection.each(function(card){
   		var commentsView = new HF.Views.ShowComments({
-  		  collection: card.get('comments')	
+  		  collection: card.get('comments')
   		});
-  		this.$el.find('#insert-comment').append(commentsView.render());
+  		this.$el.find('#insert-comment').append(commentsView.render().$el);
   	});
   }
 

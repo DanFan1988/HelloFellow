@@ -1,8 +1,7 @@
 HF.Views.BoardShow = Backbone.View.extend({
 
   initialize: function(options){
-    this.lists = options.lists
-    this.cards = options.cards
+
   },
 
   events: {
@@ -17,20 +16,21 @@ HF.Views.BoardShow = Backbone.View.extend({
   render: function(){
       var renderedContent = this.template({
       board: this.model,
-      // lists: this.model.get('lists'),
-      // cards: this.model.get('lists').first.get('cards')
       })
     this.$el.html(renderedContent);
-    this._renderList()
+    this._renderLists()
     return this;
   },
 
-  _renderList: function(){
-    console.log("here")
-    var listView = new HF.Views.ListShow({
-      collection: this.model.get('lists')
-    });
-    this.$el.find('#insert-list').html(listView.render().$el)
+  _renderLists: function(){
+    var that = this;
+    this.model.get('lists').each(function(list){
+      console.log("making a list")
+      var listView = new HF.Views.ListShow({
+        model: list
+      })
+      that.$el.find('#insert-list').append(listView.render().$el)
+    })
   },
 
   flipCard: function(event){

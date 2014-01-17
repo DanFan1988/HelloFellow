@@ -20,15 +20,15 @@ ActiveRecord::Base.transaction do
   list2 = List.create({ title: "List 2", board_id: 1 })
   list3 = List.create({ title: "List 3", board_id: 1 })
 
-  card1 = Card.create({ title: "Card 1", list_id: 1})
+  card1 = Card.create({ title: "Card 1 List 1", list_id: 1})
   card1 = Card.create({ title: "Card 2", list_id: 1})
   card1 = Card.create({ title: "Card 3", list_id: 1})
 
-  card1 = Card.create({ title: "Card 1", list_id: 2})
+  card1 = Card.create({ title: "Card 1 List 2", list_id: 2})
   card1 = Card.create({ title: "Card 2", list_id: 2})
   card1 = Card.create({ title: "Card 3", list_id: 2})
 
-  card1 = Card.create({ title: "Card 1", list_id: 3})
+  card1 = Card.create({ title: "Card 1 List 3", list_id: 3})
   card1 = Card.create({ title: "Card 2", list_id: 3})
 
   comment1 = Comment.create({ body: "THIS IS A COMMENT", card_id: 1})

@@ -6,20 +6,22 @@ HF.Views.ListShow = Backbone.View.extend({
   template: JST['list/show'],
 
   render: function(){
-      var renderedContent = this.template({
-      lists: this.collection
-      })
+    var renderedContent = this.template({
+    list: this.model
+    })
     this.$el.html(renderedContent);
-    this._renderCards()
+    this._renderCards();
     return this;
-  }
+  },
 
   _renderCards: function(){
-    this.collection.each(function(list){
-      var cardView = new HF.View.ShowCard({
-        collection: list.get('cards')
+    var that = this;
+    this.model.get('cards').each(function(card){
+      var cardView = new HF.Views.CardShow({
+        model: card,
+        list_id: that.model.id
       });
-      this.$el.find('#insert-card').append(cardView.render());
-    })
+      that.$el.find('#insert-card').append(cardView.render().$el);
+    });
   }
 })
