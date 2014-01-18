@@ -1,10 +1,8 @@
 HF.Views.UserShow = Backbone.View.extend({
-	initialize: function( {
-		//has model
-	})
+	//has model
 	events: {},
 	template: JST['user/profile'],
-	
+
 	render: function(){
       var renderedContent = this.template({
       	user: this.model

@@ -16,16 +16,15 @@ HF.Routers.Router = Backbone.Router.extend({
     this._swapView(view)
   },
 
-  boardShow: function(id){
-    console.log("showing da board")
-    var board = HF.Data.boards.get(id)
+  boardShow: function(id) {
+    var board = HF.Data.boards.get(id);
     var view = new HF.Views.BoardShow({
       model: board,
       collection: HF.Data.boards
       // lists: HF.Data.lists,
       // cards: HF.Data.cards
     })
-    this._swapView(view)
+    this._swapView(view);
   },
 
   userShow: function(id){

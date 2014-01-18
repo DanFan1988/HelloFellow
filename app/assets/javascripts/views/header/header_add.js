@@ -5,7 +5,8 @@ HF.Views.HeaderAdd = Backbone.View.extend({
   },
 
   events:{
-    "click #new-board": "newBoardForm"
+    "click #new-board": "newBoardForm",
+    "click #add-board": "addBoard"
   },
 
   template: JST['dropdown/add_board'],
@@ -22,6 +23,18 @@ HF.Views.HeaderAdd = Backbone.View.extend({
     var content = this.template()
     this.$el.find('#new-board').html(content)
     $('.dropdown-toggle').dropdown()
+  },
 
+  addBoard: function(event){
+    event.preventDefault();
+    var newBoard = new HF.Models.Board
+    var attrs = this.$("#add-board-form").serializeJSON();
+
+    newBoard.set(attrs);
+    if (newBoard.isNew()) {
+      HF.Data.boards.create(newBoard);
+    } else {
+      newBoard.save({});
+    }
   }
-})
+});

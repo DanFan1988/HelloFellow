@@ -1,17 +1,11 @@
 HelloFellow::Application.routes.draw do
-  get "board_memberhips/index"
-
-  get "board_memberhips/create"
-
+  root :to => "static_pages#root"
   resources :users, :only => [:create, :new, :show]
   resource :session, :only => [:create, :destroy, :new]
-
-
-
   namespace :api, :defaults => { :format => :json } do
-    resources :boards, :only => [:index, :create, :update, :destroy]
-    resources :lists, :only => [:index, :create, :destroy, :update]
-    resources :cards, :only => [:index, :create, :update, :destrpy]
+    resources :boards
+    resources :lists
+    resources :cards
+    resources :comments
   end
-  root :to => "static_pages#root"
 end

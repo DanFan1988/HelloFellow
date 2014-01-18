@@ -1,5 +1,9 @@
 HF.Views.userBoards = Backbone.View.extend({
 
+  initialize: function(){
+    this.listenTo(this.collection, "sync", this.render)
+  },
+
   events:{  },
 
   template: JST['board/index'],

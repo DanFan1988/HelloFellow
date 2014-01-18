@@ -1,27 +1,27 @@
 HF.Views.BoardShow = Backbone.View.extend({
-
   initialize: function(options){
-    this.listenTo(this.model.get('lists'), "sync destroy", this.render)
-    this.listenTo(this.collection, "change", this.render)
+    this.listenTo(this.model.get('lists'), "sync destroy", this.render);
+    this.listenTo(this.model, "change:title", this.render);
   },
 
   events: {
-    "click #rename-title": "renameTitle",
-    "click #add-list": "addList"
+    "submit #new-title-form": "renameTitle",
+    "click #add-list": "addList",
+    "click #add-comment": "addComment"
   },
 
   template: JST['board/show'],
 
-  render: function(){
-      var renderedContent = this.template({
+  render: function () {
+    var renderedContent = this.template({
       board: this.model,
-      })
+    });
     this.$el.html(renderedContent);
     this._renderLists()
     return this;
   },
 
-  _renderLists: function(){
+  _renderLists: function () {
     var that = this;
     this.model.get('lists').each(function(list){
       console.log("making a list")
@@ -50,11 +50,15 @@ HF.Views.BoardShow = Backbone.View.extend({
     console.log('renaming title')
     event.preventDefault();
     var attrs = this.$('#new-title-form').serializeJSON();
+    console.log(attrs, "attrs")
     this.model.set(attrs)
-    debugger;
-    this.model.save({})
-    console.log(attrs)
+    this.model.save()
+    // why isnt this send it to the right URL?
   },
+
+  addComment: function(event){
+
+  }
 
 
   //

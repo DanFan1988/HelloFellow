@@ -11,13 +11,22 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel"><%= card.get('title')%></h4>
       </div>
-      <div class="modal-body" id="insert-comment">
+
         <!-- description form begins -->
-        <form>
+        <form id="card-description-form">
           <textarea row="4" cols="50" style="width: 550px; height: 200px;" name="card[description]" value="<% card.get('description')%>"></textarea>
-          <input id="submit-card-description" type="submit" Value="Save">
+          <input id="submit-card-description" type="submit" value="Save">
         </form>
+        <!-- description form ends -->
+        <!-- insert comments -->
+      <div class="modal-body" id="insert-comment">
       </div>
+      <!-- insert comment form -->
+      <form id="add-comment-form">
+        <textarea row="4" cols="50" name="comment[body]"></textarea><br>
+        <input type="hidden" value="<%= card.id %>" name="comment[card_id]">
+        <input id="create-comment" type="submit" value="Comment">
+      </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
