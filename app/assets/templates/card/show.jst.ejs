@@ -7,17 +7,23 @@
 <div class="modal fade" id="myModal<%=card.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
+      <!-- title -->
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel"><%= card.get('title')%></h4>
+        <h4 class="modal-title" id="myModalLabel">
+          <div id="edit-card-title-form">
+            <a href="#" id="open-card-title-edit-form"><%= card.get('title')%>
+            </a>
+          </div>
+        </h4>
       </div>
-
-        <!-- description form begins -->
-        <form id="card-description-form">
-          <textarea row="4" cols="50" style="width: 550px; height: 200px;" name="card[description]" value="<% card.get('description')%>"></textarea>
-          <input id="submit-card-description" type="submit" value="Save">
-        </form>
-        <!-- description form ends -->
+      <!-- title END-->
+      <!-- description link -->
+      <div id="insert-description-form">
+        <a href="#" id="open-description-form">
+          <%= card.get('description') %><br><%= "Edit the card description." %>
+        </a>
+      </div>
         <!-- insert comments -->
       <div class="modal-body" id="insert-comment">
       </div>

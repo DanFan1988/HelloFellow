@@ -25,6 +25,7 @@ class Api::CardsController < ApplicationController
   def update
     @card = Card.find(params[:id])
     p params
+    p "LOOK HERE"
     if @card.update_attributes(params[:card])
       render :json => @card
     else

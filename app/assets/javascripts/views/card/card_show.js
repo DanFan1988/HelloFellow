@@ -2,11 +2,12 @@ HF.Views.CardShow = Backbone.View.extend({
 
   initialize: function(options){
     this.list_id = options.list_id
-    this.listenTo(this.model.get('comments'), "sync", this.swap)
+    // this.listenTo(this.model.get('comments'), "sync", this.render)
   },
 
   events:{
-    "click #submit-card-description": "submitCardDescription", //unfinished
+    "click #open-description-form": "openDescriptionForm",
+    "click #open-card-title-edit-form": "editCardTitleForm",
     "click #create-comment": "createComment"
   },
 
@@ -35,17 +36,23 @@ HF.Views.CardShow = Backbone.View.extend({
   	});
   },
 
-  submitCardDescription: function(event){
-    console.log("we here?")
+  openDescriptionForm: function(event){
     event.preventDefault();
-    var attrs = this.$('#card-description-form').serializeJSON();
-    this.model.set(attrs);
-    this.model.save();
+    var newDescription = new HF.Views.DescriptionForm({
+      model: this.model,
+      collection: this.collection
+    })
+    this.$el.find("#insert-description-form").html(newDescription.render().$el)
   },
-	swap: function() {
-		this.off();
-		this.render();
-	},
+
+  editCardTitleForm: function(event){
+    event.preventDefault();
+    var editTitle = new HF.Views.EditCardTitle({
+      model: this.model,
+      collection: this.collection
+    })
+    this.$el.find("#edit-card-title-form").html(editTitle.render().$el)
+  },
 
   createComment: function(event){
     event.preventDefault();

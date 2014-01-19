@@ -1,4 +1,4 @@
 HF.Collections.Users = Backbone.Collection.extend({
-  url: "/api/boards",
+  url: "/api/users",
   model: HF.Models.User
 })

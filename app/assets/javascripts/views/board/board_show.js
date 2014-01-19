@@ -1,6 +1,6 @@
 HF.Views.BoardShow = Backbone.View.extend({
   initialize: function(options){
-    this.listenTo(this.model.get('lists'), "sync destroy", this.render);
+    this.listenTo(this.model.get('lists'), "sync remove", this.render);
     this.listenTo(this.model, "change:title", this.render);
   },
 
@@ -33,7 +33,6 @@ HF.Views.BoardShow = Backbone.View.extend({
   },
 
   addList: function(){
-    console.log('MAKING A NEW LIST OK')
     event.preventDefault();
     var attrs = this.$('#add-list-form').serializeJSON();
     var newList = new HF.Models.List
@@ -46,14 +45,13 @@ HF.Views.BoardShow = Backbone.View.extend({
     }
   },
 
-  renameTitle: function(event){ //editting
+  renameTitle: function(event){
     console.log('renaming title')
     event.preventDefault();
     var attrs = this.$('#new-title-form').serializeJSON();
     console.log(attrs, "attrs")
     this.model.set(attrs)
     this.model.save()
-    // why isnt this send it to the right URL?
   },
 
   addComment: function(event){

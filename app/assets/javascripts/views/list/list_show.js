@@ -6,7 +6,9 @@ HF.Views.ListShow = Backbone.View.extend({
 
   events: {
     "click button#show-card-form": "showCardForm",
-    "click #delete-list": "deleteList"
+    "click #delete-list": "deleteList",
+    "click #open-list-title-edit-form": "editListTitleForm",
+
   },
 
   template: JST['list/show'],
@@ -32,25 +34,21 @@ HF.Views.ListShow = Backbone.View.extend({
     });
   },
 
+  editListTitleForm: function(event){
+    console.log("we ehre")
+    event.preventDefault();
+    var editTitle = new HF.Views.EditListTitle({
+      model: this.model,
+      collection: this.collection
+    })
+    this.$el.find("#edit-list-title-form").html(editTitle.render().$el)
+  },
+
   deleteList: function(event){
     event.preventDefault();
   	this.model.destroy();
   },
 
-  // createCard: function(event){
-  //   event.preventDefault();
-  //   var that = this;
-  //
-  //   var newCard = new HF.Models.Card({
-  //     title: "new card",
-  //     list_id: this.model.id
-  //   })
-  //   newCard.save({}, {
-  //     success: function () {
-  //       that.model.get('cards').add(newCard)
-  //     }
-  //   })
-  // },
 
   showCardForm: function(){
     console.log("making cardform")
