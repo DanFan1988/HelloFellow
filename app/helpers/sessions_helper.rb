@@ -22,7 +22,11 @@ module SessionsHelper
   end
 
   def setup_user(user)
-    board = Board.create!({ title: "First board", user_id: user.id })
+    organization = Organization.create!({ title: "My Boards",
+      description: "Your default board location", visibility: "private"})
+
+    board = Board.create!({ title: "First board", user_id: user.id,
+      organization_id: organization.id })
 
     membership = BoardMembership.create!(user_id: user.id, board_id: board.id)
 

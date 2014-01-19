@@ -8,6 +8,9 @@ window.HF = {
     HF.Data.users = new HF.Collections.Users
     HF.Data.users.fetch();
 
+    HF.Data.organizations = new HF.Collections.Organizations
+    HF.Data.organizations.fetch();
+
     HF.Data.boards = new HF.Collections.Boards
     HF.Data.boards.fetch({
       success: function(){

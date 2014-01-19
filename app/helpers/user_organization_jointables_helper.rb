@@ -1,0 +1,2 @@
+module UserOrganizationJointablesHelper
+end

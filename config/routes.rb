@@ -5,6 +5,7 @@ HelloFellow::Application.routes.draw do
 
   namespace :api, :defaults => { :format => :json } do
     resources :users, :only => [:index]
+    resources :organizations
     resources :boards
     resources :lists
     resources :cards

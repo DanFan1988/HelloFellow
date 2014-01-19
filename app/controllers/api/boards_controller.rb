@@ -13,16 +13,16 @@ class Api::BoardsController < ApplicationController
     end
   end
 
-  def new
-    @board = Board.new
-  end
-
-  def show
-    @board = Board.find(params[:id])
-    #add in association if jbuilder can't handle the association
-    @lists = @board.lists
-    @cards = @board.cards
-  end
+  # def new
+  #   @board = Board.new
+  # end
+  #
+  # def show
+  #   @board = Board.find(params[:id])
+  #   #add in association if jbuilder can't handle the association
+  #   @lists = @board.lists
+  #   @cards = @board.cards
+  # end
 
   def update
     @board = Board.find(params[:id])

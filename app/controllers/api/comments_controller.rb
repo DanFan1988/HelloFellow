@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Api::CommentsController < ApplicationController
   def index
     @comments = current_user.comments
   end
@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     @comment.user_id = current_user.id
     if @comment.save
-      render :json => @comment
+      render :show
     else
       render :json => @comment.errors.full_messages
     end

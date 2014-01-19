@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140118231432) do
+ActiveRecord::Schema.define(:version => 20140119105109) do
 
   create_table "board_memberships", :force => true do |t|
     t.integer  "user_id"
@@ -56,12 +56,21 @@ ActiveRecord::Schema.define(:version => 20140118231432) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "organizations", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "visibility"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "username",        :null => false
     t.string   "password_digest", :null => false
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "session_token",   :null => false
+    t.integer  "organization_id"
   end
 
   add_index "users", ["session_token"], :name => "index_users_on_session_token", :unique => true

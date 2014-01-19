@@ -1,0 +1,20 @@
+<form role="form" id="add-org-form">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" id="title" placeholder="Untitled Organization" name="title">
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea row="4" column="30" id="description"
+     name="description"></textarea>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+  <br>
+  <li class="divider"></li>
+</form>
+
+<script type="text/javascript">
+    $('.dropdown-menu input, .dropdown-mfenu label').click(function(e) {
+        e.stopPropagation();
+    });
+</script>

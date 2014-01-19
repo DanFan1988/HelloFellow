@@ -1,0 +1,2 @@
+class UserOrganizationJointablesController < ApplicationController
+end

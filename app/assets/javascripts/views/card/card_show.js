@@ -72,6 +72,10 @@ HF.Views.CardShow = Backbone.View.extend({
     } else {
       newComment.save({});
     }
+    $('#CardModal' + this.model.id).modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+    // $('#CardModal' + this.model.id).modal('show');
   },
 
   deleteCard: function(event){

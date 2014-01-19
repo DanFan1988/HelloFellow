@@ -9,8 +9,51 @@
   <button type="button" class="btn btn-primary">Add Checklist...</button>
   <button type="button" class="btn btn-primary">Due Date...</button>
   <button type="button" class="btn btn-primary">Attach File...</button>
-  <button type="button" class="btn btn-primary" id="card-move">Move...</button>
+  <!-- Move... -->
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary dropdown-toggle"
+     data-toggle="dropdown">Move...</button>
+    <ul class="dropdown-menu">
+      <form id="card-move-form">
+        <li>
+          <div class="form-group">
+            <label for="boards">Boards</label>
+            <select class="form-control" onchange="">
+              <option>GOAT ORGANIZATIOn</option>
+              <option>app academy</option>
+              <option>The NBA</option>
+              <option>Apple</option>
+              <option>Microsoft</option>
+            </select>
+            <label for="lists">Lists</label>
+            <select class="form-control" onchange="">
+              <option>GOAT ORGANIZATIOn</option>
+              <option>app academy</option>
+              <option>The NBA</option>
+              <option>Apple</option>
+              <option>Microsoft</option>
+            </select>
+            <label for="postions">Positions</label>
+            <select class="form-control">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </li>
+      </form>
+    </ul>
+  </div>
   <button type="button" class="btn btn-primary">Subscribe</button>
   <button type="button" class="btn btn-primary">Vote</button>
   <button type="button" class="btn btn-primary">Archive</button>
 </div>
+
+<script type="text/javascript">
+    $('.dropdown-menu input, .dropdown-menu label').click(function(e) {
+        e.stopPropagation();
+    });
+</script>
+
