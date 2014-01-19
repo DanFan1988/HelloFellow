@@ -7,40 +7,66 @@
 <div class="modal fade" id="CardModal<%=card.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
+      <div class="container">
       <!-- title -->
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">
-          <div id="edit-card-title-form">
-            <a href="#" id="open-card-title-edit-form"><%= card.escape('title')%>
-            </a>
+        <div class="row">
+          <div class="modal-header col-xs-6">
+            <button type="button" class="close" data-dismiss="modal"
+             aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">
+              <div id="edit-card-title-form">
+                <a href="#" id="open-card-title-edit-form">
+                  <%= card.escape('title')%><small> &nbsp; in list
+                  <strong>
+                    <% if (card.get('list')) { %>
+                    <%= card.get('list').title %>
+                  <% }; %>
+                  </strong></small>
+                </a>
+              </div>
+            </h4>
+          <!-- title END-->
+          <!-- description link -->
+            <div id="insert-description-form">
+              <a href="#" id="open-description-form">
+                <%= card.escape('description') %><%= "Edit the card description." %>
+              </a>
+            </div>
           </div>
-        </h4>
-      </div>
-      <!-- title END-->
-      <!-- description link -->
-      <div id="insert-description-form">
-        <a href="#" id="open-description-form">
-          <%= card.escape('description') %><br><%= "Edit the card description." %>
-        </a>
-      </div>
-        <!-- insert comments -->
-      <div class="modal-body" id="insert-comment">
-      </div>
-      <!-- insert comment form -->
-      <form id="add-comment-form">
-        <textarea row="4" cols="50" name="comment[body]"></textarea><br>
-        <input type="hidden" value="<%= card.id %>" name="comment[card_id]">
-        <input id="create-comment" type="submit" value="Comment">
-      </form>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger"
-         id="delete-card">Delete Card</button>
-      </div>
+        </div>
+          <!-- insert comments -->
+        <div class="row">
+          <ul>
+            <div class="modal-body col-xs-4" id="insert-comment">
+            </div>
+          </ul>
+          <div id="render-button-list">
+          </div>
+        </div>
+        <!-- insert comment form -->
+        <div class="row">
+          <div class="col-xs-5">
+            <form id="add-comment-form">
+              <textarea row="4" cols="60" name="body"></textarea><br>
+              <input type="hidden" value="<%= card.id %>"  name="card_id">
+              <input id="create-comment" type="submit" value="Comment">
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-5">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger"
+             id="delete-card">Delete Card</button>
+          </div>
+          </div>
+        </div>
+      </div><!-- container -->
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
 
 
 

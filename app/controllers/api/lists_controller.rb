@@ -5,7 +5,6 @@ class Api::ListsController < ApplicationController
   end
 
   def create
-    p params
     @list = List.new(params[:list])
     if @list.save
       render :json => @list

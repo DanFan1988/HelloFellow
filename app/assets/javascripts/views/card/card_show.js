@@ -20,8 +20,8 @@ HF.Views.CardShow = Backbone.View.extend({
       list_id: this.list_id
       })
     this.$el.html(renderedContent);
-
     this._renderComments()
+    this._renderButtonGroup()
     return this;
   },
 
@@ -35,6 +35,13 @@ HF.Views.CardShow = Backbone.View.extend({
 
       that.$el.find('#insert-comment').append(commentsView.render().$el);
   	});
+  },
+
+  _renderButtonGroup: function(){
+    var buttonGroup = new HF.Views.CardButtonGroup({
+      model: this.model
+    })
+    this.$el.find('#render-button-list').html(buttonGroup.render().$el)
   },
 
   openDescriptionForm: function(event){

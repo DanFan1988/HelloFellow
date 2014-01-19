@@ -1,7 +1,6 @@
 class Api::BoardsController < ApplicationController
   def index
     @boards = current_user.boards
-    p @board = current_user.boards.first.cards
   end
 
   def create

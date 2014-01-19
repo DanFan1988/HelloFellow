@@ -9,6 +9,7 @@ json.array! @boards do |board|
       json.id card.id
       json.label card.label
       json.list_id card.list_id
+      json.list card.list
       json.title card.title
       json.comments card.comments do |comment|
         json.id comment.id

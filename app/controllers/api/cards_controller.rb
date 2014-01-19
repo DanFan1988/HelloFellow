@@ -5,12 +5,7 @@ class Api::CardsController < ApplicationController
   end
 
   def show
-    @card = current_user.gists.new(params[:list])
-    if @card.save
-      render :show
-    else
-      render :json => @card.errors.full_messages, :status => 422
-    end
+    @card = Card.find(params[:id])
   end
 
   def create

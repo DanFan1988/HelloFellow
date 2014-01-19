@@ -22,7 +22,7 @@ HF.Views.HeaderAdd = Backbone.View.extend({
     console.log("making new board form")
     var content = this.template()
     this.$el.find('#new-board').html(content)
-    $('.dropdown-toggle').dropdown()
+    // $('#dropdown-add').dropdown('toggle')
   },
 
   addBoard: function(event){

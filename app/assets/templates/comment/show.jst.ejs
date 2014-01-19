@@ -1,2 +1,4 @@
-
-	<%= comment.get('user').username %>  |  <%= comment.get('body') %>
+<% if (comment.get('user')) { %>
+  <%= comment.get('user').username %>
+<% }; %>
+  |  <%= comment.get('body') %>
