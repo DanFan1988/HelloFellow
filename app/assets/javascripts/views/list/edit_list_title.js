@@ -17,11 +17,10 @@ HF.Views.EditListTitle = Backbone.View.extend({
     return this;
   },
 
-  submitDescription: function(event){
+  editTitle: function(event){
     console.log("we here?")
-
+    event.preventDefault();
     var attrs = this.$('#edit-list-title').serializeJSON();
-        debugger;
     this.model.set(attrs);
     this.model.save()
   }

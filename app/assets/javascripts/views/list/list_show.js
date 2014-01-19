@@ -46,7 +46,10 @@ HF.Views.ListShow = Backbone.View.extend({
 
   deleteList: function(event){
     event.preventDefault();
-  	this.model.destroy();
+    var deleteForm = new HF.Views.DeleteConfirmation({
+      model: this.model
+    })
+    // this.model.destroy();
   },
 
 
@@ -56,7 +59,7 @@ HF.Views.ListShow = Backbone.View.extend({
       collection: this.model.get('cards'),
       list_id: this.model.id
     })
-    this.$el.find('#place-card-form').append(cardForm.render().$el)
+    this.$el.find('#place-card-form').html(cardForm.render().$el)
   },
 
 });

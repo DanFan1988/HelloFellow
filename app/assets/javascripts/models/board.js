@@ -5,9 +5,9 @@ HF.Models.Board = Backbone.Model.extend({
     return data;
   },
 
-  toJSON: function () {
-    var data = _.clone(this.attributes);
-    console.log(data);
-    return data;
-  }
+  // toJSON: function () {
+  //   var data = _.clone(this.attributes);
+  //   console.log(data);
+  //   return data;
+  // }
 });

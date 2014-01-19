@@ -20,4 +20,12 @@ class Api::ListsController < ApplicationController
     head :ok
   end
 
+  def update
+    @list = List.find(params[:id])
+    if @list.update_attributes(params[:list])
+      render :show
+    else
+      render :json => @list.errors.full_messages, :status => 422
+    end
+  end
 end

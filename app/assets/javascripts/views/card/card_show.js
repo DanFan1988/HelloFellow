@@ -2,7 +2,7 @@ HF.Views.CardShow = Backbone.View.extend({
 
   initialize: function(options){
     this.list_id = options.list_id
-    // this.listenTo(this.model.get('comments'), "sync", this.render)
+    this.listenTo(this.model.get('comments'), "sync", this.render)
   },
 
   events:{
