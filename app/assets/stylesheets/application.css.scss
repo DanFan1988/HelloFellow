@@ -22,3 +22,7 @@ body {
 .modal-body {
 max-height: 800px;
 }
+
+.modal-backdrop {
+    z-index: 1020;
+}

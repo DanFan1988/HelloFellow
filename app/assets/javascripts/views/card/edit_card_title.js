@@ -23,5 +23,10 @@ HF.Views.EditCardTitle = Backbone.View.extend({
     var attrs = this.$('#edit-card-title').serializeJSON();
     this.model.set(attrs);
     this.model.save({})
+
+    // $('#CardModal' + this.model.id).modal('hide');
+    // $('body').removeClass('modal-open');
+    // $('.modal-backdrop').remove();
+    // $('#CardModal' + this.model.id).modal('show');
   }
 })

@@ -1,7 +1,7 @@
 HF.Views.ListShow = Backbone.View.extend({
 
   initialize: function(){
-    this.listenTo(this.model.get('cards'), "sync", this.render)
+    this.listenTo(this.model.get('cards'), "sync destroy", this.render)
   },
 
   events: {
@@ -46,10 +46,11 @@ HF.Views.ListShow = Backbone.View.extend({
 
   deleteList: function(event){
     event.preventDefault();
-    var deleteForm = new HF.Views.DeleteConfirmation({
-      model: this.model
-    })
-    // this.model.destroy();
+    this.model.destroy();
+
+    $('#DeleteListModal' + this.model.id).modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
   },
 
 

@@ -8,7 +8,8 @@ HF.Views.CardShow = Backbone.View.extend({
   events:{
     "click #open-description-form": "openDescriptionForm",
     "click #open-card-title-edit-form": "editCardTitleForm",
-    "click #create-comment": "createComment"
+    "click #create-comment": "createComment",
+    "click #delete-card": "deleteCard"
   },
 
   template: JST['card/show'],
@@ -64,5 +65,18 @@ HF.Views.CardShow = Backbone.View.extend({
     } else {
       newComment.save({});
     }
+  },
+
+  deleteCard: function(event){
+    event.preventDefault();
+    this.model.destroy();
+
+    $('#CardModal' + this.model.id).modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
   }
+
+    // $('#CardModal' + this.model.id).modal('hide');
+    // $('body').removeClass('modal-open');
+    // $('.modal-backdrop').remove();
 })

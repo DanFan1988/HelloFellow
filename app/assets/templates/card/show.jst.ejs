@@ -1,12 +1,10 @@
 
 <% if (card.get('list_id') == list_id) { %>
-  <a href="#myModal<%=card.id%>" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
-
 <button type="button" class="btn btn-primary" data-toggle="modal"
-   data-target="#myModal<%=card.id%>"><%= card.get('title') %></button>
+   data-target="#CardModal<%=card.id%>"><%= card.escape('title') %></button>
 <% }; %>
 
-<div class="modal fade" id="myModal<%=card.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="CardModal<%=card.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <!-- title -->
@@ -14,7 +12,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">
           <div id="edit-card-title-form">
-            <a href="#" id="open-card-title-edit-form"><%= card.get('title')%>
+            <a href="#" id="open-card-title-edit-form"><%= card.escape('title')%>
             </a>
           </div>
         </h4>
@@ -23,7 +21,7 @@
       <!-- description link -->
       <div id="insert-description-form">
         <a href="#" id="open-description-form">
-          <%= card.get('description') %><br><%= "Edit the card description." %>
+          <%= card.escape('description') %><br><%= "Edit the card description." %>
         </a>
       </div>
         <!-- insert comments -->
@@ -37,6 +35,8 @@
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger"
+         id="delete-card">Delete Card</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -49,4 +49,4 @@
 <input type="submit" Value="Save">
 </form> -->
 
-        <!-- <a href="#" id="insert-description" value="< card.get('description') %>">Edit description...</a> -->
+        <!-- <a href="#" id="insert-description" value="< card.escape('description') %>">Edit description...</a> -->
