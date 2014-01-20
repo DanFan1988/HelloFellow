@@ -10,5 +10,6 @@ HelloFellow::Application.routes.draw do
     resources :lists
     resources :cards
     resources :comments
+    resources :labels
   end
 end

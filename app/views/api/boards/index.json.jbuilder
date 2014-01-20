@@ -17,6 +17,11 @@ json.array! @boards do |board|
         json.card_id comment.card_id
         json.user comment.user
       end
+      json.label card.labels do |label|
+        json.id label.id
+        json.color label.color
+        json.title label.title
+      end
     end
   end
 end
