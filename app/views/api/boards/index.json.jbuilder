@@ -22,6 +22,11 @@ json.array! @boards do |board|
         json.color label.color
         json.title label.title
       end
+      json.checklists card.checklists do |checklist|
+        json.id checklist.id
+        json.card_id checklist.card_id
+        json.title checklist.title
+      end
     end
   end
 end

@@ -10,5 +10,6 @@ class Card < ActiveRecord::Base
 
   has_many :comments, :dependent => :destroy
   has_many :labels, :dependent => :destroy
+  has_many :checklists, :dependent => :destroy
 
 end

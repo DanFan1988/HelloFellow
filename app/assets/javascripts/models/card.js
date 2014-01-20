@@ -7,6 +7,9 @@ HF.Models.Card = Backbone.Model.extend({
     var label = data.label;
     data.label = new HF.Collections.Labels(label, { card_id: data.id, parse: true })
 
+    var checklists = data.checklists;
+    data.checklists = new HF.Collections.Checklists(checklists, { card_id: data.id, parse: true })
+
     return data;
   }
   //

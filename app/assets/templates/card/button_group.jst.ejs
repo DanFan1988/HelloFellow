@@ -22,7 +22,21 @@
   <button type="button" class="btn btn-primary">
     Assign...</button>
   <center><h4>Actions</h4></center>
-  <button type="button" class="btn btn-primary">Add Checklist...</button>
+  <!-- Add Checklist -->
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Add Checklist...</button>
+    <ul class="dropdown-menu">
+      <div class="form-group">
+        <form id="submit-checklist">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title">
+          <!-- no copy items from capability yet -->
+          <input type="submit" value="Add">
+        </form>
+      </div>
+    </ul>
+  </div>
+
   <button type="button" class="btn btn-primary">Due Date...</button>
   <button type="button" class="btn btn-primary">Attach File...</button>
   <!-- Move... -->

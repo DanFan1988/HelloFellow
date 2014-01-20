@@ -6,7 +6,9 @@ HF.Views.CardButtonGroup = Backbone.View.extend({
 
   events:{
     "submit #edit-card-title": "editTitle",
-    "click button.card-label": "editLabel"
+    "click button.card-label": "editLabel",
+    "submit #submit-checklist": "createChecklist",
+    "open-checklist-item-form": "openChecklistItemForm"
   },
 
   template: JST['card/button_group'],
@@ -44,6 +46,27 @@ HF.Views.CardButtonGroup = Backbone.View.extend({
     } else {
       newLabel.save({});
     }
+  },
+
+  createChecklist: function(event){
+    console.log("making a CHECKLIST")
+    event.preventDefault();
+    var attrs = this.$('#submit-checklist').serializeJSON();
+    debugger;
+    var newChecklist = new HF.Models.Checklist({
+      card_id: this.model.id
+    })
+    newChecklist.set(attrs);
+    if (newChecklist.isNew()) {
+      this.model.get('checklists').create(newChecklist);
+    } else {
+      newChecklist.save({});
+    }
+  },
+
+  openChecklistItemForm: function(){
+    var form = new HF.Views.ChecklistItemForm
+
   }
 
 })

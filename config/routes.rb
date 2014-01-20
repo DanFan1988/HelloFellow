@@ -11,5 +11,7 @@ HelloFellow::Application.routes.draw do
     resources :cards
     resources :comments
     resources :labels
+    resources :checklists
+    resources :checklist_items
   end
 end

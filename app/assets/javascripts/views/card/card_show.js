@@ -3,6 +3,7 @@ HF.Views.CardShow = Backbone.View.extend({
   initialize: function(options){
     this.list_id = options.list_id
     this.listenTo(this.model.get('comments'), "sync", this.render)
+    this.listenTo(this.model.get('checklists'), "sync", this.render)
   },
 
   events:{
@@ -22,6 +23,7 @@ HF.Views.CardShow = Backbone.View.extend({
     this.$el.html(renderedContent);
     this._renderComments()
     this._renderButtonGroup()
+    this._renderChecklists()
     return this;
   },
 
@@ -35,6 +37,16 @@ HF.Views.CardShow = Backbone.View.extend({
 
       that.$el.find('#insert-comment').append(commentsView.render().$el);
   	});
+  },
+
+  _renderChecklists: function(){
+    var that = this;
+    this.model.get('checklists') && this.model.get('checklists').each(function(checklist){
+      var checklistView = new HF.Views.ChecklistShow({
+        model: checklist
+      })
+      that.$el.find('#insert-checklist').append(checklistView.render().$el);
+    })
   },
 
   _renderButtonGroup: function(){
