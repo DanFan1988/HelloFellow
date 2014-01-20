@@ -1,14 +1,13 @@
 HF.Views.ListShow = Backbone.View.extend({
-
   initialize: function(){
-    this.listenTo(this.model.get('cards'), "sync destroy", this.render)
+    this.listenTo(this.model.get('cards'), "sync destroy", this.render);
+    this.listenTo(this.model, "add", this.render);
   },
 
   events: {
     "click button#show-card-form": "showCardForm",
     "click #delete-list": "deleteList",
     "click #open-list-title-edit-form": "editListTitleForm",
-
   },
 
   template: JST['list/show'],

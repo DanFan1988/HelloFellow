@@ -2,7 +2,7 @@ HF.Views.CardShow = Backbone.View.extend({
 
   initialize: function(options){
     this.list_id = options.list_id
-    this.listenTo(this.model.get('comments'), "sync", this.render)
+    // this.listenTo(this.model.get('comments'), "sync", this.render)
     this.listenTo(this.model.get('checklists'), "sync", this.render)
   },
 
@@ -32,7 +32,8 @@ HF.Views.CardShow = Backbone.View.extend({
     this.model.get('comments') && this.model.get('comments').each(function(comment){
       var commentsView = new HF.Views.CommentShow({
         model: comment,
-        card_id: that.model.id
+        card_id: that.model.id,
+        collection: that.model.get('comments')
       })
 
       that.$el.find('#insert-comment').append(commentsView.render().$el);
@@ -84,9 +85,9 @@ HF.Views.CardShow = Backbone.View.extend({
     } else {
       newComment.save({});
     }
-    $('#CardModal' + this.model.id).modal('hide');
-    $('body').removeClass('modal-open');
-    $('.modal-backdrop').remove();
+    // $('#CardModal' + this.model.id).modal('hide');
+  //   $('body').removeClass('modal-open');
+  //   $('.modal-backdrop').remove();
     // $('#CardModal' + this.model.id).modal('show');
   },
 

@@ -1,7 +1,7 @@
 HF.Views.BoardShow = Backbone.View.extend({
   initialize: function(options){
     this.listenTo(this.model.get('lists'), "sync remove destroy", this.render);
-    this.listenTo(this.model, "change:title", this.render);
+    this.listenTo(this.model, "all", this.render);
   },
 
   events: {
@@ -47,6 +47,7 @@ HF.Views.BoardShow = Backbone.View.extend({
 
   renameTitle: function(event){
     event.preventDefault();
+    var that = this;
     var attrs = this.$('#new-title-form').serializeJSON();
     this.model.set(attrs)
     this.model.save()
