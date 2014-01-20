@@ -1,7 +1,7 @@
 class Api::ChecklistItemsController < ApplicationController
 
   def create
-    @checklist_item = ChecklistItem.new(params[:checklist])
+    @checklist_item = ChecklistItemsController.new(params[:checklist])
     if @checklist_item.save
       render :json => @checklist_item
     else
