@@ -1,4 +1,4 @@
-HF.Views.CardShow = Backbone.View.extend({
+HF.Views.CardModalShow = Backbone.View.extend({
 
   initialize: function(options){
     this.list_id = options.list_id
@@ -7,13 +7,11 @@ HF.Views.CardShow = Backbone.View.extend({
   },
 
   events:{
-    "click #open-description-form": "openDescriptionForm",
-    "click #open-card-title-edit-form": "editCardTitleForm",
     "click #create-comment": "createComment",
     "click #delete-card": "deleteCard"
   },
 
-  template: JST['card/show'],
+  template: JST['card/show_modal'],
 
   render: function(){
     var renderedContent = this.template({
@@ -21,10 +19,28 @@ HF.Views.CardShow = Backbone.View.extend({
       list_id: this.list_id
       })
     this.$el.html(renderedContent);
+    this._renderTitle()
+    this._renderDescription()
     this._renderComments()
     this._renderButtonGroup()
     this._renderChecklists()
     return this;
+  },
+
+  _renderTitle: function(){
+    var title = new HF.Views.CardTitle({
+      model :this.model,
+      collection: this.collection
+    })
+    this.$el.find('#insert-title').html(title.render().$el)
+  },
+
+  _renderDescription: function(){
+    var description = new HF.Views.CardDescription({
+      model: this.model,
+      collection: this.collection
+    })
+    this.$el.find("#insert-description").html(description.render().$el)
   },
 
   _renderComments: function(){
@@ -55,24 +71,6 @@ HF.Views.CardShow = Backbone.View.extend({
       model: this.model
     })
     this.$el.find('#render-button-list').html(buttonGroup.render().$el)
-  },
-
-  openDescriptionForm: function(event){
-    event.preventDefault();
-    var newDescription = new HF.Views.DescriptionForm({
-      model: this.model,
-      collection: this.collection
-    })
-    this.$el.find("#insert-description-form").html(newDescription.render().$el)
-  },
-
-  editCardTitleForm: function(event){
-    event.preventDefault();
-    var editTitle = new HF.Views.EditCardTitle({
-      model: this.model,
-      collection: this.collection
-    })
-    this.$el.find("#edit-card-title-form").html(editTitle.render().$el)
   },
 
   createComment: function(event){

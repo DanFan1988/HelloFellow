@@ -1,13 +1,3 @@
-
-<% if (card.get('list_id') == list_id) { %>
-  <button type="button" class="btn btn-primary" data-toggle="modal"
-   data-target="#CardModal<%=card.id%>"><%= card.escape('title') %></button>
-   <% if (card.get('label').first()) {%>
-   <div class="card-outside-label" style="background-color:<%= card.get('label').first().get('color') %>">
-  <% } %>
-
-<% }; %>
-
 <div class="modal fade" id="CardModal<%=card.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -18,24 +8,12 @@
             <button type="button" class="close" data-dismiss="modal"
              aria-hidden="true">&times;</button>
             <h4 class="modal-title" id="myModalLabel">
-              <div id="edit-card-title-form">
-                <a href="#" id="open-card-title-edit-form">
-                  <%= card.escape('title')%><small> &nbsp; in list
-                  <strong>
-                    <% if (card.get('list')) { %>
-                    <%= card.get('list').title %>
-                  <% }; %>
-                  </strong></small>
-                </a>
-              </div>
+          <!-- INSERT title view-->
+
+              <div id="insert-title"></div>
             </h4>
-          <!-- title END-->
-          <!-- description link -->
-            <div id="insert-description-form">
-              <a href="#" id="open-description-form">
-                <%= card.escape('description') %><%= "Edit the card description." %>
-              </a>
-            </div>
+          <!-- INSERT THE FUCKING DESCRIPTION DAMNIT -->
+            <div id="insert-description"></div>
           </div>
         </div>
 

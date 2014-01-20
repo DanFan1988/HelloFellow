@@ -4,7 +4,8 @@ HF.Views.ChecklistShow = Backbone.View.extend({
   },
 
   events:{
-    "submit #new-title-form": "renameTitle"
+    "submit #new-title-form": "renameTitle",
+    "click #open-checklist-item-form": "openChecklistItemForm"
   },
 
   template: JST['checklist/show'],
@@ -23,4 +24,8 @@ HF.Views.ChecklistShow = Backbone.View.extend({
     this.model.set(attrs)
     this.model.save({})
   },
+
+  openChecklistItemForm: function(){
+    //write this later
+  }
 })

@@ -1,0 +1,10 @@
+<div id="edit-card-title-form">
+  <a href="#" id="open-card-title-edit-form">
+    <%= card.escape('title')%><small> &nbsp; in list
+    <strong>
+      <% if (card.get('list')) { %>
+      <%= card.get('list').title %>
+    <% }; %>
+    </strong></small>
+  </a>
+</div>

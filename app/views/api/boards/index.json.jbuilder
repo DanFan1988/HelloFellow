@@ -20,7 +20,7 @@ json.array! @boards do |board|
       json.label card.labels do |label|
         json.id label.id
         json.color label.color
-        json.title label.title
+        json.card_id label.card_id
       end
       json.checklists card.checklists do |checklist|
         json.id checklist.id

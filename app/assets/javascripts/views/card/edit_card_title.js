@@ -1,11 +1,9 @@
 HF.Views.EditCardTitle = Backbone.View.extend({
   initialize: function(options){
     this.listenTo(this.model, "change:title", this.render)
-    this.callback = options.success
   },
 
   events:{
-    "submit #edit-card-title": "editTitle"
   },
 
   template: JST['card/edit_title'],
@@ -20,10 +18,12 @@ HF.Views.EditCardTitle = Backbone.View.extend({
 
   editTitle: function(event){
     console.log("we here?")
+    debugger;
     event.preventDefault();
     var attrs = this.$('#edit-card-title').serializeJSON();
     this.model.set(attrs);
     this.model.save({})
+    this.render()
 
     // $('#CardModal' + this.model.id).modal('hide');
     // $('body').removeClass('modal-open');

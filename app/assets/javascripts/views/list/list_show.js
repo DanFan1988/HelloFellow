@@ -1,6 +1,6 @@
 HF.Views.ListShow = Backbone.View.extend({
   initialize: function(){
-    this.listenTo(this.model.get('cards'), "sync destroy", this.render);
+    this.listenTo(this.model.get('cards'), "add destroy", this.render);
     this.listenTo(this.model, "add", this.render);
   },
 
@@ -17,14 +17,14 @@ HF.Views.ListShow = Backbone.View.extend({
       list: this.model
     });
     this.$el.html(renderedContent);
-    this._renderCards();
+    this._renderCardsButtons();
     return this;
   },
 
-  _renderCards: function(){
+  _renderCardsButtons: function(){
     var that = this;
     this.model.get('cards').each(function(card){
-      var cardView = new HF.Views.CardShow({
+      var cardView = new HF.Views.CardButtonShow({
         model: card,
         collection: that.model.get('cards'),
         list_id: that.model.id

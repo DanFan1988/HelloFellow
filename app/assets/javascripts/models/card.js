@@ -11,15 +11,16 @@ HF.Models.Card = Backbone.Model.extend({
     data.checklists = new HF.Collections.Checklists(checklists, { card_id: data.id, parse: true })
 
     return data;
-  }
+  },
   //
   // toJSON: function () {
+  //   debugger;
   //
   //   var data = _.clone(this.attributes);
-  //   if(data.title) {
-  //     data.title_attributes = data.title
+  //   if(data.comments) {
+  //     data.comments_attributes = data.comments
   //   }
-  //   delete data['title'];
+  //   delete data['comments'];
   //   return data;
   // },
 
