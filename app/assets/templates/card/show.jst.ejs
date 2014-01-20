@@ -1,7 +1,11 @@
 
 <% if (card.get('list_id') == list_id) { %>
-<button type="button" class="btn btn-primary" data-toggle="modal"
+  <button type="button" class="btn btn-primary" data-toggle="modal"
    data-target="#CardModal<%=card.id%>"><%= card.escape('title') %></button>
+   <% if (card.get('label').first()) {%>
+   <div class="card-outside-label" style="background-color:<%= card.get('label').first().get('color') %>">
+  <% } %>
+
 <% }; %>
 
 <div class="modal fade" id="CardModal<%=card.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
