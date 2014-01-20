@@ -5,7 +5,7 @@ HF.Views.CardDescription = Backbone.View.extend({
   },
 
   events: {
-    "click #open-description-form": "openDescriptionForm",
+    "click .open-description-form": "openDescriptionForm",
     "blur #submit-card-description": "submitDescription"
   },
 
