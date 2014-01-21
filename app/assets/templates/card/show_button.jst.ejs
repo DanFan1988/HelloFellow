@@ -1,8 +1,14 @@
 <% if (card.get('list_id') == list_id) { %>
-  <button type="button" class="btn btn-primary" data-toggle="modal"
-   data-target="#CardModal<%=card.id%>"><%= card.escape('title') %></button>
-   <% if (card.get('label').last()) {%>
-   <div class="card-outside-label" style="background-color:<%= card.get('label').last().get('color') %>">
-  <% } %>
+
+  <% if (card.get('label').last()) {%>
+  <div class="left-inner-addon"><i class="glyphicon glyphicon-tag" style="color:<%= card.get('label').last().get('color') %>" ></i>
+ <% } %>
+
+  <button type="button" class="btn btn-primary card-title" data-toggle="modal"
+   style="display: block; width: 100%;" data-target="#CardModal<%=card.id%>">
+
+
+    <%= card.escape('title') %></button>
 
 <% }; %>
+</div>

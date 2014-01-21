@@ -21,6 +21,9 @@ HF.Views.ChecklistShow = Backbone.View.extend({
       }
     })
     var progress = (checked / this.model.get('checklist_items').length)*100
+    if (progress == NaN){
+      progress = 0
+    }
     var renderedContent = this.template({
       checklist: this.model,
       checklist_items: this.model.get('checklist_items'),

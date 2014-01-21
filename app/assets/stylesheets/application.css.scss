@@ -37,14 +37,17 @@ max-height: 800px;
   border-color: rgba(0,0,0,.2);
 }
 
-.card-outside-label {
-  float: left;
-  width: 15px;
-  height: 15px;
-  margin: 5px 5px 5px 5px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgba(0,0,0,.2);
+.left-inner-addon {
+  position: relative;
+  border-color: black;
+  border: solid-thick;
+}
+
+.left-inner-addon i {
+  position: absolute;
+  padding-top: 12px;
+  padding-left: 2px;
+  pointer-events: none;
 }
 
 .invisible-textarea {
