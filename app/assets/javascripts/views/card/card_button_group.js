@@ -52,7 +52,6 @@ HF.Views.CardButtonGroup = Backbone.View.extend({
     console.log("making a CHECKLIST")
     event.preventDefault();
     var attrs = this.$('#submit-checklist').serializeJSON();
-    debugger;
     var newChecklist = new HF.Models.Checklist({
       card_id: this.model.id
     })

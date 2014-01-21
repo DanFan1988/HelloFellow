@@ -1,6 +1,8 @@
 HF.Views.ListShow = Backbone.View.extend({
   initialize: function(){
-    this.listenTo(this.model.get('cards'), "add destroy", this.render);
+    that = this;
+    this.listenTo(this.model.get('cards'), "add destroy", this.render)
+    //global variable and stop listening?
     this.listenTo(this.model, "add", this.render);
   },
 
@@ -27,7 +29,7 @@ HF.Views.ListShow = Backbone.View.extend({
       var cardView = new HF.Views.CardButtonShow({
         model: card,
         collection: that.model.get('cards'),
-        list_id: that.model.id
+        list_id: that.model.id,
       });
       that.$el.find('#insert-card').append(cardView.render().$el);
     });
@@ -57,8 +59,9 @@ HF.Views.ListShow = Backbone.View.extend({
     console.log("making cardform")
     var cardForm = new HF.Views.CardForm({
       collection: this.model.get('cards'),
-      list_id: this.model.id
-    })
+      list_id: this.model.id,
+      magic: this
+    });
     this.$el.find('#place-card-form').html(cardForm.render().$el)
   },
 

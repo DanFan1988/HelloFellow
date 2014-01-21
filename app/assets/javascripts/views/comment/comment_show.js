@@ -2,7 +2,7 @@ HF.Views.CommentShow = Backbone.View.extend({
 
   initialize: function(options){
     this.card_id = options.card_id
-    // this.listenTo(this.collection, "all", this.render)
+    this.listenTo(this.collection, "all", this.render)
   },
 
   events:{},
@@ -11,8 +11,7 @@ HF.Views.CommentShow = Backbone.View.extend({
 
   render: function(){
     var renderedContent = this.template({
-      comment: this.model,
-      card_id: this.card_id
+      comments: this.collection
       })
     this.$el.html(renderedContent);
     return this;

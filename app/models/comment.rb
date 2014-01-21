@@ -3,6 +3,5 @@ class Comment < ActiveRecord::Base
   validate :body, :card_id, :presence => true
 
   belongs_to :user
-
   belongs_to :card
 end

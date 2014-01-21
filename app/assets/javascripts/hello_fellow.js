@@ -4,6 +4,9 @@ window.HF = {
   Views: {},
   Routers: {},
   Data: {},
+  currentUser: function () {
+    return HF.Data.users.get(HF.currentUserId);
+  },
   initialize: function() {
     HF.Data.users = new HF.Collections.Users
     HF.Data.users.fetch();
@@ -21,9 +24,6 @@ window.HF = {
   }
 };
 
-$(document).ready(function(){
-  HF.initialize();
-});
 
 
 // user_id = board.get('lists').first().get('cards').first().get('comments').first().get('user_id')

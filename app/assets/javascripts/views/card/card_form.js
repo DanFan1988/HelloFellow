@@ -5,15 +5,10 @@ HF.Views.CardForm = Backbone.View.extend({
 
   initialize: function (options) {
     this.list_id = options.list_id
-    console.log(this.list_id)
-    // if(!this.model.get('gist_files')) {
-    //   this.model.set({ 'gist_files' : new GC.Collections.GistFiles() });
-    // }
-    // this.listenTo(this.model.get('gist_files'), 'add', this.render);
+    this.magic = options.magic
   },
 
   events: {
-    'submit': 'submit', //use that event thingy from bootstrap
     'click #add-card': 'addCard'
   },
 
@@ -37,6 +32,7 @@ HF.Views.CardForm = Backbone.View.extend({
     } else {
       this.model.save({});
     }
+    this.magic.render()
   }
 
 

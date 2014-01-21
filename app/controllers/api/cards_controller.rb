@@ -11,7 +11,7 @@ class Api::CardsController < ApplicationController
   def create
     @card = Card.new(params[:card])
     if @card.save
-      render :json => @card
+      render :show
     else
       render :json => @card.errors.full_messages, :status => 422
     end
@@ -22,7 +22,7 @@ class Api::CardsController < ApplicationController
     p params
     p "LOOK HERE"
     if @card.update_attributes(params[:card])
-      render :json => @card
+      render :show
     else
       render :json => @card.errors.full_messages, :status => 422
     end

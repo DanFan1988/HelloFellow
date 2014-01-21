@@ -2,9 +2,9 @@ HF.Views.CardModalShow = Backbone.View.extend({
 
   initialize: function(options){
     this.list_id = options.list_id
-    // this.listenTo(this.model.get('comments'), "all", this._renderComments)
+    //this.listenTo(this.model.get('comments'), "all", this._renderComments)
     // this.listenTo(this.model.get('comments'), "sync", this.render)
-    this.listenTo(this.model.get('checklists'), "sync", this.render)
+    this.listenTo(this.model.get('checklists'), "change:title sync", this._swapChecklists)
   },
 
   events:{
@@ -46,15 +46,10 @@ HF.Views.CardModalShow = Backbone.View.extend({
 
   _renderComments: function(){
     var that = this;
-    this.model.get('comments') && this.model.get('comments').each(function(comment){
-      var commentsView = new HF.Views.CommentShow({
-        model: comment,
-        card_id: that.model.id,
-        collection: that.model.get('comments')
-      })
-
-      that.$el.find('#insert-comment').append(commentsView.render().$el);
-  	});
+    var commentsView = new HF.Views.CommentShow({
+      collection: that.model.get('comments')
+    })
+    that.$el.find('#insert-comments').html(commentsView.render().$el);
   },
 
   // _renderNewComments: function(){
@@ -66,13 +61,15 @@ HF.Views.CardModalShow = Backbone.View.extend({
   // },
 
   _renderChecklists: function(){
+    console.log("RENDERING THE FUCKING CHEKSLISTS")
     var that = this;
     this.model.get('checklists') && this.model.get('checklists').each(function(checklist){
       var checklistView = new HF.Views.ChecklistShow({
-        model: checklist
-      })
+        model: checklist,
+        collection: that.model.get('checklists')
+      });
       that.$el.find('#insert-checklist').append(checklistView.render().$el);
-    })
+    });
   },
 
   _renderButtonGroup: function(){
@@ -83,18 +80,27 @@ HF.Views.CardModalShow = Backbone.View.extend({
   },
 
   createComment: function(event){
+
     event.preventDefault();
+
     var attrs = this.$("#add-comment-form").serializeJSON();
     var newComment = new HF.Models.Comment;
-    newComment.set(attrs);
+    // newComment.set(attrs);
     if (newComment.isNew()) {
-      this.model.get('comments').create(newComment);
+      this.model.get('comments').create(attrs, {
+        success: function (){
+
+        },
+        error: function () {
+
+        }
+      });
     } else {
-      newComment.save({});
+      newComment.save(attrs);
     }
     // $('#CardModal' + this.model.id).modal('hide');
-  //   $('body').removeClass('modal-open');
-  //   $('.modal-backdrop').remove();
+    // $('body').removeClass('modal-open');
+    // $('.modal-backdrop').remove();
     // $('#CardModal' + this.model.id).modal('show');
   },
 
@@ -105,7 +111,12 @@ HF.Views.CardModalShow = Backbone.View.extend({
     $('#CardModal' + this.model.id).modal('hide');
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
-  }
+  },
+
+  _swapChecklists: function(callback){
+    this.$el.find("#insert-checklist").empty()
+    this._renderChecklists()
+  },
 
     // $('#CardModal' + this.model.id).modal('hide');
     // $('body').removeClass('modal-open');

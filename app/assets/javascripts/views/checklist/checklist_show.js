@@ -25,7 +25,13 @@ HF.Views.ChecklistShow = Backbone.View.extend({
     this.model.save({})
   },
 
-  openChecklistItemForm: function(){
-    //write this later
+  openChecklistItemForm: function(event){
+    console.log("ARE WE THERE YET?")
+    event.preventDefault()
+    var form = new HF.Views.ChecklistItemForm({
+      checklist: this.model,
+      collection: this.model.get('checklist_items')
+    })
+    this.$el.find('#insert-checklist-items').html(form.render().$el)
   }
 })

@@ -1,4 +1,4 @@
-<% if (comment.get('user')) { %>
-  <%= comment.get('user').username %>
-<% }; %>
-  |  <%= comment.get('body') %>
+<% comments.each(function(comment){ %>
+  <%= comment.get('user').username %>  |  <%= comment.get('body') %><br>
+<% }); %>
+
