@@ -1,8 +1,8 @@
 <% if (card.get('list_id') == list_id) { %>
   <button type="button" class="btn btn-primary" data-toggle="modal"
    data-target="#CardModal<%=card.id%>"><%= card.escape('title') %></button>
-   <% if (card.get('label').first()) {%>
-   <div class="card-outside-label" style="background-color:<%= card.get('label').first().get('color') %>">
+   <% if (card.get('label').last()) {%>
+   <div class="card-outside-label" style="background-color:<%= card.get('label').last().get('color') %>">
   <% } %>
 
 <% }; %>
