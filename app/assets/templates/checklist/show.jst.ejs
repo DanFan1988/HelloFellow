@@ -1,6 +1,9 @@
 <div class="btn-group">
   <button type="button" class="btn btn-default dropdown-toggle"
      data-toggle="dropdown"><h6><%= checklist.get('title') %></h6></button>
+  <% if (progress == "100") {%>
+    <h1><span class="glyphicon glyphicon-check green"></span></h1>
+  <% } %>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-board">
      <li tabindex="-1" href="#" class="dropdown-header">Rename Board</li>
      <li role="presentation" class="divider"></li>
@@ -12,11 +15,36 @@
        </form>
      </li>
    </ul>
-   <!-- open checklist item form -->
-   <br>
-   <div id="insert-checklist-items"></div>
 </div>
+<!-- progress bar -->
 <br>
-<a href="#" id="open-checklist-item-form">Add Item</a>
+<%= Math.round(progress) %>%
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="<%= progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= progress %>%;">
+    <span class="sr-only"><%= progress %>% Complete</span>
+  </div>
+</div>
+
+
+<% if (checklist_items.length >= 1) { %>
+  <% checklist_items.each(function(checklist_item){ %>
+    <div class="checkbox">
+      <label>
+        <% if (checklist_item.get('checked') == "no") {%>
+        <input type="checkbox" class="checklist-item" value=""
+         data-id="<%=checklist_item.id%>"><%= checklist_item.get('title') %>
+        <% } else { %>
+        <input type="checkbox" class="checklist-item" value="" checked="checked"
+         data-id="<%=checklist_item.id%>"><%= checklist_item.get('title') %>
+        <% }; %>
+      </label>
+    </div>
+  <% }); %>
+<% } %>
+<br>
+<div id="insert-checklist-items">
+ <a href="#" id="open-checklist-item-form">Add Item</a>
+</div>
+
 
 
