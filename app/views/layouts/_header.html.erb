@@ -14,16 +14,12 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <!-- Dropdown begins here -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <li class="dropdown" id="dropdown-boards">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Boards <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            <% @boards.each do |board| %>
+            <li><a href="#boards/<%=board.id%>"><%= board.title %></a></li>
+            <% end %>
           </ul>
         </li>
       </ul>
@@ -65,5 +61,6 @@
   </nav>
 
 <script type="text/javascript" charset="utf-8">
-  var dropdownView = new HF.Views.HeaderAdd({$el: $('#dropdown-add')})
+  new HF.Views.HeaderAdd({$el: $('#dropdown-add')})
+  new HF.Views.HeaderBoards({ $el: $('#dropdown-boards')})
 </script>

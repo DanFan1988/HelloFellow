@@ -15,12 +15,14 @@ HF.Views.HeaderAdd = Backbone.View.extend({
   template2: JST['dropdown/add_org'],
 
   newBoardForm: function(event){
+    event.stopPropagation();
     event.preventDefault();
     var content = this.template()
     this.$el.find('#new-board-or-org').html(content)
   },
 
   newOrgForm: function(event){
+    event.stopPropagation();
     event.preventDefault();
     console.log("making new org form")
     var content = this.template2()

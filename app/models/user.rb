@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
            :class_name => "UserOrganizationJointable"
   has_many :organizations, :through => :organization_memberships,
            :source => :organization
+  has_many :activities,
+           :class_name => "Users"
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
 
