@@ -59,3 +59,41 @@ max-height: 800px;
 .green {
     color: green;
 }
+
+#content {
+    margin-left: 5px;
+}
+
+#mapCanvas img {
+    max-width: none;
+}
+
+#toggleSidebar {
+    position:fixed;
+    left:0;
+    top:45px;
+    display:block;
+    color:#779DD7;
+    padding:2px 4px;
+}
+
+
+.accordion-heading .accordion-toggle-small {
+    display: block;
+    padding: 4px 8px; /*8px 15px;*/
+}
+
+.accordion-inner-small {
+    padding: 4px 8px;  /*9px 15px;*/
+    border-top: 1px solid #e5e5e5;
+}
+
+.no-sidebar {
+    margin-left:0 !important;
+}
+
+.scrollDiv {
+    overflow-y: scroll;
+    display: inline-block;
+    float: none; /* Very important */
+}
