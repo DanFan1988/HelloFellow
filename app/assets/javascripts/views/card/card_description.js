@@ -27,6 +27,7 @@ HF.Views.CardDescription = Backbone.View.extend({
       card: this.model
     })
     this.$el.html(newDescription)
+    $("#description-textarea").focus()
   },
 
   submitDescription: function(event){

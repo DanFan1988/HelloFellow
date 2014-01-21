@@ -11,7 +11,7 @@ HF.Views.CardLabel = Backbone.View.extend({
   render: function(){
     var renderedContent = this.template({
       card: this.card,
-      label: this.model
+      labels: this.model
       })
       console.log(this.model)
     this.$el.html(renderedContent);

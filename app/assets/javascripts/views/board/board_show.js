@@ -7,8 +7,11 @@ HF.Views.BoardShow = Backbone.View.extend({
   events: {
     "submit #new-title-form": "renameTitle",
     "click #add-list": "addList",
-    "click #add-comment": "addComment"
+    "click #add-comment": "addComment",
+
+
   },
+
 
   template: JST['board/show'],
 

@@ -4,12 +4,14 @@ HF.Views.CardModalShow = Backbone.View.extend({
     this.list_id = options.list_id
     //this.listenTo(this.model.get('comments'), "all", this._renderComments)
     // this.listenTo(this.model.get('comments'), "sync", this.render)
+    this.parent = options.parent;
     this.listenTo(this.model.get('checklists'), "change:title sync", this._swapChecklists)
   },
 
   events:{
     "click #create-comment": "createComment",
-    "click #delete-card": "deleteCard"
+    "click #delete-card": "deleteCard",
+    "hidden.bs.modal": "magic"
   },
 
   template: JST['card/show_modal'],
@@ -26,6 +28,10 @@ HF.Views.CardModalShow = Backbone.View.extend({
     this._renderButtonGroup()
     this._renderChecklists()
     return this;
+  },
+
+  magic: function(){
+    this.parent.trigger('modal:closed')
   },
 
   _renderTitle: function(){
@@ -61,7 +67,6 @@ HF.Views.CardModalShow = Backbone.View.extend({
   // },
 
   _renderChecklists: function(){
-    console.log("RENDERING THE FUCKING CHEKSLISTS")
     var that = this;
     this.model.get('checklists') && this.model.get('checklists').each(function(checklist){
       var checklistView = new HF.Views.ChecklistShow({

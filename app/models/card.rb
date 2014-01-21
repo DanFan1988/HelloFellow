@@ -1,5 +1,5 @@
 class Card < ActiveRecord::Base
-  attr_accessible :description, :label, :list_id, :title
+  attr_accessible :description, :list_id, :title
   validates :title, :list_id, :presence => true
 
   belongs_to :list

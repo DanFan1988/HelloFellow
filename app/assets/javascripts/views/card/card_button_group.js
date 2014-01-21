@@ -1,7 +1,7 @@
 HF.Views.CardButtonGroup = Backbone.View.extend({
 
   initialize: function(){
-    this.listenTo(this.model.get('label'), "sync", this.render)
+    this.listenTo(this.model.get('labels'), "sync", this.render)
   },
 
   events:{
@@ -24,7 +24,7 @@ HF.Views.CardButtonGroup = Backbone.View.extend({
 
   _renderLabel: function(){
     var that = this;
-     this.model.get('label') && this.model.get('label').each(function(label){
+     this.model.get('labels') && this.model.get('labels').each(function(label){
       var label = new HF.Views.CardLabel({
         card: this.model,
         model: label
@@ -42,7 +42,7 @@ HF.Views.CardButtonGroup = Backbone.View.extend({
       card_id: this.model.id
     })
     if (newLabel.isNew()) {
-      this.model.get('label').create(newLabel);
+      this.model.get('labels').create(newLabel);
     } else {
       newLabel.save({});
     }

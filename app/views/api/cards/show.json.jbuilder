@@ -1,6 +1,5 @@
 json.description @card.description
 json.id @card.id
-json.label @card.label
 json.list_id @card.list_id
 json.list @card.list
 json.title @card.title
