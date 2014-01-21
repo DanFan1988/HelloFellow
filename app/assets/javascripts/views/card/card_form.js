@@ -4,8 +4,7 @@ HF.Views.CardForm = Backbone.View.extend({
   template: JST['card/form'],
 
   initialize: function (options) {
-    this.list_id = options.list_id
-    this.magic = options.magic
+    this.list_id = options.list_id;
   },
 
   events: {
@@ -24,15 +23,7 @@ HF.Views.CardForm = Backbone.View.extend({
   addCard: function(event){
     event.preventDefault();
     var attrs = this.$el.serializeJSON();
-    this.model = new HF.Models.Card
-
-    this.model.set(attrs);
-    if (this.model.isNew()) {
-      this.collection.create(this.model);
-    } else {
-      this.model.save({});
-    }
-    this.magic.render()
+    this.collection.create(attrs.card, { parse: true });
   }
 
 

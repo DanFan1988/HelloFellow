@@ -4,7 +4,7 @@ HF.Views.EditListTitle = Backbone.View.extend({
   },
 
   events:{
-    "submit #edit-list-title": "editTitle"
+    "blur #edit-list-title": "editTitle"
   },
 
   template: JST['list/edit_title'],
@@ -18,7 +18,6 @@ HF.Views.EditListTitle = Backbone.View.extend({
   },
 
   editTitle: function(event){
-    console.log("we here?")
     event.preventDefault();
     var attrs = this.$('#edit-list-title').serializeJSON();
     this.model.set(attrs);

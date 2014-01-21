@@ -16,13 +16,11 @@ HF.Views.CardButtonShow = Backbone.View.extend({
       card: this.model,
       list_id: this.list_id
     });
-    // this._renderCardModal();
     this.$el.html(renderedContent);
     return this;
   },
 
   _renderCardModal: function(){
-    console.log('CMON')
     var modal = new HF.Views.CardModalShow({
       model: this.model,
       collection: this.collection,
@@ -31,5 +29,4 @@ HF.Views.CardButtonShow = Backbone.View.extend({
     })
     this.$el.append(modal.render().$el)
   }
-
-})
+});

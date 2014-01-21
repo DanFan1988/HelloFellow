@@ -12,5 +12,6 @@ HelloFellow::Application.routes.draw do
     resources :labels
     resources :checklists
     resources :checklist_items
+    resources :activities
   end
 end

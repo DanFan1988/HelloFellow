@@ -8,8 +8,6 @@ HF.Views.BoardShow = Backbone.View.extend({
     "submit #new-title-form": "renameTitle",
     "click #add-list": "addList",
     "click #add-comment": "addComment",
-
-
   },
 
 
@@ -21,6 +19,7 @@ HF.Views.BoardShow = Backbone.View.extend({
     });
     this.$el.html(renderedContent);
     this._renderLists()
+    this._renderSidebar()
     return this;
   },
 
@@ -33,6 +32,11 @@ HF.Views.BoardShow = Backbone.View.extend({
       });
       that.$el.find('#insert-list').append(listView.render().$el);
     })
+  },
+
+  _renderSidebar: function () {
+    var sidebar = new HF.Views.Sidebar
+    this.$el.find('#insert-sidebar').html(sidebar.render().$el)
   },
 
   addList: function(){

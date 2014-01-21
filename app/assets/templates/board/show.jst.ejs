@@ -16,29 +16,33 @@
 </div>
 <br><br>
 
-<!-- END Dropdown title renamer -->
+<!-- END Dropdown title renamer] -->
 
 <!-- lists view insertation-->
-<section class="container">
-  <div class="row" id="insert-list">
-    <div class="btn-group">
-      <button type="button" class="btn btn-default dropdown-toggle"
-         data-toggle="dropdown">Add a list...</button>
-      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-board">
-         <li tabindex="-1" href="#" class="dropdown-header"> A shiny new list...</li>
-         <li role="presentation" class="divider"></li>
-         <li tabindex="-1" href="#">
-           <form id="add-list-form">
-             <input type="text" name="list[title]">
-             <input type="hidden" value="<%= board.id %>" name="list[board_id]">
-             <button  id="add-list" type="button">Add</button>
-           </form>
-         </li>
-       </ul>
-     </div>
-  </div>
-</section>
-
+<div class="container">
+  <section class=" col-xs-10 container">
+    <div class="row" id="insert-list">
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle"
+           data-toggle="dropdown">Add a list...</button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-board">
+           <li tabindex="-1" href="#" class="dropdown-header"> A shiny new list...</li>
+           <li role="presentation" class="divider"></li>
+           <li tabindex="-1" href="#">
+             <form id="add-list-form">
+               <input type="text" name="list[title]">
+               <input type="hidden" value="<%= board.id %>" name="list[board_id]">
+               <button  id="add-list" type="button">Add</button>
+             </form>
+           </li>
+         </ul>
+       </div>
+    </div>
+  </section>
+  <section class="col-xs-2">
+    <div id="insert-sidebar"></div>
+  </section>
+</div>
 
 
 
