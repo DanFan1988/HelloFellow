@@ -28,6 +28,7 @@ HF.Views.ChecklistShow = Backbone.View.extend({
   openChecklistItemForm: function(event){
     console.log("ARE WE THERE YET?")
     event.preventDefault()
+    debugger;
     var form = new HF.Views.ChecklistItemForm({
       checklist: this.model,
       collection: this.model.get('checklist_items')

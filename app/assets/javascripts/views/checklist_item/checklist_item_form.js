@@ -2,6 +2,7 @@ HF.Views.ChecklistItemForm = Backbone.View.extend({
 
   initialize: function(options){
     this.checklist = options.checklist
+    debugger;
     // debugger;
     // this.listenTo(this.collection, "add sync", this.render)
   },
@@ -30,7 +31,7 @@ HF.Views.ChecklistItemForm = Backbone.View.extend({
     item.set(attrs);
     console.log(this.collection)
     if (item.isNew()) {
-      this.collection.create({attrs});
+      this.collection.create(item);
     } else {
       item.save({});
     }
