@@ -1,4 +1,4 @@
 
 <% if (activity.get('action')) {%>
-<%= HF.currentUser().get('username') %> <%= activity.get('action')%>
+<strong><%= HF.currentUser().get('username') %></strong> <%= activity.get('action')%>
 <% } %>

@@ -4,4 +4,6 @@ HF.Models.Comment = Backbone.Model.extend({
       this.set({ user: HF.currentUser() });
     }
   },
+
+  name: "Comment"
 })

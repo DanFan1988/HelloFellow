@@ -1,6 +1,8 @@
 HF.Views.EditListTitle = Backbone.View.extend({
   initialize: function(){
     this.listenTo(this.model, "change:title", this.render);
+    this.listenTo(this.model, "change:title",
+    HF.Activity.Edit.bind(this.model));
   },
 
   events:{

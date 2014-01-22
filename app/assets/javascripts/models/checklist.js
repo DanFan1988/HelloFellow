@@ -5,5 +5,6 @@ HF.Models.Checklist = Backbone.Model.extend({
       { card_id: data.id, parse: true })
 
     return data;
-  }
+  },
+  name: "Checklist"
 })

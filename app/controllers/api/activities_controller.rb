@@ -8,7 +8,7 @@ class Api::ActivitiesController < ApplicationController
     @activity = Activity.new(params[:activity])
 
     if @activity.save
-      render :show
+      render :json => @activity
     else
       render :json => @activity.errors.full_messages
     end

@@ -2,6 +2,7 @@ HF.Views.HeaderAdd = Backbone.View.extend({
 
   initialize: function(options){
     this.$el = options.$el
+    // this.listenTo(HF.Data.boards, "add sync", HF.Activity.Add.bind(HF.Data.boards.last()))
   },
 
   events:{
@@ -36,10 +37,11 @@ HF.Views.HeaderAdd = Backbone.View.extend({
 
     newBoard.set(attrs);
     if (newBoard.isNew()) {
-      HF.Data.boards.create(newBoard);
+      HF.Data.boards.create(newBoard)
     } else {
       newBoard.save({});
     }
+    // HF.Activity.Add.bind(newBoard)
   },
 
   addOrg: function(event){

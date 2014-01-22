@@ -23,5 +23,5 @@ HF.Models.Card = Backbone.Model.extend({
   //   delete data['comments'];
   //   return data;
   // },
-
+  name: "Card"
 })

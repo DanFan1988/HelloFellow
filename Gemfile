@@ -14,7 +14,7 @@ group :development do
 end
 
 gem "binding_of_caller"
-
+gem 'jquery-ui-rails'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'jquery-rails'
 gem 'pg'

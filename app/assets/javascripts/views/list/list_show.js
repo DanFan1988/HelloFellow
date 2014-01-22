@@ -2,6 +2,9 @@ HF.Views.ListShow = Backbone.View.extend({
   initialize: function(){
     this.listenTo(this.model.get('cards'), "add remove reset", this.render)
     this.listenTo(this.model, "add change", this.render);
+
+    this.listenTo(this.model.get('cards'), "add", HF.Activity.Add.bind(this.model.get('cards').last()))
+    this.listenTo(this.model, "model:deleted", HF.Activity.Delete.bind(this.model))
   },
 
   events: {
@@ -46,6 +49,7 @@ HF.Views.ListShow = Backbone.View.extend({
 
   deleteList: function(event){
     event.preventDefault();
+    this.model.trigger("model:deleted")
     this.model.destroy();
 
     $('#DeleteListModal' + this.model.id).modal('hide');

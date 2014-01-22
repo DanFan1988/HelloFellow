@@ -1,13 +1,17 @@
 HF.Views.BoardShow = Backbone.View.extend({
   initialize: function(options){
     this.listenTo(this.model.get('lists'), "sync remove destroy", this.render);
-    this.listenTo(this.model, "all", this.render);
+    this.listenTo(this.model, "add change", this.render);
+
+    this.listenTo(this.model.get('lists'), "add",
+    HF.Activity.Add.bind(this.model.get('lists').last()))
+    this.listenTo(this.model, "change:title", HF.Activity.Edit.bind(this.model))
   },
 
   events: {
     "submit #new-title-form": "renameTitle",
     "click #add-list": "addList",
-    "click #add-comment": "addComment",
+    "click #add-comment": "addComment"
   },
 
 

@@ -3,5 +3,7 @@ HF.Models.List = Backbone.Model.extend({
     var cards = data.cards;
     data.cards = new HF.Collections.Cards(cards, { list_id: data.id, parse: true })
     return data;
-  }
+  },
+
+  name: "List"
 })
