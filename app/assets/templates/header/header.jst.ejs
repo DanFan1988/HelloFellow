@@ -8,28 +8,24 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">G.O.A.T. APP</a>
+    <ul class="nav navbar-nav">
+      <!-- Dropdown begins here -->
+      <li class="dropdown" id="dropdown-boards">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Boards <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <% boards.each(function(board) { %>
+          <li><a href="#boards/<%=board.id%>"><%= board.get('title') %></a></li>
+          <% }); %>
+        </ul>
+      </li>
+      <!-- Dropdown ends -->
+
+    </ul>
   </div>
   <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <!-- Dropdown begins here -->
-        <li class="dropdown" id="dropdown-boards">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Boards <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <% boards.each(function(board) { %>
-            <li><a href="#boards/<%=board.id%>"><%= board.get('title') %></a></li>
-            <% }); %>
-          </ul>
-        </li>
-      </ul>
-      <!-- Dropdown ends -->
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+
+      <a class="navbar-brand" href="#"> G.O.A.T. APP</a>
       <ul class="nav navbar-nav navbar-right">
         <!-- START add board/organization -->
         <li class="dropdown" id="dropdown-add">
@@ -47,6 +43,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <%= HF.currentUser().get('username') %> <b class="caret"></b></a>
           <ul class="dropdown-menu">
+            <li><a href="#users/<%= HF.currentUserId %>">Profile</a></li>
             <li><a href="#api/cards">Cards</a></li>
             <li><a href="#">Settings</a></li>
             <li class="divider"></li>
