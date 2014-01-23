@@ -13,6 +13,7 @@ HF.Views.ListShow = Backbone.View.extend({
     "click #delete-list": "deleteList",
     "click #open-list-title-edit-form": "editListTitleForm",
     "sortstop": "reorderCard"
+
   },
 
   template: JST['list/show'],
@@ -24,22 +25,11 @@ HF.Views.ListShow = Backbone.View.extend({
     this.$el.html(renderedContent);
     this.$el.find('.card-sortable').sortable({
       handle: 'button',
-      cancel: ''
+      cancel: '',
+      recieve: function(){ console.log('received')}
     })
     this._renderCardsButtons();
     return this;
-  },
-
-  _renderCardsButtons: function(){
-    var that = this;
-    this.model.get('cards').each(function(card){
-      var cardView = new HF.Views.CardButtonShow({
-        model: card,
-        collection: that.model.get('cards'),
-        list_id: that.model.id,
-      });
-      that.$('.insert-card').append(cardView.render().$el);
-    });
   },
 
   reorderCard: function(event, ui){
@@ -53,21 +43,50 @@ HF.Views.ListShow = Backbone.View.extend({
     var aboveCard = cards.get(aboveCardID);
     var belowCard = cards.get(belowCardID);
 
+    console.log(movedCard.get('order'))
+
     var newOrderVal;
     if (aboveCard && belowCard) {
-      newOrderVal = (aboveCard.get('order') + belowCard.get('order')) / 2;
+      newOrderVal = (aboveCard.get('order') + belowCard.get('order')) / 2.0;
     } else if (aboveCard) {
-      newOrderVal = aboveCard.get('order') + 1;
+      newOrderVal = aboveCard.get('order') + 1.0;
     } else if (belowCard) {
-      newOrderVal = belowCard.get('order') / 2;
+      newOrderVal = belowCard.get('order') / 2.0;
     } else {
-      newOrderVal = 1;
+      newOrderVal = 1.0;
     }
 
     movedCard.set('order', newOrderVal);
     movedCard.save();
   },
 
+  // relistCard: function(event, ui){
+  //   var $item = $(ui.item);
+  //   var movedCard
+  //
+  //   var movedCardID = $item.find('button').data('card-id');
+  //   console.log(movedCardID)
+  //
+  //     var cards = this.model.get('cards');
+  //     movedCard = movedCard || cards.get(movedCardID);
+  //   console.log(movedCard)
+  //
+  //   movedCard.set("list_id", this.model.id)
+  //   movedCard.save()
+  //
+  // },
+
+  _renderCardsButtons: function(){
+    var that = this;
+    this.model.get('cards').each(function(card){
+      var cardView = new HF.Views.CardButtonShow({
+        model: card,
+        collection: that.model.get('cards'),
+        list_id: that.model.id,
+      });
+      that.$('.insert-card').append(cardView.render().$el);
+    });
+  },
 
   editListTitleForm: function(event){
     console.log("we ehre")

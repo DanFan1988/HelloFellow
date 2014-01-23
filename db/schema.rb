@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140122182752) do
+ActiveRecord::Schema.define(:version => 20140123051619) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20140122182752) do
     t.integer  "list_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "order"
+    t.float    "order"
   end
 
   create_table "checklist_items", :force => true do |t|
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(:version => 20140122182752) do
     t.integer  "board_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "order"
+    t.float    "order"
   end
 
   create_table "organizations", :force => true do |t|

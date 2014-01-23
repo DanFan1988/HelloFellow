@@ -5,8 +5,8 @@
       </a>
     </div>
   </h3>
-  <ul class="card-sortable btn-group-vertical insert-card"
-  id="sortable-card<%= list.id%>">
+  <ul class="card-sortable btn-group-vertical insert-card connectedSortable"
+  id="sortable-card<%= list.id %>">
   </ul>
     <div id="place-card-form">
     <li><button class="btn btn-success btn-md" id="show-card-form">
@@ -14,7 +14,6 @@
     </div>
     <li><button class="btn btn-danger btn-sm" data-toggle="modal"
       data-target="#DeleteListModal<%=list.id%>">Delete List</button>
-
 </div>
 
 <!-- delete list modal-->

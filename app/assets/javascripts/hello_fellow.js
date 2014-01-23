@@ -21,7 +21,7 @@ window.HF = {
         HF.Data.boards = new HF.Collections.Boards
         HF.Data.boards.fetch({
           success: function(){
-            // $('#header').html(new HF.Views.HeaderShow().render().$el)
+            $('#header').html(new HF.Views.HeaderShow().render().$el)
             new HF.Routers.Router({ $rootEl: $('#container')});
             Backbone.history.start();
           }
