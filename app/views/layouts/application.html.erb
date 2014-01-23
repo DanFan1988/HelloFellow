@@ -17,7 +17,7 @@
 <body>
 
 <% if !current_user.nil? %>
-<%= render :partial => "layouts/header", @boards => current_user.boards %>
+  <div id="header"></div>
 <% else %>
 <%= link_to "GOAT APP SIGN UP", new_user_url %>
 <% end %>

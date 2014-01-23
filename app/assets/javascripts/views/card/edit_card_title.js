@@ -18,7 +18,7 @@ HF.Views.EditCardTitle = Backbone.View.extend({
 
   editTitle: function(event){
     console.log("we here?")
-    debugger;
+    // debugger;
     event.preventDefault();
     var attrs = this.$('#edit-card-title').serializeJSON();
     this.model.set(attrs);

@@ -21,28 +21,24 @@ window.HF = {
         HF.Data.boards = new HF.Collections.Boards
         HF.Data.boards.fetch({
           success: function(){
+            // $('#header').html(new HF.Views.HeaderShow().render().$el)
             new HF.Routers.Router({ $rootEl: $('#container')});
             Backbone.history.start();
           }
         });
       }
-    })
-
-
+    });
   }
 };
 
 HF.Activity.Add = function(model){
-  console.log("here")
-  var activity = new HF.Models.Activity({
+  HF.Data.activities.create({
     user_id: HF.currentUserId,
     action: "added " + model.name + ": <strong>" + model.get('title') + "</strong>"
-  })
-  HF.Data.activities.create(activity)
+  });
 }
 
 HF.Activity.Edit = function(){
-  console.log("here")
   var activity = new HF.Models.Activity({
     user_id: HF.currentUserId,
     action: "changed " + this.name + ": <strong>" + this.previousAttributes().title +
@@ -51,17 +47,24 @@ HF.Activity.Edit = function(){
   HF.Data.activities.create(activity)
 }
 
-HF.Activity.Delete = function(){
-  console.log("here")
+HF.Activity.Delete = function(model){
   var activity = new HF.Models.Activity({
     user_id: HF.currentUserId,
-    action: "deleted " + this.name + ": <strong>" + this.get('title') + "</strong>"
+    action: "deleted " + model.name + ": <strong>" + model.get('title') + "</strong>"
+  })
+  HF.Data.activities.create(activity)
+}
+
+HF.Activity.Move = function(model){
+  console.log('makeing move activity')
+  var activity = new HF.Models.Activity({
+    user_id: HF.currentUserId,
+    action: "moved " + model.name + ": <strong>" + model.get('title') + "</strong>"
   })
   HF.Data.activities.create(activity)
 }
 
 HF.Activity.EditDescription = function(){
-  console.log("here")
   var activity = new HF.Models.Activity({
     user_id: HF.currentUserId,
     action: "changed description of " + this.name + ": <strong>" + this.get('title') +
@@ -83,7 +86,7 @@ HF.Activity.AddToCard = function(model){
 
 HF.Activity.AddCommentToCard = function(model){
   console.log("here")
-  debugger;
+  // debugger;
   var activity = new HF.Models.Activity({
     user_id: HF.currentUserId,
     action: "added " + model.name + ": <strong>" + model.get('body') + "</strong> to Card: <strong>"
@@ -91,3 +94,17 @@ HF.Activity.AddCommentToCard = function(model){
   })
   HF.Data.activities.create(activity)
 }
+
+
+
+
+// HF.Views.NestingView = Backbone.View.extend({
+//   addChildView: function (view) {
+//     this.childViews = this.childViews || [];
+//     this.childViews.push(view);
+//   },
+//
+//   removeChildViews: function () {
+//     this.childViews.forEach(function (view) { view.remove() });
+//   }
+// })

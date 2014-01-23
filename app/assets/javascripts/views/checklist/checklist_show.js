@@ -8,13 +8,13 @@ HF.Views.ChecklistShow = Backbone.View.extend({
     "submit #new-title-form": "renameTitle",
     "click #open-checklist-item-form": "openChecklistItemForm",
     'click .checklist-item': "check"
-
   },
 
   template: JST['checklist/show'],
 
   render: function(){
     var checked = 0
+    console.log(this.model.get('checklist_items'))
     this.model.get('checklist_items').each(function(checklist_item){
       if (checklist_item.get('checked') == "yes") {
         checked++
@@ -37,7 +37,7 @@ HF.Views.ChecklistShow = Backbone.View.extend({
     event.preventDefault();
     var attrs = this.$('#new-title-form').serializeJSON();
     this.model.set(attrs)
-    this.model.save({})
+    this.model.save({},{ parse: true, wait: true})
   },
 
   openChecklistItemForm: function(event){

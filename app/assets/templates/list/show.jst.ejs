@@ -5,18 +5,16 @@
       </a>
     </div>
   </h3>
-  <ul>
-    <div class="btn-group-vertical">
-      <span id="insert-card">
-      </span>
-    </div>
+  <ul class="card-sortable btn-group-vertical insert-card"
+  id="sortable-card<%= list.id%>">
+  </ul>
     <div id="place-card-form">
     <li><button class="btn btn-success btn-md" id="show-card-form">
       Create Card</button></li>
     </div>
     <li><button class="btn btn-danger btn-sm" data-toggle="modal"
       data-target="#DeleteListModal<%=list.id%>">Delete List</button>
-  </ul>
+
 </div>
 
 <!-- delete list modal-->

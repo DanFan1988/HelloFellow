@@ -30,20 +30,20 @@ module SessionsHelper
 
     membership = BoardMembership.create!(user_id: user.id, board_id: board.id)
 
-    list1 = List.create!({ title: "To do", board_id: board.id })
-    list2 = List.create!({ title: "Doing", board_id: board.id })
-    list3 = List.create!({ title: "Done", board_id: board.id })
+    list1 = List.create!({ title: "To do", board_id: board.id, order: 1})
+    list2 = List.create!({ title: "Doing", board_id: board.id, order: 2})
+    list3 = List.create!({ title: "Done", board_id: board.id, order: 3})
 
-    card1 = Card.create!({ title: "Card 1", list_id: list1.id })
-    card2 = Card.create!({ title: "Card 2", list_id: list1.id })
-    card3 = Card.create!({ title: "Card 3", list_id: list1.id })
+    card1 = Card.create!({ title: "Card 1", list_id: list1.id, order: 1 })
+    card2 = Card.create!({ title: "Card 2", list_id: list1.id, order: 2 })
+    card3 = Card.create!({ title: "Card 3", list_id: list1.id, order: 3 })
 
-    card4 = Card.create!({ title: "Card 1", list_id: list2.id })
-    card5 = Card.create!({ title: "Hire me", list_id: list2.id })
-    card6 = Card.create!({ title: "Card 3", list_id: list2.id })
+    card4 = Card.create!({ title: "Card 1", list_id: list2.id, order: 1 })
+    card5 = Card.create!({ title: "Hire me", list_id: list2.id, order: 2 })
+    card6 = Card.create!({ title: "Card 3", list_id: list2.id, order: 3 })
 
-    card7 = Card.create!({ title: "Card 1", list_id: list3.id })
-    card8 = Card.create!({ title: "Card 2", list_id: list3.id })
+    card7 = Card.create!({ title: "Card 1", list_id: list3.id, order: 1 })
+    card8 = Card.create!({ title: "Card 2", list_id: list3.id, order: 2 })
 
     comment1 = Comment.create({ body: "THIS IS A COMMENT", card_id: card1.id})
     comment1 = Comment.create({ body: "THIS IS As COMMENT", card_id: card1.id})

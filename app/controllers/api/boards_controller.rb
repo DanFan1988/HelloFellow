@@ -1,6 +1,6 @@
 class Api::BoardsController < ApplicationController
   def index
-    @boards = current_user.boards
+    @boards = current_user.boards.includes(:lists => {:cards => [:comments, :labels, {:checklists => :checklist_items}, :list]})
   end
 
   def create

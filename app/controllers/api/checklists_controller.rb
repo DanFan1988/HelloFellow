@@ -3,7 +3,7 @@ class Api::ChecklistsController < ApplicationController
   def create
     @checklist = Checklist.new(params[:checklist])
     if @checklist.save
-      render :json => @checklist
+      render :show
     else
       render :json => @checklist.errors.full_messages
     end

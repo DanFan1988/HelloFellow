@@ -9,10 +9,9 @@ HF.Views.CardModalShow = Backbone.View.extend({
 
     this.listenTo(this.model, "change:title", HF.Activity.Edit.bind(this.model))
     this.listenTo(this.model, "change:description", HF.Activity.EditDescription.bind(this.model))
-    this.listenTo(this.model.get('checklists'), "add",
-    HF.Activity.AddChecklistToCard.bind(this.model.get('checklists').last()), this.model)
-    this.listenTo(this.model.get('comments'), "sync",
-    HF.Activity.AddCommentToCard.bind(this.model.get('comments').last()), this.model)
+    // this.listenTo(this.model.get('checklists'), "add" HF.Activity.AddChecklistToCard.bind(this.model.get('checklists').last()), this.model)
+    // this.listenTo(this.model.get('comments'), "sync",
+    // HF.Activity.AddCommentToCard.bind(this.model.get('comments').last()), this.model)
 
   },
 

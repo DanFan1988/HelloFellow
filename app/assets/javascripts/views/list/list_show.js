@@ -1,16 +1,18 @@
 HF.Views.ListShow = Backbone.View.extend({
   initialize: function(){
-    this.listenTo(this.model.get('cards'), "add remove reset", this.render)
-    this.listenTo(this.model, "add change", this.render);
+    this.listenTo(this.model.get('cards'), "add remove reset", this.render);
+    this.listenTo(this.model, "change", this.render);
 
-    this.listenTo(this.model.get('cards'), "add", HF.Activity.Add.bind(this.model.get('cards').last()))
-    this.listenTo(this.model, "model:deleted", HF.Activity.Delete.bind(this.model))
+    this.listenTo(this.model.get('cards'), "add", HF.Activity.Add);
+    this.listenTo(this.model.get('cards'), "change:order", HF.Activity.Move)
+    this.listenTo(this.model, "destroy", HF.Activity.Delete);
   },
 
   events: {
     "click button#show-card-form": "showCardForm",
     "click #delete-list": "deleteList",
     "click #open-list-title-edit-form": "editListTitleForm",
+    "sortstop": "reorderCard"
   },
 
   template: JST['list/show'],
@@ -20,6 +22,10 @@ HF.Views.ListShow = Backbone.View.extend({
       list: this.model
     });
     this.$el.html(renderedContent);
+    this.$el.find('.card-sortable').sortable({
+      handle: 'button',
+      cancel: ''
+    })
     this._renderCardsButtons();
     return this;
   },
@@ -32,9 +38,36 @@ HF.Views.ListShow = Backbone.View.extend({
         collection: that.model.get('cards'),
         list_id: that.model.id,
       });
-      that.$('#insert-card').append(cardView.render().$el);
+      that.$('.insert-card').append(cardView.render().$el);
     });
   },
+
+  reorderCard: function(event, ui){
+    var $item = $(ui.item);
+    var movedCardID = $item.find('button').data('card-id');
+    var aboveCardID = $item.prev().find('button').data('card-id');
+    var belowCardID = $item.next().find('button').data('card-id');
+
+    var cards = this.model.get('cards');
+    var movedCard = cards.get(movedCardID);
+    var aboveCard = cards.get(aboveCardID);
+    var belowCard = cards.get(belowCardID);
+
+    var newOrderVal;
+    if (aboveCard && belowCard) {
+      newOrderVal = (aboveCard.get('order') + belowCard.get('order')) / 2;
+    } else if (aboveCard) {
+      newOrderVal = aboveCard.get('order') + 1;
+    } else if (belowCard) {
+      newOrderVal = belowCard.get('order') / 2;
+    } else {
+      newOrderVal = 1;
+    }
+
+    movedCard.set('order', newOrderVal);
+    movedCard.save();
+  },
+
 
   editListTitleForm: function(event){
     console.log("we ehre")
@@ -49,7 +82,6 @@ HF.Views.ListShow = Backbone.View.extend({
 
   deleteList: function(event){
     event.preventDefault();
-    this.model.trigger("model:deleted")
     this.model.destroy();
 
     $('#DeleteListModal' + this.model.id).modal('hide');
@@ -59,10 +91,10 @@ HF.Views.ListShow = Backbone.View.extend({
 
 
   showCardForm: function(){
-    console.log("making cardform")
     var cardForm = new HF.Views.CardForm({
       collection: this.model.get('cards'),
-      list_id: this.model.id
+      list_id: this.model.id,
+      list: this.model
     });
     this.$el.find('#place-card-form').html(cardForm.render().$el)
   },

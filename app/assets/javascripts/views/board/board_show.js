@@ -1,11 +1,12 @@
 HF.Views.BoardShow = Backbone.View.extend({
   initialize: function(options){
-    this.listenTo(this.model.get('lists'), "sync remove destroy", this.render);
+    this.listenTo(this.model.get('lists'), "add destroy", this.render)
     this.listenTo(this.model, "add change", this.render);
 
     this.listenTo(this.model.get('lists'), "add",
-    HF.Activity.Add.bind(this.model.get('lists').last()))
-    this.listenTo(this.model, "change:title", HF.Activity.Edit.bind(this.model))
+    HF.Activity.Add)
+    this.listenTo(this.model, "change:title", HF.Activity.Edit.bind(this.model));
+    this.childViews = [];
   },
 
   events: {
@@ -24,17 +25,20 @@ HF.Views.BoardShow = Backbone.View.extend({
     this.$el.html(renderedContent);
     this._renderLists()
     this._renderSidebar()
+
     return this;
   },
 
   _renderLists: function () {
+    this.clearChildViews();
+
     var that = this;
     this.model.get('lists').each(function(list){
-      console.log("making a list")
       var listView = new HF.Views.ListShow({
         model: list
       });
       that.$el.find('#insert-list').append(listView.render().$el);
+      that.childViews.push(listView);
     })
   },
 
@@ -46,14 +50,8 @@ HF.Views.BoardShow = Backbone.View.extend({
   addList: function(){
     event.preventDefault();
     var attrs = this.$('#add-list-form').serializeJSON();
-    var newList = new HF.Models.List
+    this.model.get('lists').create(attrs, {parse: true, wait:true});
 
-    newList.set(attrs);
-    if (newList.isNew()) {
-      this.model.get('lists').create(newList);
-    } else {
-      newList.save({});
-    }
   },
 
   renameTitle: function(event){
@@ -61,11 +59,15 @@ HF.Views.BoardShow = Backbone.View.extend({
     var that = this;
     var attrs = this.$('#new-title-form').serializeJSON();
     this.model.set(attrs)
-    this.model.save()
+    this.model.save({},{ parse: true})
   },
 
   addComment: function(event){
 
+  },
+
+  clearChildViews: function () {
+    this.childViews.forEach(function (view) { view.remove() });
   }
 
 

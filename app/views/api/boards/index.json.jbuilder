@@ -4,9 +4,11 @@ json.array! @boards do |board|
   json.lists board.lists do |list|
     json.id list.id
     json.title list.title
+    json.order list.order
     json.cards list.cards do |card|
       json.description card.description
       json.id card.id
+      json.order card.order
       json.list_id card.list_id
       json.list card.list
       json.title card.title
