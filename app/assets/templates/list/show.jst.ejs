@@ -5,14 +5,14 @@
       </a>
     </div>
   </h3>
-  <ul class="card-sortable btn-group-vertical insert-card connectedSortable"
+  <div class="card-sortable list-group insert-card connectedSortable"
   id="sortable-card<%= list.id %>" style="min-height: 50px;">
-  </ul>
+  </div>
     <div id="place-card-form">
-    <li><button class="btn btn-success btn-md" id="show-card-form">
-      Create Card</button></li>
+    <button class="btn btn-success btn-md" id="show-card-form">
+      Create Card</button>
     </div>
-    <li><button class="btn btn-danger btn-sm" data-toggle="modal"
+    <button class="btn btn-danger btn-sm" data-toggle="modal"
       data-target="#DeleteListModal<%=list.id%>">Delete List</button>
 </div>
 

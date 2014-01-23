@@ -18,7 +18,7 @@ HF.Views.CardModalShow = Backbone.View.extend({
   events:{
     "click #create-comment": "createComment",
     "click #delete-card": "deleteCard",
-    "hidden.bs.modal": "magic"
+    "hidden.bs.modal": "modalCloseTrigger"
   },
 
   template: JST['card/show_modal'],
@@ -37,7 +37,7 @@ HF.Views.CardModalShow = Backbone.View.extend({
     return this;
   },
 
-  magic: function(){
+  modalCloseTrigger: function(){
     this.parent.trigger('modal:closed')
   },
 

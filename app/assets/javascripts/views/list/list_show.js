@@ -26,8 +26,6 @@ HF.Views.ListShow = Backbone.View.extend({
     });
     this.$el.html(renderedContent);
     this.$el.find('.card-sortable').sortable({
-      handle: 'button',
-      cancel: '',
       connectWith: ".card-sortable",
       dropOnEmpty: true,
       // update: _sortMethodChooser()
@@ -47,10 +45,10 @@ HF.Views.ListShow = Backbone.View.extend({
   _dragOverCard: function (event, ui) {
     var $item = $(ui.item);
 
-    var movedCardID = $item.find('button').data('card-id');
-    var aboveCardID = $item.prev().find('button').data('card-id');
-    var belowCardID = $item.next().find('button').data('card-id');
-    var listID = $item.find('button').data('list-id')
+    var movedCardID = $item.find('#open-modal').data('card-id');
+    var aboveCardID = $item.prev().find('#open-modal').data('card-id');
+    var belowCardID = $item.next().find('#open-modal').data('card-id');
+    var listID = $item.find('#open-modal').data('list-id')
     var cards = HF.Data.boards.getList(listID).get('cards')
     console.log(cards)
     var movedCard = cards.get(movedCardID);
@@ -78,9 +76,9 @@ HF.Views.ListShow = Backbone.View.extend({
 
   _reorderCard: function(event, ui){
     var $item = $(ui.item);
-    var movedCardID = $item.find('button').data('card-id');
-    var aboveCardID = $item.prev().find('button').data('card-id');
-    var belowCardID = $item.next().find('button').data('card-id');
+    var movedCardID = $item.find('#open-modal').data('card-id');
+    var aboveCardID = $item.prev().find('#open-modal').data('card-id');
+    var belowCardID = $item.next().find('#open-modal').data('card-id');
     var cards = this.model.get('cards');
     var movedCard = cards.get(movedCardID);
     var aboveCard = cards.get(aboveCardID);

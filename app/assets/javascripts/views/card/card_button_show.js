@@ -1,5 +1,4 @@
 HF.Views.CardButtonShow = Backbone.View.extend({
-  tagName: 'li',
   initialize: function(options){
     //has model, collection
     this.list_id = options.list_id;
@@ -7,7 +6,7 @@ HF.Views.CardButtonShow = Backbone.View.extend({
   },
 
   events: {
-    "click button": "_renderCardModal"
+    "click #open-modal": "_renderCardModal"
   },
 
   template: JST['card/show_button'],
