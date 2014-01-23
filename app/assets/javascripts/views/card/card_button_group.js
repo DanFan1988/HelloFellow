@@ -44,7 +44,7 @@ HF.Views.CardButtonGroup = Backbone.View.extend({
     if (newLabel.isNew()) {
       this.model.get('labels').create(newLabel);
     } else {
-      newLabel.save({});
+      newLabel.save({}, {parse: true});
     }
   },
 

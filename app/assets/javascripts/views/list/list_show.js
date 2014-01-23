@@ -37,15 +37,15 @@ HF.Views.ListShow = Backbone.View.extend({
   },
 
   _sortMethodChooser: function(event, ui){
-    console.log(ui)
-    if (ui.sender === null) {
-      this._reorderCard()
+    console.log(ui.sender)
+    if (ui.sender == null) {
+      console.log("staying within same list")
+      this._reorderCard(event, ui)
     }
   },
 
   _dragOverCard: function (event, ui) {
     var $item = $(ui.item);
-    console.log("DRAGOVER")
 
     var movedCardID = $item.find('button').data('card-id');
     var aboveCardID = $item.prev().find('button').data('card-id');
@@ -68,35 +68,19 @@ HF.Views.ListShow = Backbone.View.extend({
       newOrderVal = 1.0;
     }
 
+    console.log("DRAGOVER", newOrderVal, this.model.id)
+
 
     movedCard.set('order', newOrderVal);
     movedCard.set('list_id', this.model.id)
     movedCard.save();
-
-    // this.model == list that was dragged to
-    // ui.item is the card li that was dragged
-
-    // You have the list you dragged to.
-    // You have the list-id you dragged from.
-    // You have the model id.
-
-    // You can find the list given the list id.
-    // Given the list and a card id, you can find the card.
-
-    // Change card.list_id to the list you dragged to.
-    // Change card.order to the average
-    // Save.
-
-    // Maybe you have to rerender the other list view??
   },
 
   _reorderCard: function(event, ui){
     var $item = $(ui.item);
-    console.log("reorder")
     var movedCardID = $item.find('button').data('card-id');
     var aboveCardID = $item.prev().find('button').data('card-id');
     var belowCardID = $item.next().find('button').data('card-id');
-    console.log('movedCard', 'MOVING CARD WITHIN A LIST')
     var cards = this.model.get('cards');
     var movedCard = cards.get(movedCardID);
     var aboveCard = cards.get(aboveCardID);
@@ -112,6 +96,9 @@ HF.Views.ListShow = Backbone.View.extend({
     } else {
       newOrderVal = 1.0;
     }
+
+    console.log('MOVING CARD WITHIN A LIST', newOrderVal)
+
     movedCard.set('order', newOrderVal);
     movedCard.save();
   },
@@ -176,6 +163,22 @@ HF.Views.ListShow = Backbone.View.extend({
 
 });
 
+
+// this.model == list that was dragged to
+// ui.item is the card li that was dragged
+
+// You have the list you dragged to.
+// You have the list-id you dragged from.
+// You have the model id.
+
+// You can find the list given the list id.
+// Given the list and a card id, you can find the card.
+
+// Change card.list_id to the list you dragged to.
+// Change card.order to the average
+// Save.
+
+// Maybe you have to rerender the other list view??
 
 // submit: function (event) {
 //   event.preventDefault();
