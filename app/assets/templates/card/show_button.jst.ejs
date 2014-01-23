@@ -4,7 +4,7 @@
 </div>
 <% } %>
 
-<button type="button" class="btn btn-primary card-title" data-toggle="modal" data-card-id="<%= card.id %>"
+<button type="button" class="btn btn-primary" data-toggle="modal" data-card-id="<%= card.id %>" data-list-id="<%= card.get('list_id') %>"
  style="display: block; width: 100%;" data-target="#CardModal<%=card.id%>">
   <%= card.escape('title') %></button>
 

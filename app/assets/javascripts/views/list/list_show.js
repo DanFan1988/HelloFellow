@@ -12,13 +12,15 @@ HF.Views.ListShow = Backbone.View.extend({
     "click button#show-card-form": "showCardForm",
     "click #delete-list": "deleteList",
     "click #open-list-title-edit-form": "editListTitleForm",
-    "sortstop": "reorderCard"
+    "sortreceive": "_dragOverCard",
+    "sortupdate": "_sortMethodChooser"
 
   },
 
   template: JST['list/show'],
 
   render: function(){
+    var that = this
     var renderedContent = this.template({
       list: this.model
     });
@@ -26,24 +28,34 @@ HF.Views.ListShow = Backbone.View.extend({
     this.$el.find('.card-sortable').sortable({
       handle: 'button',
       cancel: '',
-      recieve: function(){ console.log('received')}
+      connectWith: ".card-sortable",
+      dropOnEmpty: true,
+      // update: _sortMethodChooser()
     })
     this._renderCardsButtons();
     return this;
   },
 
-  reorderCard: function(event, ui){
+  _sortMethodChooser: function(event, ui){
+    console.log(ui)
+    if (ui.sender === null) {
+      this._reorderCard()
+    }
+  },
+
+  _dragOverCard: function (event, ui) {
     var $item = $(ui.item);
+    console.log("DRAGOVER")
+
     var movedCardID = $item.find('button').data('card-id');
     var aboveCardID = $item.prev().find('button').data('card-id');
     var belowCardID = $item.next().find('button').data('card-id');
-
-    var cards = this.model.get('cards');
+    var listID = $item.find('button').data('list-id')
+    var cards = HF.Data.boards.getList(listID).get('cards')
+    console.log(cards)
     var movedCard = cards.get(movedCardID);
     var aboveCard = cards.get(aboveCardID);
     var belowCard = cards.get(belowCardID);
-
-    console.log(movedCard.get('order'))
 
     var newOrderVal;
     if (aboveCard && belowCard) {
@@ -56,6 +68,50 @@ HF.Views.ListShow = Backbone.View.extend({
       newOrderVal = 1.0;
     }
 
+
+    movedCard.set('order', newOrderVal);
+    movedCard.set('list_id', this.model.id)
+    movedCard.save();
+
+    // this.model == list that was dragged to
+    // ui.item is the card li that was dragged
+
+    // You have the list you dragged to.
+    // You have the list-id you dragged from.
+    // You have the model id.
+
+    // You can find the list given the list id.
+    // Given the list and a card id, you can find the card.
+
+    // Change card.list_id to the list you dragged to.
+    // Change card.order to the average
+    // Save.
+
+    // Maybe you have to rerender the other list view??
+  },
+
+  _reorderCard: function(event, ui){
+    var $item = $(ui.item);
+    console.log("reorder")
+    var movedCardID = $item.find('button').data('card-id');
+    var aboveCardID = $item.prev().find('button').data('card-id');
+    var belowCardID = $item.next().find('button').data('card-id');
+    console.log('movedCard', 'MOVING CARD WITHIN A LIST')
+    var cards = this.model.get('cards');
+    var movedCard = cards.get(movedCardID);
+    var aboveCard = cards.get(aboveCardID);
+    var belowCard = cards.get(belowCardID);
+
+    var newOrderVal;
+    if (aboveCard && belowCard) {
+      newOrderVal = (aboveCard.get('order') + belowCard.get('order')) / 2.0;
+    } else if (aboveCard) {
+      newOrderVal = aboveCard.get('order') + 1.0;
+    } else if (belowCard) {
+      newOrderVal = belowCard.get('order') / 2.0;
+    } else {
+      newOrderVal = 1.0;
+    }
     movedCard.set('order', newOrderVal);
     movedCard.save();
   },

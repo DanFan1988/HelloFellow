@@ -1,8 +1,10 @@
 <h1>Amazing Homepage wow</h1>
 
 <h2>My Boards</h2>
-<ul>
+
+<div class="container">
 <% boards.each(function(board){ %>
-  <li><a href="#boards/<%= board.id%>"><%= board.get('title') %></a>
+
+  <div class="col-xs-3 panel"><a class="link-to-button" href="#boards/<%= board.id%>"><%= board.get('title') %></a></div>
 <% }) %>
-</ul>
+</div>

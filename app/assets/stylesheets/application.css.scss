@@ -68,3 +68,25 @@ max-height: 800px;
 .card-item {
   cursor: move;
 }
+
+.big-btn {
+    width: 90px;
+    height: 40px;
+}
+
+.link-to-button {
+  display: block;
+  width: 200px;
+  height: 100px;
+  background: #0198E1;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+
+.thumbnail {
+    border: white;
+    box-shadow: 0;
+}
