@@ -13,7 +13,9 @@ HF.Views.ListShow = Backbone.View.extend({
     "click #delete-list": "deleteList",
     "click #open-list-title-edit-form": "editListTitleForm",
     "sortreceive": "_dragOverCard",
-    "sortupdate": "_sortMethodChooser"
+    "sortstop": "_reorderCard",
+    // "sortremove": "_removeMovedCard"
+    // "sortupdate": "_sortMethodChooser"
 
   },
 
@@ -34,13 +36,13 @@ HF.Views.ListShow = Backbone.View.extend({
     return this;
   },
 
-  _sortMethodChooser: function(event, ui){
-    console.log(ui.sender)
-    if (ui.sender == null) {
-      console.log("staying within same list")
-      this._reorderCard(event, ui)
-    }
-  },
+  // _sortMethodChooser: function(event, ui){
+  //   debugger;
+  //   if (ui.sender === null) {
+  //     console.log("staying within same list")
+  //     this._reorderCard(event, ui)
+  //   }
+  // },
 
   _dragOverCard: function (event, ui) {
     var $item = $(ui.item);
@@ -48,12 +50,13 @@ HF.Views.ListShow = Backbone.View.extend({
     var movedCardID = $item.find('#open-modal').data('card-id');
     var aboveCardID = $item.prev().find('#open-modal').data('card-id');
     var belowCardID = $item.next().find('#open-modal').data('card-id');
-    var listID = $item.find('#open-modal').data('list-id')
-    var cards = HF.Data.boards.getList(listID).get('cards')
-    console.log(cards)
+
+    var fromListID = $item.find('#open-modal').data('list-id')
+
+    var cards = HF.Data.boards.getList(fromListID).get('cards')
     var movedCard = cards.get(movedCardID);
-    var aboveCard = cards.get(aboveCardID);
-    var belowCard = cards.get(belowCardID);
+    var aboveCard = this.model.get('cards').get(aboveCardID);
+    var belowCard = this.model.get('cards').get(belowCardID);
 
     var newOrderVal;
     if (aboveCard && belowCard) {
@@ -66,24 +69,29 @@ HF.Views.ListShow = Backbone.View.extend({
       newOrderVal = 1.0;
     }
 
-    console.log("DRAGOVER", newOrderVal, this.model.id)
-
-
     movedCard.set('order', newOrderVal);
     movedCard.set('list_id', this.model.id)
-    movedCard.save();
+    // console.log(movedCard.get('order'), belowCard.get('order'), aboveCard.get('order'))
+
+    movedCard.save({});
   },
 
   _reorderCard: function(event, ui){
     var $item = $(ui.item);
     var movedCardID = $item.find('#open-modal').data('card-id');
+
     var aboveCardID = $item.prev().find('#open-modal').data('card-id');
     var belowCardID = $item.next().find('#open-modal').data('card-id');
+
     var cards = this.model.get('cards');
     var movedCard = cards.get(movedCardID);
+    if (!movedCard || this.model.id != movedCard.get('list_id')) {
+      return;
+    }
+
+
     var aboveCard = cards.get(aboveCardID);
     var belowCard = cards.get(belowCardID);
-
     var newOrderVal;
     if (aboveCard && belowCard) {
       newOrderVal = (aboveCard.get('order') + belowCard.get('order')) / 2.0;
@@ -95,10 +103,20 @@ HF.Views.ListShow = Backbone.View.extend({
       newOrderVal = 1.0;
     }
 
-    console.log('MOVING CARD WITHIN A LIST', newOrderVal)
 
     movedCard.set('order', newOrderVal);
-    movedCard.save();
+    // console.log(movedCard.get('order'), belowCard.get('order'), aboveCard.get('order'))
+
+    movedCard.save({});
+  },
+
+  _removeMovedCard: function(event, ui){
+    debugger;
+    var $item = $(ui.item);
+    var movedCardID = $item.find('#open-modal').data('card-id');
+    var cards = this.model.get('cards');
+    var movedCard = cards.get(movedCardID);
+    movedCard.destroy()
   },
 
   // relistCard: function(event, ui){

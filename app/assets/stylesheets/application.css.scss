@@ -13,7 +13,7 @@
  *= require_tree .
  */
 
-@import "bootstrap";
+//@import "bootstrap";
 
 body {
   padding-top: 70px;
@@ -79,4 +79,11 @@ max-height: 800px;
   border-radius: 5px;
   color: white;
   font-weight: bold;
+}
+
+.list-background {
+  background-color: lightgray;
+  border-radius: 20px;
+  padding-bottom: 30px;
+  padding-right: 15px;
 }

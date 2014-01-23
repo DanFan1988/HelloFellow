@@ -22,6 +22,7 @@ gem 'backbone-on-rails'
 gem 'jbuilder'
 gem 'ejs'
 gem 'faker'
+gem 'bootswatch-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

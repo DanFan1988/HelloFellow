@@ -19,7 +19,7 @@ HF.Views.BoardShow = Backbone.View.extend({
     "submit #new-title-form": "renameTitle",
     "click #add-list": "addList",
     "click #add-comment": "addComment",
-    // "sortstop": "reorderCard"
+    "sortstop": "reorderCard"
   },
 
 
@@ -32,25 +32,19 @@ HF.Views.BoardShow = Backbone.View.extend({
     this.$el.html(renderedContent);
     this._renderLists()
     this._renderSidebar()
-    this.$el.find('#sortable-list').sortable()
-    // this.$el.find( "#sortable-card73, #sortable-card74" ).sortable({
-    //       connectWith: ".connectedSortable",
-    //       handle: 'button',
-    //       cancel: '',
-    //       dropOnEmpty: false,
-    //       recieve: function(event, ui){ console.log('recieved')}
-    //     }).disableSelection();
-    // this.model.get('lists').each(function(list){
-    //
-    // })
+    this.$el.find(".sortable-list").sortable({
+      connectWith: ".sortable-list",
+          items: ".list-background"
+    })
     return this;
   },
 
   reorderCard: function(event, ui){
+    debugger;
     var $item = $(ui.item);
-    var movedCardID = $item.find('button').data('card-id');
-    var aboveCardID = $item.prev().find('button').data('card-id');
-    var belowCardID = $item.next().find('button').data('card-id');
+    var movedCardID = $item.find('button').data('list-id');
+    var aboveCardID = $item.prev().find('button').data('list-id');
+    var belowCardID = $item.next().find('button').data('list-id');
 
     var movedCard
     var aboveCard
