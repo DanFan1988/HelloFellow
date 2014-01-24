@@ -83,7 +83,27 @@ max-height: 800px;
 
 .list-background {
   background-color: lightgray;
-  border-radius: 20px;
+  border-radius: 10px;
   padding-bottom: 30px;
   padding-right: 15px;
+  border: solid thick #007CA6;
+}
+
+.the-color {
+  background-color: rgb(35, 113, 159);
+}
+
+.board-title-white {
+  color: #DEDEDE;
+  padding-left: 50px;
+}
+
+.ui-sortable-helper {
+  transform: rotate(5deg);
+  -webkit-transform: rotate(5deg);
+}
+
+.nav{
+    max-height: 300px;
+    overflow-y:scroll;
 }

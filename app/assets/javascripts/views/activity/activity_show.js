@@ -1,6 +1,6 @@
 HF.Views.ActivityShow = Backbone.View.extend({
 
-  tagName: "div class='activity-item'",
+  tagName: "li class='list-group-item'",
 
   initialize: function(){
 

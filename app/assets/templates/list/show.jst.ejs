@@ -1,13 +1,13 @@
 <div class="col-xs-3 list-background" data-list-id="<%= list.id%>">
   <h3>
     <div id="edit-list-title-form">
-      <a href="#" id="open-list-title-edit-form"><%=list.get('title')%>
+      <a href="#" id="open-list-title-edit-form" ><h5 style="color: black;"><strong><%=list.get('title')%></strong></h5></a>
       </a>
     </div>
   </h3>
-  <ul class="card-sortable list-group insert-card connectedSortable"
+  <div class="card-sortable list-group insert-card connectedSortable"
   id="sortable-card<%= list.id %>" style="min-height: 50px;">
-  </ul>
+</div>
     <div id="place-card-form">
     <button class="btn btn-success btn-md" id="show-card-form">
       Create Card</button>

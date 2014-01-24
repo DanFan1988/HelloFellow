@@ -79,7 +79,7 @@ HF.Views.ListShow = Backbone.View.extend({
   _reorderCard: function(event, ui){
     var $item = $(ui.item);
     var movedCardID = $item.find('#open-modal').data('card-id');
-
+    // button?
     var aboveCardID = $item.prev().find('#open-modal').data('card-id');
     var belowCardID = $item.next().find('#open-modal').data('card-id');
 

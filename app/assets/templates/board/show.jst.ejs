@@ -1,15 +1,14 @@
 <!-- START Dropdown title renamer -->
 <div class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle"
-     data-toggle="dropdown"><h3><%= board.get('title')%></h3></button>
+  <a href="#" id="title-dropdown" data-toggle="dropdown"><h3 class="board-title-white"><%= board.get('title')%></h3></a>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-board">
-     <li tabindex="-1" href="#" class="dropdown-header"> Rename Board</li>
+     <li tabindex="-1" href="#" class="dropdown-header"> <big><center>Rename Board</center></big></li>
      <li role="presentation" class="divider"></li>
      <li tabindex="-1" href="#">
        <form id="new-title-form">
-         <label>Name</label>
-         <input type="text" placeholder="<%=board.get('title')%>" name="title">
-         <button id="rename-title" type="submit">Rename</button>
+         <label><big>Name</label>
+         <input id="title-text" type="text" placeholder="<%=board.get('title')%>" name="title">
+         <button class="btn btn-success" id="rename-title" type="submit">Rename</button>
        </form>
      </li>
    </ul>
@@ -20,9 +19,7 @@
 
 <!-- lists view insertation-->
 <div class="container">
-  <section class=" col-xs-10 container">
-    <div class="row">
-      <ul id="insert-list" class="sortable-list"></ul>
+  <section class=" col-xs-10 container sortable-list" id="insert-list">
       <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle"
            data-toggle="dropdown">Add a list...</button>
@@ -38,7 +35,6 @@
            </li>
          </ul>
        </div>
-    </div>
   </section>
   <section class="col-xs-2">
     <div id="insert-sidebar"></div>
