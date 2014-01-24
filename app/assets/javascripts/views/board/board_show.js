@@ -81,7 +81,8 @@ HF.Views.BoardShow = Backbone.View.extend({
     this.model.get('lists').each(function(list){
       var listView = new HF.Views.ListShow({
         model: list,
-        parent: that
+        parent: that,
+        board: this.model
       });
       that.$el.find('#insert-list').append(listView.render().$el);
       that.childViews.push(listView);

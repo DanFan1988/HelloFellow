@@ -1,8 +1,9 @@
 HF.Views.ListShow = Backbone.View.extend({
   initialize: function(options){
     this.parent = options.parent
+    this.board = options.board
 
-    this.listenTo(this.model.get('cards'), "add remove reset", this.render);
+    this.listenTo(this.model.get('cards'), "add destroy remove", this.render);
     this.listenTo(this.model, "change:title", this.render);
 
     this.listenTo(this.model.get('cards'), "add", HF.Activity.Add);
@@ -30,6 +31,7 @@ HF.Views.ListShow = Backbone.View.extend({
   template: JST['list/show'],
 
   render: function(){
+    console.log("rendering list", this.model.id)
     var that = this
     var renderedContent = this.template({
       list: this.model
@@ -80,50 +82,63 @@ HF.Views.ListShow = Backbone.View.extend({
     movedCard.set('list_id', this.model.id)
     // console.log(movedCard.get('order'), belowCard.get('order'), aboveCard.get('order'))
 
-    movedCard.save({});
+    movedCard.save({}, {parse: true, wait: true});
   },
 
   _reorderCard: function(event, ui){
     var $item = $(ui.item);
     var movedCardID = $item.find('#open-modal').data('card-id');
     // button?
-    var aboveCardID = $item.prev().find('#open-modal').data('card-id');
-    var belowCardID = $item.next().find('#open-modal').data('card-id');
+    var aboveCardOrder = $item.prev().find('#open-modal').data('order');
+    var belowCardOrder = $item.next().find('#open-modal').data('order');
 
     var cards = this.model.get('cards');
     var movedCard = cards.get(movedCardID);
 
-    debugger;
+    var listID = $item.parent().parent().data('list-id')
+    console.log(listID)
     // if (!movedCard || this.model.id != movedCard.get('list_id')) {
     //   return;
     // }
-
-
-    var aboveCard = cards.get(aboveCardID);
-    var belowCard = cards.get(belowCardID);
+    //
+    //
+    // var aboveCard = cards.get(aboveCardID);
+    // var belowCard = cards.get(belowCardID);
     var newOrderVal;
-    if (aboveCard && belowCard) {
-      newOrderVal = (aboveCard.get('order') + belowCard.get('order')) / 2.0;
-    } else if (aboveCard) {
-      newOrderVal = aboveCard.get('order') + 1.0;
-    } else if (belowCard) {
-      newOrderVal = belowCard.get('order') / 2.0;
+    if (aboveCardOrder && belowCardOrder) {
+      newOrderVal = (aboveCardOrder + belowCardOrder) / 2.0;
+      console.log(aboveCardOrder, belowCardOrder)
+    } else if (aboveCardOrder) {
+      newOrderVal = aboveCardOrder + 1.0;
+    } else if (belowCardOrder) {
+      newOrderVal = belowCardOrder / 2.0;
     } else {
-      newOrderVal = 1.0;
+      console.log("we are setting order =1")
+      newOrderVal = 0.5;
     }
-
+    console.log(newOrderVal)
+    movedCard.set('list_id', listID)
     movedCard.set('order', newOrderVal);
-    movedCard.save({});
-  },
 
-  _removeMovedCard: function(event, ui){
-    debugger;
-    var $item = $(ui.item);
-    var movedCardID = $item.find('#open-modal').data('card-id');
-    var cards = this.model.get('cards');
-    var movedCard = cards.get(movedCardID);
-    movedCard.destroy()
+    this.model.get('cards').remove(movedCard)
+    HF.Data.boards.getList(listID).get('cards').add(movedCard)
+    console.log(this.model.id)
+
+    movedCard.save({}, {
+      success: function(){
+        console.log(movedCard.get('labels'))
+
+      }
+    });
   },
+  //
+  // _removeMovedCard: function(event, ui){
+  //   var $item = $(ui.item);
+  //   var movedCardID = $item.find('#open-modal').data('card-id');
+  //   var cards = this.model.get('cards');
+  //   var movedCard = cards.get(movedCardID);
+  //   movedCard.destroy()
+  // },
 
   _renderCardsButtons: function(){
     var that = this;

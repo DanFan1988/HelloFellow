@@ -122,6 +122,8 @@ HF.Views.CardModalShow = Backbone.View.extend({
     $('#CardModal' + this.model.id).modal('hide');
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
+    this.parent.trigger('modal:closed')
+
   },
 
   _swapChecklists: function(callback){

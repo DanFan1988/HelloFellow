@@ -1,6 +1,6 @@
 
 
-<a id="open-modal" href="#" class="list-group-item" data-toggle="modal" data-card-id="<%= card.id %>" data-list-id="<%= card.get('list_id') %>"
+<a id="open-modal" href="#" class="list-group-item" data-toggle="modal" data-card-id="<%= card.id %>" data-list-id="<%= card.get('list_id') %>" data-order="<%= card.get('order')%>"
  style="display: block; width: 100%;" data-target="#CardModal<%=card.id%>">
 
  <% if (card.get('labels').last()) { %>

@@ -5,6 +5,7 @@ HF.Views.CardButtonShow = Backbone.View.extend({
     this.parent = options.parent
     this.on('modal:closed', this.render)
     this.on('modal:closed', this.modalCloseTrigger)
+    this.listenTo(this.model, "change:order", this.render)
   },
 
   events: {

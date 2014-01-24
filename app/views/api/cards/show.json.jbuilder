@@ -9,7 +9,7 @@ json.comments @card.comments do |comment|
   json.card_id comment.card_id
   json.user comment.user
 end
-json.label @card.labels do |label|
+json.labels @card.labels do |label|
   json.id label.id
   json.color label.color
   json.card_id label.card_id

@@ -44,7 +44,7 @@ module SessionsHelper
 
     card7 = Card.create!({ title: "This is the activity log ->", list_id: list3.id, order: 1 })
     card8 = Card.create!({ title: "Try dragging and dropping the cards...", list_id: list3.id, order: 2 })
-    card9 = Card.create!({ title: "Or the lists.", list_id: list3.id, order: 2 })
+    card9 = Card.create!({ title: "Or the lists.", list_id: list3.id, order: 3 })
 
     comment1 = Comment.create({ body: "This is a comment", card_id: card3.id})
     comment1 = Comment.create({ body: "And another", card_id: card3.id})
