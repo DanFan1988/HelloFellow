@@ -71,7 +71,7 @@ HF.Views.BoardShow = Backbone.View.extend({
     }
 
     movedList.set('order', newOrderVal);
-    movedList.save();
+    movedList.save({},{parse: true, wait: true});
   },
 
   _renderLists: function () {

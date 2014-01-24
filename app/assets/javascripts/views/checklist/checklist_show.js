@@ -1,8 +1,11 @@
 HF.Views.ChecklistShow = Backbone.View.extend({
-  //has a checklist model
+
+
   initialize: function(options){
     this.listenTo(this.model.get('checklist_items'), "add change:checked", this.render)
   },
+
+  tagName: 'div class="border-it"',
 
   events:{
     "submit #new-title-form": "renameTitle",
