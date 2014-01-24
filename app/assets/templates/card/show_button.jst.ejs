@@ -1,10 +1,14 @@
-<% if (card.get('labels').last()) { %>
-<div class="left-inner-addon">
-  <i class="glyphicon glyphicon-tag" style="color:<%= card.get('labels').last().get('color') %>" ></i>
-</div>
-<% } %>
+
 
 <a id="open-modal" href="#" class="list-group-item" data-toggle="modal" data-card-id="<%= card.id %>" data-list-id="<%= card.get('list_id') %>"
  style="display: block; width: 100%;" data-target="#CardModal<%=card.id%>">
+
+ <% if (card.get('labels').last()) { %>
+ <div class="right-inner-addon">
+   <i class="glyphicon glyphicon-tag" style="color:<%= card.get('labels').last().get('color') %>" ></i>
+ </div>
+ <% } %>
+
+
   <%= card.escape('title') %></a>
 

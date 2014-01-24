@@ -1,12 +1,10 @@
-<h1><center><%= user.get('username') %></center></h1>
+<h1><center style="color: #DEDEDE;"><%= user.get('username') %></center></h1>
 
 <div class="container">
   <ul class="list-group col-xs-4">
-    <li class="list-group-item"><strong><center>Boards</center></strong></li>
-
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+    <a href="#" class="list-group-item active" style="= color:#DEDEDE"><strong><center>Boards</center></strong></a>
+  <% user.get('boards').each(function(board){ %>
+    <a href='#boards/<%= board.id %>' class="list-group-item"><%= board.get('title') %></a>
+  <% }); %>
   </ul>
 </div>

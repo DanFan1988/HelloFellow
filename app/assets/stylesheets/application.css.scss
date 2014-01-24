@@ -38,16 +38,16 @@ max-height: 800px;
   border-color: rgba(0,0,0,.2);
 }
 
-.left-inner-addon {
+.right-inner-addon {
   position: relative;
   border-color: black;
   border: solid-thick;
 }
 
-.left-inner-addon i {
+.right-inner-addon i {
   position: absolute;
-  padding-top: 12px;
-  padding-left: 2px;
+  padding-top: 5px;
+  padding-left: 150px;
   pointer-events: none;
 }
 
@@ -92,6 +92,10 @@ max-height: 800px;
 
 .the-color {
   background-color: rgb(35, 113, 159);
+}
+
+.the-white {
+  background-color: #DEDEDE;
 }
 
 .board-title-white {
