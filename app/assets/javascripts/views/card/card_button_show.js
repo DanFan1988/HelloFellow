@@ -2,11 +2,14 @@ HF.Views.CardButtonShow = Backbone.View.extend({
   initialize: function(options){
     //has model, collection
     this.list_id = options.list_id;
+    this.parent = options.parent
     this.on('modal:closed', this.render)
+    this.on('modal:closed', this.modalCloseTrigger)
   },
 
   events: {
-    "click #open-modal": "_renderCardModal"
+    "click #open-modal": "_renderCardModal",
+    "show.bs.modal": "disableSortable"
   },
 
   template: JST['card/show_button'],
@@ -28,5 +31,19 @@ HF.Views.CardButtonShow = Backbone.View.extend({
       parent: this
     })
     this.$el.append(modal.render().$el)
+    $('.card-sortable').sortable("disable")
+    return this;
+  },
+
+  modalCloseTrigger: function(){
+    this.parent.trigger('modal:closed')
+    $('.card-sortable').sortable("enable")
+
+  },
+
+  disableSortable: function(){
+    this.parent.trigger('modal:opened')
   }
+
+
 });

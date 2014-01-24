@@ -3,6 +3,9 @@ HF.Views.BoardShow = Backbone.View.extend({
     var that = this
     this.listenTo(this.model.get('lists'), "add destroy", this.render)
     this.listenTo(this.model, "add change", this.render);
+    this.on("modal:opened", this.disableSortable)
+    this.on("modal:closed", this.enableSortable)
+
     //
     // this.model.get('lists').each(function(list){
     //   that.listenTo(list.get('cards'), "add", that.render)
@@ -42,7 +45,7 @@ HF.Views.BoardShow = Backbone.View.extend({
 
   reorderList: function(event, ui){
     var $item = $(ui.item);
-    debugger;
+
     var movedListID = $item.data('list-id');
     var aboveListID = $item.prev().data('list-id');
     var belowListID = $item.next().data('list-id');
@@ -51,7 +54,6 @@ HF.Views.BoardShow = Backbone.View.extend({
     var movedList = lists.get(movedListID);
     var aboveList = lists.get(aboveListID);
     var belowList = lists.get(belowListID);
-    console.log(movedList.get('order'), belowList, aboveList)
 
     var newOrderVal;
     if (aboveList && belowList) {
@@ -74,7 +76,8 @@ HF.Views.BoardShow = Backbone.View.extend({
     var that = this;
     this.model.get('lists').each(function(list){
       var listView = new HF.Views.ListShow({
-        model: list
+        model: list,
+        parent: that
       });
       that.$el.find('#insert-list').append(listView.render().$el);
       that.childViews.push(listView);
@@ -99,6 +102,14 @@ HF.Views.BoardShow = Backbone.View.extend({
     var attrs = this.$('#new-title-form').serializeJSON();
     this.model.set(attrs)
     this.model.save({},{ parse: true})
+  },
+
+  disableSortable: function(){
+    $('.sortable-list').sortable('disable')
+
+  },
+  enableSortable: function(){
+    $('.sortable-list').sortable('enable')
   },
 
   clearChildViews: function () {

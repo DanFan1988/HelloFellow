@@ -11,7 +11,6 @@ window.HF = {
   initialize: function() {
     HF.Data.users = new HF.Collections.Users
     HF.Data.users.fetch();
-    //
     // HF.Data.organizations = new HF.Collections.Organizations
     // HF.Data.organizations.fetch();
 
@@ -21,7 +20,9 @@ window.HF = {
         HF.Data.boards = new HF.Collections.Boards
         HF.Data.boards.fetch({
           success: function(){
-            $('#header').html(new HF.Views.HeaderShow().render().$el)
+            $('#header').html(new HF.Views.HeaderShow({
+              collection: HF.Data.boards
+            }).render().$el)
             new HF.Routers.Router({ $rootEl: $('#container')});
             Backbone.history.start();
           }
@@ -56,7 +57,6 @@ HF.Activity.Delete = function(model){
 }
 
 HF.Activity.Move = function(model){
-  console.log('makeing move activity')
   var activity = new HF.Models.Activity({
     user_id: HF.currentUserId,
     action: "moved " + model.name + ": <strong>" + model.get('title') + "</strong>"
@@ -86,7 +86,6 @@ HF.Activity.AddToCard = function(model){
 
 HF.Activity.AddCommentToCard = function(model){
   console.log("here")
-  // debugger;
   var activity = new HF.Models.Activity({
     user_id: HF.currentUserId,
     action: "added " + model.name + ": <strong>" + model.get('body') + "</strong> to Card: <strong>"

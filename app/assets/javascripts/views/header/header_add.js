@@ -37,9 +37,9 @@ HF.Views.HeaderAdd = Backbone.View.extend({
 
     newBoard.set(attrs);
     if (newBoard.isNew()) {
-      HF.Data.boards.create(newBoard)
+      HF.Data.boards.create(newBoard, {parse: true, wait: true})
     } else {
-      newBoard.save({});
+      newBoard.save({} );
     }
   },
 

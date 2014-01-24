@@ -14,7 +14,6 @@ HF.Models.Card = Backbone.Model.extend({
   },
   //
   // toJSON: function () {
-  //   debugger;
   //
   //   var data = _.clone(this.attributes);
   //   if(data.comments) {

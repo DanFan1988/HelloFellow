@@ -1,24 +1,30 @@
-<h1>Sign In</h1>
-
-<form action="<%= session_url %>" method="post">
-  <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
-
-  <label for="user_username">Username</label>
-  <input
-     id="user_username"
-     name="user[username]"
-     type="text">
-  <br>
-
-  <label for="user_password">Password</label>
-  <input
-     id="user_password"
-     name="user[password]"
-     type="password">
-  <br>
-
-  <input type="submit" value="Log in">
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h5 class="text-center">
+                        SIGN IN</h5>
+                    <form class="form form-signup" role="form" action="<%= session_url %>" method="post">
+                      <input
+                         name="authenticity_token"
+                         type="hidden"
+                         value="<%= form_authenticity_token %>">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                            <input type="text" class="form-control" placeholder="Username" name="user[username]" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                            <input type="password" class="form-control" placeholder="Password" name="user[password]"/>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-sm btn-primary btn-block" role="button"></form>
+            </div>
+        </div>
+    </div>
+</div>

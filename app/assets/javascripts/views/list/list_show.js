@@ -1,12 +1,18 @@
 HF.Views.ListShow = Backbone.View.extend({
-  initialize: function(){
+  initialize: function(options){
+    this.parent = options.parent
+
     this.listenTo(this.model.get('cards'), "add remove reset", this.render);
     this.listenTo(this.model, "change", this.render);
 
     this.listenTo(this.model.get('cards'), "add", HF.Activity.Add);
     this.listenTo(this.model.get('cards'), "change:order", HF.Activity.Move)
     this.listenTo(this.model, "destroy", HF.Activity.Delete);
-    this.$el.data('list-id', this.model.id);
+    this.$el.attr('data-list-id', this.model.id);
+    this.on("modal:closed", this.render) //or enable
+    this.on("modal:opened", this.disableSortable)
+    this.on("modal:closed", this.modalCloseTrigger)
+
   },
 
   className: 'col-xs-3 list-background',
@@ -16,8 +22,8 @@ HF.Views.ListShow = Backbone.View.extend({
     "click #delete-list": "deleteList",
     "click #open-list-title-edit-form": "editListTitleForm",
     "sortreceive": "_dragOverCard",
-    "sortstop": "_reorderCard",
-    // "sortremove": "_removeMovedCard"
+    "sortstop": "_reorderCard"
+        // "sortremove": "_removeMovedCard"
     // "sortupdate": "_sortMethodChooser"
 
   },
@@ -145,6 +151,7 @@ HF.Views.ListShow = Backbone.View.extend({
         model: card,
         collection: that.model.get('cards'),
         list_id: that.model.id,
+        parent: that
       });
       that.$('.insert-card').append(cardView.render().$el);
     });
@@ -179,6 +186,14 @@ HF.Views.ListShow = Backbone.View.extend({
     });
     this.$el.find('#place-card-form').html(cardForm.render().$el)
   },
+
+  disableSortable: function(){
+    this.parent.trigger("modal:opened")
+  },
+
+  modalCloseTrigger: function(){
+    this.parent.trigger("modal:closed")
+  }
 
 });
 

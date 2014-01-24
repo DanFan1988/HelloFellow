@@ -25,7 +25,7 @@ module SessionsHelper
     organization = Organization.create!({ title: "My Boards",
       description: "Your default board location", visibility: "private"})
 
-    board = Board.create!({ title: "First board", user_id: user.id,
+    board = Board.create!({ title: "Welcome board", user_id: user.id,
       organization_id: organization.id })
 
     membership = BoardMembership.create!(user_id: user.id, board_id: board.id)
@@ -34,29 +34,30 @@ module SessionsHelper
     list2 = List.create!({ title: "Doing", board_id: board.id, order: 2})
     list3 = List.create!({ title: "Done", board_id: board.id, order: 3})
 
-    card1 = Card.create!({ title: "Card 1", list_id: list1.id, order: 1 })
-    card2 = Card.create!({ title: "Card 2", list_id: list1.id, order: 2 })
-    card3 = Card.create!({ title: "Card 3", list_id: list1.id, order: 3 })
+    card1 = Card.create!({ title: "Welcome to Not Trello!", list_id: list1.id, order: 1 })
+    card2 = Card.create!({ title: "This is a Card.", list_id: list1.id, order: 2 })
+    card3 = Card.create!({ title: "Click on a card to see what's behind it.", list_id: list1.id, order: 3 })
 
-    card4 = Card.create!({ title: "Card 1", list_id: list2.id, order: 1 })
-    card5 = Card.create!({ title: "Hire me", list_id: list2.id, order: 2 })
-    card6 = Card.create!({ title: "Card 3", list_id: list2.id, order: 3 })
+    card4 = Card.create!({ title: "This is the second List.", list_id: list2.id, order: 1 })
+    card5 = Card.create!({ title: "Boards are comprised of lists, which are comprised of cards.", list_id: list2.id, order: 2 })
+    card6 = Card.create!({ title: "You can edit / create boards, lists or cards. Try it out!", list_id: list2.id, order: 3 })
 
-    card7 = Card.create!({ title: "Card 1", list_id: list3.id, order: 1 })
-    card8 = Card.create!({ title: "Card 2", list_id: list3.id, order: 2 })
+    card7 = Card.create!({ title: "This is the activity log ->", list_id: list3.id, order: 1 })
+    card8 = Card.create!({ title: "Try dragging and dropping the cards...", list_id: list3.id, order: 2 })
+    card9 = Card.create!({ title: "Or the lists.", list_id: list3.id, order: 2 })
 
-    comment1 = Comment.create({ body: "THIS IS A COMMENT", card_id: card1.id})
-    comment1 = Comment.create({ body: "THIS IS As COMMENT", card_id: card1.id})
-    comment1 = Comment.create({ body: "THIS IS A fCOMMENT", card_id: card1.id})
-    comment1 = Comment.create({ body: "THIS IS A CadsfOMMENT", card_id: card2.id})
-    comment1 = Comment.create({ body: "THIS IS A COMMEadsfNT", card_id: card3.id})
-    comment1 = Comment.create({ body: "THIS IS asdfA COMMENT", card_id: card4.id})
-    comment1 = Comment.create({ body: "THIS IS A CasdfOMMENT", card_id: card5.id})
-    comment1 = Comment.create({ body: "THIasdfS IS A COMMENT", card_id: card5.id})
-    comment1 = Comment.create({ body: "pls work", card_id: card5.id})
-    comment1 = Comment.create({ body: "THIS IS A CasdfOMMENT", card_id: card5.id})
-    comment1 = Comment.create({ body: "THIS IS A COMMasdfENT", card_id: card6.id})
-    comment1 = Comment.create({ body: "THIS IasdfS A COMMENT", card_id: card7.id})
+    comment1 = Comment.create({ body: "This is a comment", card_id: card3.id})
+    comment1 = Comment.create({ body: "And another", card_id: card3.id})
+    comment1 = Comment.create({ body: "Comment comment", card_id: card8.id})
+    comment1 = Comment.create({ body: "Blah blah", card_id: card2.id})
+    comment1 = Comment.create({ body: "I wonder how long you can make comments??", card_id: card9.id})
+    comment1 = Comment.create({ body: "Comment!", card_id: card4.id})
+    comment1 = Comment.create({ body: "Not a comment", card_id: card5.id})
+    comment1 = Comment.create({ body: "yes", card_id: card5.id})
+    comment1 = Comment.create({ body: "ok", card_id: card6.id})
+    comment1 = Comment.create({ body: "good", card_id: card7.id})
+
+    checklist1 = Checklist.create({ title: "A checklist", card_id: card3.id })
 
   end
 end
