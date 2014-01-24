@@ -1,3 +1,4 @@
+<center><h1 style="color: #DEDEDE;">Not Trello</h1></center><br>
 <%= render "form", :user => @user %>
 
 <% action = (@user.persisted? ? user_url(user) : users_url) %>
@@ -13,7 +14,7 @@
      name="authenticity_token"
      type="hidden"
      value="<%= form_authenticity_token %>">
-  <input type="hidden" name="user[username]" value="LazyUser<%= rand(1000) %>">
+  <input type="hidden" name="user[username]" value="LazyUser<%= rand(10000) %>">
   <input type="hidden" name="user[password]" value="password">
   <center><button type="submit" class="btn btn-lg btn-primary">Demo Account</button></center>
 </form>

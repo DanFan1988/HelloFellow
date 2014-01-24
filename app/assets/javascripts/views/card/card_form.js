@@ -24,7 +24,10 @@ HF.Views.CardForm = Backbone.View.extend({
   addCard: function(event){
     event.preventDefault();
     var attrs = this.$el.serializeJSON();
+    var newCard = new HF.Models.Card
+    newCard.set(attrs)
     attrs.order = (this.collection.last() && this.collection.last().get('order') + 1) || 1;
-    this.collection.create(attrs, { parse: true, wait: true });
+    this.collection.create(newCard, { parse: true, wait: true });
+    HF.Activity.Add(newCard)
   }
 })

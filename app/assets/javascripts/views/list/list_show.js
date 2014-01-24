@@ -6,7 +6,7 @@ HF.Views.ListShow = Backbone.View.extend({
     this.listenTo(this.model.get('cards'), "add destroy remove", this.render);
     this.listenTo(this.model, "change:title", this.render);
 
-    this.listenTo(this.model.get('cards'), "add", HF.Activity.Add);
+    // this.listenTo(this.model.get('cards'), "add", HF.Activity.Add);
     this.listenTo(this.model, "destroy", HF.Activity.Delete);
     this.$el.attr('data-list-id', this.model.id);
     // this.on("modal:closed", this.swap) //or enable
@@ -31,7 +31,6 @@ HF.Views.ListShow = Backbone.View.extend({
   template: JST['list/show'],
 
   render: function(){
-    console.log("rendering list", this.model.id)
     var that = this
     var renderedContent = this.template({
       list: this.model
