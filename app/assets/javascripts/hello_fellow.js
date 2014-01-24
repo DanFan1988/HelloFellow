@@ -84,12 +84,11 @@ HF.Activity.AddToCard = function(model){
   HF.Data.activities.create(activity)
 }
 
-HF.Activity.AddCommentToCard = function(model){
+HF.Activity.AddCommentToCard = function(model, collection){
   console.log("here")
   var activity = new HF.Models.Activity({
     user_id: HF.currentUserId,
-    action: "added " + model.name + ": <strong>" + model.get('body') + "</strong> to Card: <strong>"
-    + arguments[0].get('body') + "</strong>"
+    action: "added "+ model.name + ": <strong>" + model.get('body') + "</strong>"
   })
   HF.Data.activities.create(activity)
 }

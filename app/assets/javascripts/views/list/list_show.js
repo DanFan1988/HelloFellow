@@ -6,7 +6,6 @@ HF.Views.ListShow = Backbone.View.extend({
     this.listenTo(this.model, "change", this.render);
 
     this.listenTo(this.model.get('cards'), "add", HF.Activity.Add);
-    this.listenTo(this.model.get('cards'), "change:order", HF.Activity.Move)
     this.listenTo(this.model, "destroy", HF.Activity.Delete);
     this.$el.attr('data-list-id', this.model.id);
     this.on("modal:closed", this.render) //or enable
@@ -39,7 +38,9 @@ HF.Views.ListShow = Backbone.View.extend({
     this.$el.find('.card-sortable').sortable({
       connectWith: ".card-sortable",
       dropOnEmpty: true,
-      // update: _sortMethodChooser()
+      cursor: "move",
+      opacity: 0.5,
+      tolerance: "pointer"
     })
     this._renderCardsButtons();
     return this;

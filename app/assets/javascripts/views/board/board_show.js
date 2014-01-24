@@ -38,7 +38,11 @@ HF.Views.BoardShow = Backbone.View.extend({
     this._renderLists()
     this._renderSidebar()
     this.$el.find(".sortable-list").sortable({
-          items: ".list-background"
+          items: ".list-background",
+          distance: 15,
+          cursor: "move",
+          opacity: 0.5,
+          tolerance: "pointer"
     })
     return this;
   },

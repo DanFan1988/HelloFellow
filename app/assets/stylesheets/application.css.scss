@@ -20,10 +20,6 @@ body {
   margin: 0auto;
 }
 
-.modal-body {
-max-height: 800px;
-}
-
 .modal-backdrop {
     z-index: 1020;
 }
@@ -107,6 +103,10 @@ max-height: 800px;
   transform: rotate(5deg);
   -webkit-transform: rotate(5deg);
 }
+
+#open-modal:hover {
+  background-color: lightblue;
+};
 
 .modal-body {
 	max-height: 8000px;
