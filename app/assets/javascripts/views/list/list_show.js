@@ -6,7 +6,10 @@ HF.Views.ListShow = Backbone.View.extend({
     this.listenTo(this.model.get('cards'), "add", HF.Activity.Add);
     this.listenTo(this.model.get('cards'), "change:order", HF.Activity.Move)
     this.listenTo(this.model, "destroy", HF.Activity.Delete);
+    this.$el.data('list-id', this.model.id);
   },
+
+  className: 'col-xs-3 list-background',
 
   events: {
     "click button#show-card-form": "showCardForm",

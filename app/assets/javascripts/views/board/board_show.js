@@ -13,13 +13,14 @@ HF.Views.BoardShow = Backbone.View.extend({
     HF.Activity.Add)
     this.listenTo(this.model, "change:title", HF.Activity.Edit.bind(this.model));
     this.childViews = [];
+
   },
 
   events: {
     "submit #new-title-form": "renameTitle",
     "click #add-list": "addList",
     "click #add-comment": "addComment",
-    "sortstop": "reorderCard"
+    "sortstop": "reorderList"
   },
 
 
@@ -39,11 +40,11 @@ HF.Views.BoardShow = Backbone.View.extend({
     return this;
   },
 
-  reorderCard: function(event, ui){
-    debugger;
+  reorderList: function(event, ui){
     var $item = $(ui.item);
+    debugger;
     var movedListID = $item.data('list-id');
-    var aboveListID = $item.parent().prev().find('.list-background').data('list-id');
+    var aboveListID = $item.prev().data('list-id');
     var belowListID = $item.next().data('list-id');
 
     var lists = this.model.get('lists');

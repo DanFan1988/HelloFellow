@@ -1,10 +1,8 @@
-<h1>Amazing Homepage wow</h1>
-
-<h2><i class="glyphicon glyphicon-user"></i> My Boards</h2>
+<h2 class="board-title-white"><i class="glyphicon glyphicon-user" style:"background-color: #DEDEDE;"></i> My Boards</h2>
 
 <div class="container">
 <% boards.each(function(board){ %>
 
-  <div class="col-xs-3 panel"><a class="link-to-button" href="#boards/<%= board.id%>"><%= board.get('title') %></a></div>
+  <div class="col-xs-3"><a class="link-to-button" href="#boards/<%= board.id%>"><%= board.get('title') %></a></div>
 <% }) %>
 </div>

@@ -31,7 +31,6 @@ HF.Views.CardDescription = Backbone.View.extend({
   },
 
   submitDescription: function(event){
-    console.log("we here?")
     event.preventDefault();
     var attrs = this.$('#submit-card-description').serializeJSON();
     this.model.set(attrs);
