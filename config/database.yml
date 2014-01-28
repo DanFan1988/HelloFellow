@@ -5,10 +5,13 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
+  encoding: unicode
   database: hello_fellow
   host: localhost
   pool: 5
   timeout: 5000
+  username: danfan
+  password:
 
 
 # Warning: The database defined as "test" will be erased and
