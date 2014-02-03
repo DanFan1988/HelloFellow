@@ -1,10 +1,15 @@
-<center><h1 style="color: #DEDEDE;">Not Trello</h1></center><br>
+  <center><a href="/session/new" style="color:#DEDEDE">Have an account? Sign In.</a></center>
+
+
+<center><h1 style="color: #DEDEDE;">Hello Fellow</h1></center><br>
 <%= render "form", :user => @user %>
 
 <% action = (@user.persisted? ? user_url(user) : users_url) %>
 <% method = (@user.persisted? ? "put" : "post") %>
 <% message = (@user.persisted? ? "Update user" : "Create user") %>
 
+
+<center style="color:#DEDEDE">Or try a...</center>
 <form action="<%= action %>" method="post" >
   <input
      name="_method"
