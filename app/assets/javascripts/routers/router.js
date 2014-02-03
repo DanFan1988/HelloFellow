@@ -21,8 +21,6 @@ HF.Routers.Router = Backbone.Router.extend({
     var view = new HF.Views.BoardShow({
       model: board,
       collection: HF.Data.boards
-      // lists: HF.Data.lists,
-      // cards: HF.Data.cards
     })
     this._swapView(view);
   },
@@ -41,8 +39,3 @@ HF.Routers.Router = Backbone.Router.extend({
     this.$rootEl.html(view.render().$el);
   }
 })
-
-
-//error function(xhr, textStatus, errorThrown)
-//console.log(xhr.responseJSON)
-// find "name" under it is "cant be blank" make that shit red

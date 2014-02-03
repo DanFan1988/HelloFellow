@@ -10,6 +10,7 @@ HF.Views.CardDescription = Backbone.View.extend({
   },
 
   template: JST['card/description'],
+  
   edit_description_form_template: JST['card/edit_description'],
 
   render: function(){

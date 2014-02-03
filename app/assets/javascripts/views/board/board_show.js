@@ -1,17 +1,11 @@
 HF.Views.BoardShow = Backbone.View.extend({
+
   initialize: function(options){
     var that = this
     this.listenTo(this.model.get('lists'), "add destroy", this.render)
     this.listenTo(this.model, "add change", this.render);
     this.on("modal:opened", this.disableSortable)
     this.on("modal:closed", this.enableSortable)
-
-    //
-    // this.model.get('lists').each(function(list){
-    //   that.listenTo(list.get('cards'), "add", that.render)
-    // });
-
-
     this.listenTo(this.model.get('lists'), "add",
     HF.Activity.Add)
     this.listenTo(this.model, "change:title", HF.Activity.Edit.bind(this.model));
@@ -25,7 +19,6 @@ HF.Views.BoardShow = Backbone.View.extend({
     "click #add-comment": "addComment",
     "sortstop": "reorderList"
   },
-
 
   template: JST['board/show'],
 
@@ -120,26 +113,4 @@ HF.Views.BoardShow = Backbone.View.extend({
   clearChildViews: function () {
     this.childViews.forEach(function (view) { view.remove() });
   }
-
-
-  //
-  //
-  // deleteCard: function(event){
-  //   event.preventDefault();
-  // },
-  //
-  // createList: function(event){
-  //   var newList = new HF.Model.List({
-  //     board_id: this.model.id
-  //   });
-  //   // newList.collection = HF.Data.lists
-  //   // newList.fetch({
-  //   //   success: //do i needs this? Can i just use listenTo?
-  //   // })
-  // },
-  //
-  // renderSidebar: function(){
-  //
-  // }
-
 })

@@ -11,7 +11,7 @@ HF.Models.Card = Backbone.Model.extend({
     data.checklists = new HF.Collections.Checklists(checklists, { card_id: data.id, parse: true });
 
     return data;
-  }
+  },
   
   name: "Card"
 })

@@ -17,5 +17,4 @@ HF.Views.CardLabel = Backbone.View.extend({
     this.$el.html(renderedContent);
     return this;
   }
-
 })

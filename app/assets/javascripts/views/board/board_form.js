@@ -1,4 +1,5 @@
 HF.Views.BoardForm = Backbone.View.extend({
+  
   template: JST['general'/'rename_dropdown'],
 
   render: function(){

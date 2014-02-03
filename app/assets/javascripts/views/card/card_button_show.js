@@ -45,6 +45,4 @@ HF.Views.CardButtonShow = Backbone.View.extend({
   disableSortable: function(){
     this.parent.trigger('modal:opened')
   }
-
-
 });

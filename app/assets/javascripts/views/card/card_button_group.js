@@ -65,7 +65,6 @@ HF.Views.CardButtonGroup = Backbone.View.extend({
 
   openChecklistItemForm: function(){
     var form = new HF.Views.ChecklistItemForm
-
   }
 
 })

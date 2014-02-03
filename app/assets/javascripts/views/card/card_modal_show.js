@@ -2,16 +2,14 @@ HF.Views.CardModalShow = Backbone.View.extend({
 
   initialize: function(options){
     this.list_id = options.list_id
-    //this.listenTo(this.model.get('comments'), "all", this._renderComments)
-    // this.listenTo(this.model.get('comments'), "sync", this.render)
     this.parent = options.parent;
+
     this.listenTo(this.model.get('checklists'), "change:title sync", this._swapChecklists)
 
     this.listenTo(this.model, "change:title", HF.Activity.Edit.bind(this.model))
     this.listenTo(this.model, "change:description", HF.Activity.EditDescription.bind(this.model))
     this.listenTo(this.model.get('checklists'), "add", HF.Activity.Add)
     this.listenTo(this.model.get('comments'), "add", HF.Activity.AddCommentToCard)
-
   },
 
   events:{
@@ -64,14 +62,6 @@ HF.Views.CardModalShow = Backbone.View.extend({
     that.$el.find('#insert-comments').html(commentsView.render().$el);
   },
 
-  // _renderNewComments: function(){
-  //   console.log('here')
-  //   var newComment = new HF.Views.CommentShow({
-  //     model: this.model.get('comments').last()
-  //   })
-  //   this.$el.find('#insert-new-comment').append(newComment.render().$el)
-  // },
-
   _renderChecklists: function(){
     var that = this;
     this.model.get('checklists') && this.model.get('checklists').each(function(checklist){
@@ -96,23 +86,11 @@ HF.Views.CardModalShow = Backbone.View.extend({
 
     var attrs = this.$("#add-comment-form").serializeJSON();
     var newComment = new HF.Models.Comment;
-    // newComment.set(attrs);
     if (newComment.isNew()) {
-      this.model.get('comments').create(attrs, {
-        success: function (){
-
-        },
-        error: function () {
-
-        }
-      });
+      this.model.get('comments').create(attrs);
     } else {
       newComment.save(attrs);
     }
-    // $('#CardModal' + this.model.id).modal('hide');
-    // $('body').removeClass('modal-open');
-    // $('.modal-backdrop').remove();
-    // $('#CardModal' + this.model.id).modal('show');
   },
 
   deleteCard: function(event){
@@ -123,15 +101,10 @@ HF.Views.CardModalShow = Backbone.View.extend({
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
     this.parent.trigger('modal:closed')
-
   },
 
   _swapChecklists: function(callback){
     this.$el.find("#insert-checklist").empty()
     this._renderChecklists()
-  },
-
-    // $('#CardModal' + this.model.id).modal('hide');
-    // $('body').removeClass('modal-open');
-    // $('.modal-backdrop').remove();
+  }
 })
