@@ -1,7 +1,4 @@
 class BoardMemberhipsController < ApplicationController
-  def index
-
-  end
 
   def create
   	@membership = BoardMembership.new(params[:membership])
