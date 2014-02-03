@@ -9,8 +9,13 @@ window.HF = {
   },
   Activity: {},
   initialize: function() {
+
     HF.Data.users = new HF.Collections.Users
     HF.Data.users.fetch();
+    
+    // not yet implimeneted. Figure out a way to jbuild in to reduce fetches
+    // when you decide to impliment
+
     // HF.Data.organizations = new HF.Collections.Organizations
     // HF.Data.organizations.fetch();
 
@@ -92,9 +97,6 @@ HF.Activity.AddCommentToCard = function(model, collection){
   })
   HF.Data.activities.create(activity)
 }
-
-
-
 
 // HF.Views.NestingView = Backbone.View.extend({
 //   addChildView: function (view) {

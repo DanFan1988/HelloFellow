@@ -3,9 +3,7 @@ HF.Views.Sidebar = Backbone.View.extend({
   initialize: function(){
     this.listenTo(HF.Data.activities, "add", this.render)
   },
-
-  events: {},
-
+  
   template: JST['sidebar/sidebar'],
 
   render: function(){
