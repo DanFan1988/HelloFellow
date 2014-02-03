@@ -12,10 +12,5 @@ HF.Models.Board = Backbone.Model.extend({
     }
     return this.get('lists');
   },
-  // toJSON: function () {
-  //   var data = _.clone(this.attributes);
-  //   console.log(data);
-  //   return data;
-  // }
   name: "Board"
 });

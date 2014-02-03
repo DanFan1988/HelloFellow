@@ -3,5 +3,5 @@ HF.Models.User = Backbone.Model.extend({
     var boards = data.boards;
     data.boards = new HF.Collections.Boards(boards, { list_id: data.id, parse: true })
     return data;
-  },
+  }
 })

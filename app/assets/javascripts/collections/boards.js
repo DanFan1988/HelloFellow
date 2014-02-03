@@ -7,7 +7,6 @@ HF.Collections.Boards = Backbone.Collection.extend({
     HF.Data.boards.each(function(board){
       list = list || board.get('lists').get(listId);
     });
-
     return list;
   }
 })
