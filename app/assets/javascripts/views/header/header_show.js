@@ -3,8 +3,6 @@ HF.Views.HeaderShow = Backbone.View.extend({
     this.listenTo(HF.Data.boards, "add", this.render)
   },
 
-  events: {},
-
   template: JST['header/header'],
 
   render: function(){
@@ -14,5 +12,4 @@ HF.Views.HeaderShow = Backbone.View.extend({
     this.$el.html(renderedContent)
     return this;
   }
-
 })

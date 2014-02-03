@@ -3,9 +3,6 @@ HF.Views.EditCardTitle = Backbone.View.extend({
     this.listenTo(this.model, "change:title", this.render)
   },
 
-  events:{
-  },
-
   template: JST['card/edit_title'],
 
   render: function(){
@@ -18,16 +15,10 @@ HF.Views.EditCardTitle = Backbone.View.extend({
 
   editTitle: function(event){
     console.log("we here?")
-    // debugger;
     event.preventDefault();
     var attrs = this.$('#edit-card-title').serializeJSON();
     this.model.set(attrs);
     this.model.save({})
     this.render()
-
-    // $('#CardModal' + this.model.id).modal('hide');
-    // $('body').removeClass('modal-open');
-    // $('.modal-backdrop').remove();
-    // $('#CardModal' + this.model.id).modal('show');
   }
 })

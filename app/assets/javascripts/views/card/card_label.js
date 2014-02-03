@@ -4,8 +4,6 @@ HF.Views.CardLabel = Backbone.View.extend({
     this.model = options.model
   },
 
-  events: {},
-
   template: JST['card/label'],
 
   render: function(){

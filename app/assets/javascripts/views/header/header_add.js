@@ -13,6 +13,7 @@ HF.Views.HeaderAdd = Backbone.View.extend({
   },
 
   template: JST['dropdown/add_board'],
+  
   template2: JST['dropdown/add_org'],
 
   newBoardForm: function(event){

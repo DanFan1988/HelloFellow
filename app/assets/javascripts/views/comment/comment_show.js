@@ -5,8 +5,6 @@ HF.Views.CommentShow = Backbone.View.extend({
     this.listenTo(this.collection, "all", this.render)
   },
 
-  events:{},
-
   template: JST['comment/show'],
 
   render: function(){

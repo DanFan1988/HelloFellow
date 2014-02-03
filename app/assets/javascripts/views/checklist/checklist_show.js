@@ -1,6 +1,5 @@
 HF.Views.ChecklistShow = Backbone.View.extend({
 
-
   initialize: function(options){
     this.listenTo(this.model.get('checklist_items'), "add change:checked", this.render)
   },
