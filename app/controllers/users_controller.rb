@@ -14,7 +14,8 @@ class UsersController < ApplicationController
       setup_user(@user)
       redirect_to :root
     else
-      render :json => @user.errors.full_messages
+      flash[:errors] = @user.errors.full_messages
+      render :new
     end
   end
 

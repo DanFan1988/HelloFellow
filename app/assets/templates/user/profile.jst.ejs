@@ -3,7 +3,7 @@
 <div class="container">
   <ul class="list-group col-xs-4">
     <a href="#" class="list-group-item active" style="= color:#DEDEDE"><strong><center>Boards</center></strong></a>
-  <% user.get('boards').each(function(board){ %>
+  <% HF.Data.boards.each(function(board){ %>
     <a href='#boards/<%= board.id %>' class="list-group-item"><%= board.get('title') %></a>
   <% }); %>
   </ul>

@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
     )
 
     if user.nil?
-      render :json => "Credentials were wrong"
+      flash[:errors] = ["Credentials were wrong"]
+      render :new
     else
       self.current_user = user
       redirect_to :root

@@ -2,6 +2,9 @@
 
 
 <center><h1 style="color: #DEDEDE;">Hello Fellow</h1></center><br>
+
+<%= render :partial => "layouts/errors" %>
+
 <%= render "form", :user => @user %>
 
 <% action = (@user.persisted? ? user_url(user) : users_url) %>
