@@ -3,23 +3,21 @@
     <label for="title">Title</label>
     <input type="text" id="title" placeholder="Untitled Board" name="title">
 
-    <label for="organization">Organization</label>
+<!--     Impliment later
+
+<label for="organization">Organization</label>
     <select class="form-control">
-      <option>App Academy</option>
-      <option>Not Trello</option>
-      <option>An Organization</option>
-      <option>Apple</option>
-      <option>Microsoft</option>
-    </select>
+      <option>Coming Soon!</option>
+      <option>Coming Soon!</option>
+      <option>Coming Soon!</option>
+      <option>Coming Soon!</option>
+      <option>Coming Soon!</option>
+    </select> -->
     <input type="hidden" name="user_id" value="<%=HF.currentUserId%>">
   </div>
-  <button id="add-board" type="button" class="btn btn-default">Submit</button>
+  <button id="add-board" type="button" class="btn btn-primary">Submit</button>
   <li class="divider"></li>
 </form>
-
-<!-- <script type="text/javascript" charset="utf-8">
-  var dropdownView = new HF.Views.DropdownAdd({$el: $('#dropdown-add')})
-</script> -->
 
 <script type="text/javascript">
     $('.dropdown-menu input, .dropdown-menu label').click(function(e) {
