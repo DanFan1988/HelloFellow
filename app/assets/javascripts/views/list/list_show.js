@@ -37,7 +37,8 @@ HF.Views.ListShow = Backbone.View.extend({
       dropOnEmpty: true,
       cursor: "move",
       opacity: 0.5,
-      tolerance: "pointer"
+      tolerance: "pointer",
+      distance: 15
     })
     this._renderCardsButtons();
     return this;
