@@ -1,6 +1,7 @@
 HF.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
+    this.$modal_container = options.$modal_container;
   },
 
   routes: {
@@ -20,7 +21,8 @@ HF.Routers.Router = Backbone.Router.extend({
     var board = HF.Data.boards.get(id);
     var view = new HF.Views.BoardShow({
       model: board,
-      collection: HF.Data.boards
+      collection: HF.Data.boards,
+      $modal_container: this.$modal_container
     })
     this._swapView(view);
   },

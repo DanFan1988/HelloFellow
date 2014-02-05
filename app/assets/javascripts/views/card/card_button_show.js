@@ -3,6 +3,8 @@ HF.Views.CardButtonShow = Backbone.View.extend({
     //has model, collection
     this.list_id = options.list_id;
     this.parent = options.parent
+    this.$modal_container = options.$modal_container
+
     this.on('modal:closed', this.render)
     this.on('modal:closed', this.modalCloseTrigger)
     this.listenTo(this.model, "change:order", this.render)
@@ -31,7 +33,7 @@ HF.Views.CardButtonShow = Backbone.View.extend({
       list_id: this.list_id,
       parent: this
     })
-    this.$el.append(modal.render().$el)
+    this.$modal_container.append(modal.render().$el)
     $('.card-sortable').sortable("disable")
     return this;
   },

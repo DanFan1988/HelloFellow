@@ -4,6 +4,7 @@ window.HF = {
   Views: {},
   Routers: {},
   Data: {},
+  ModalContainer: $('#modal_container'),
   currentUser: function () {
     return HF.Data.users.get(HF.currentUserId);
   },
@@ -28,7 +29,10 @@ window.HF = {
             $('#header').html(new HF.Views.HeaderShow({
               collection: HF.Data.boards
             }).render().$el)
-            new HF.Routers.Router({ $rootEl: $('#container')});
+            new HF.Routers.Router({ 
+              $rootEl: $('#container'),
+              $modal_container: $('#modal_container')
+            });
             Backbone.history.start();
           }
         });

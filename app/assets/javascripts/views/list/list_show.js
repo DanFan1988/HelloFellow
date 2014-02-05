@@ -2,6 +2,7 @@ HF.Views.ListShow = Backbone.View.extend({
   initialize: function(options){
     this.parent = options.parent
     this.board = options.board
+    this.$modal_container = options.$modal_container
 
     this.listenTo(this.model.get('cards'), "add destroy remove", this.render);
     this.listenTo(this.model, "change:title", this.render);
@@ -94,7 +95,8 @@ HF.Views.ListShow = Backbone.View.extend({
         model: card,
         collection: that.model.get('cards'),
         list_id: that.model.id,
-        parent: that
+        parent: that,
+        $modal_container: that.$modal_container
       });
       that.$('.insert-card').append(cardView.render().$el);
     });

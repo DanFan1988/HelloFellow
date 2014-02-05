@@ -1,7 +1,6 @@
 HF.Views.BoardShow = Backbone.View.extend({
 
   initialize: function(options){
-    var that = this
     this.listenTo(this.model.get('lists'), "add destroy", this.render)
     this.listenTo(this.model, "add change", this.render);
     this.on("modal:opened", this.disableSortable)
@@ -11,6 +10,7 @@ HF.Views.BoardShow = Backbone.View.extend({
     this.listenTo(this.model, "change:title", HF.Activity.Edit.bind(this.model));
     this.childViews = [];
 
+    this.$modal_container = options.$modal_container
   },
 
   events: {
@@ -71,11 +71,13 @@ HF.Views.BoardShow = Backbone.View.extend({
     this.clearChildViews();
 
     var that = this;
+
     this.model.get('lists').each(function(list){
       var listView = new HF.Views.ListShow({
         model: list,
         parent: that,
-        board: this.model
+        board: this.model,
+        $modal_container: that.$modal_container
       });
       that.$el.find('#insert-list').append(listView.render().$el);
       that.childViews.push(listView);
