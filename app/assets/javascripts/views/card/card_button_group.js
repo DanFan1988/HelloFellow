@@ -1,7 +1,8 @@
 HF.Views.CardButtonGroup = Backbone.View.extend({
 
-  initialize: function(){
+  initialize: function(options){
     this.listenTo(this.model.get('labels'), "sync", this.render)
+    this.parent = options.parent
   },
 
   events:{

@@ -4,7 +4,7 @@
       <div class="container">
       <!-- title -->
         <div class="row">
-          <div class="modal-header col-xs-7">
+          <div class="modal-header col-xs-9">
             <button type="button" class="close" data-dismiss="modal"
              aria-hidden="true">&times;</button>
             <h4 class="modal-title" id="myModalLabel">
@@ -17,7 +17,7 @@
         </div>
         <div class="row">
           <ul>
-            <div class="modal-body col-xs-5">
+            <div class="modal-body col-xs-7">
               <strong>Checklists</strong>
               <div id="insert-checklist">
               </div>
@@ -33,8 +33,8 @@
         </div>
         <!-- insert comment form -->
         <div class="row">
-          <div class="col-xs-5">
-            <form id="add-comment-form">
+          <div class="col-xs-7">
+            <form id="add-comment-form" style="padding-left: 50px;">
               <textarea row="4" cols="60" name="body"></textarea><br>
               <input type="hidden" value="<%= card.id %>"  name="card_id">
               <input id="create-comment" type="submit" value="Comment">
@@ -42,12 +42,12 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-5">
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-danger"
-             id="delete-card">Delete Card</button>
-          </div>
+          <div class="col-xs-6">
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-danger"
+               id="delete-card">Delete Card</button>
+            </div>
           </div>
         </div>
       </div><!-- container -->
@@ -55,7 +55,13 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-
+<script>
+$('#CardModal<%=card.id%>').on('shown.bs.modal', function () {
+    $(this).find('.modal-dialog').css({width:'75%',
+                               height:'auto', 
+                              'max-height':'100%'});
+});
+</script>
 
 
 <!-- <form>

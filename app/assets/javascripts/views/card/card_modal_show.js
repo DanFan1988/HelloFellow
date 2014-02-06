@@ -75,7 +75,8 @@ HF.Views.CardModalShow = Backbone.View.extend({
 
   _renderButtonGroup: function(){
     var buttonGroup = new HF.Views.CardButtonGroup({
-      model: this.model
+      model: this.model,
+      parent: this.parent
     })
     this.$el.find('#render-button-list').html(buttonGroup.render().$el)
   },

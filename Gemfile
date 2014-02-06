@@ -23,6 +23,7 @@ gem 'jbuilder'
 gem 'ejs'
 gem 'faker'
 gem 'bootswatch-rails'
+gem 'gravtastic'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
