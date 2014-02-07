@@ -2,12 +2,21 @@ HF.Views.Sidebar = Backbone.View.extend({
 
   initialize: function(){
     this.listenTo(HF.Data.activities, "add", this.render)
+    this.listenTo(HF.currentUser().get('friendships'), "add", this.render)
   },
   
   template: JST['sidebar/sidebar'],
 
   render: function(){
-    var content = this.template()
+    var friendships = HF.currentUser().get('friendships')
+
+    var friends = []
+    friendships.each(function(friend){
+      friends.push(HF.Data.users.get(friend.get('friend_id')))
+    })
+    var content = this.template({
+      friendships: friendships
+    })
     this.$el.html(content)
     this._renderActivities()
     return this;

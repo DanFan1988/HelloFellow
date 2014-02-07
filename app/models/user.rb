@@ -1,11 +1,15 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :password
+  include Gravtastic
+  gravtastic
+
+  attr_accessible :username, :password, :email
   attr_reader :password
 
   validates :password_digest, :presence => { :message => "Password can't be blank" }
   validates :password, :length => { :minimum => 6, :allow_nil => true }
   validates :session_token, :presence => true
   validates :username, :presence => true
+  validates :email, :presence => true
 
   after_initialize :ensure_session_token
 
@@ -20,6 +24,11 @@ class User < ActiveRecord::Base
            :source => :organization
   has_many :activities,
            :class_name => "Activity"
+  has_many :friendships
+
+  belongs_to :friend,
+             :class_name => "Friendship",
+             :foreign_key => :friend_id
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
 

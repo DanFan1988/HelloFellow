@@ -90,7 +90,7 @@ HF.Views.BoardShow = Backbone.View.extend({
   },
 
   addList: function(){
-    event.preventDefault();
+  event.preventDefault();
     var attrs = this.$('#add-list-form').serializeJSON();
     this.model.get('lists').create(attrs, {parse: true, wait:true});
 

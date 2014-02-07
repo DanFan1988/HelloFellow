@@ -16,6 +16,7 @@
 //= require jquery.ui.sortable
 //= require underscore
 //= require backbone
+//= require gravtastic
 //= require hello_fellow
 //= require_tree ../templates
 //= require_tree ./models

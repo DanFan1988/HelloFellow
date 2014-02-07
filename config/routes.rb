@@ -13,5 +13,6 @@ HelloFellow::Application.routes.draw do
     resources :checklists
     resources :checklist_items
     resources :activities
+    resources :friendships
   end
 end

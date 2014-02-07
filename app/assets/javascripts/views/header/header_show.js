@@ -4,7 +4,7 @@ HF.Views.HeaderShow = Backbone.View.extend({
   },
 
   events: {
-    "submit #member-search": "memberSearch"
+    "click #member-search": "memberSearch"
   },
 
   template: JST['header/header'],
@@ -18,15 +18,13 @@ HF.Views.HeaderShow = Backbone.View.extend({
   },
 
   memberSearch: function(event){
-    event.preventDefault();
-
     var username = this.$('#member-username').val();
-
     var members = HF.Data.users.filter(function(user){
       return new RegExp("^" + username).test(user.get('username'))
     });
-
-    
-    
+    var view = new HF.Views.UserSearch({
+      users: members
+    })
+    this.$('#member-insert').html(view.render().$el)
   }
 });
