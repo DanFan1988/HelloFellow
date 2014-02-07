@@ -22,7 +22,7 @@ HF.Views.HeaderShow = Backbone.View.extend({
     var username = this.$('#member-username').val();
 
     var allMembers = HF.Data.users.filter(function(user){
-      return new RegExp("^" + username).test(user.get('username'))
+      return new RegExp("^" + username, "i").test(user.get('username'))
     });
 
     var friends = []
