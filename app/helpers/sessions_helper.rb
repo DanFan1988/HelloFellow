@@ -25,7 +25,7 @@ module SessionsHelper
     organization = Organization.create!({ title: "My Boards",
       description: "Your default board location", visibility: "private"})
 
-    board = Board.create!({ title: "Welcome board", user_id: user.id,
+    board = Board.create!({ title: "Welcome Board (Click Me)", user_id: user.id,
       organization_id: organization.id })
 
     membership = BoardMembership.create!(user_id: user.id, board_id: board.id)

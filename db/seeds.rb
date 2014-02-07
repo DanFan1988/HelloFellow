@@ -11,6 +11,7 @@ ActiveRecord::Base.transaction do
 	User.create({username: "Annie", email:"Annie@HelloFellow.com", password: "password"})
 	User.create({username: "Bob", email:"Bob@HelloFellow.com", password: "password"})
 	User.create({username: "Catherine", email:"Cat@HelloFellow.com", password: "password"})
+	User.create({username: "Derek", email: "D@HelloFellow.com", password: "password"})
 	User.create({username: "Eugene", email:"Eugene@HelloFellow.com", password: "password"})
 	User.create({username: "Fred", email:"Fred@HelloFellow.com", password: "password"})
 	User.create({username: "George", email:"G@HelloFellow.com", password: "password"})
