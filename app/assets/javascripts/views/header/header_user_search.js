@@ -11,7 +11,6 @@ HF.Views.UserSearch = Backbone.View.extend({
 	template: JST['header/user_search'],
 
   render: function(){
-  	console.log(this.users)
   var renderedContent = this.template({
     users: this.users
   });
@@ -26,8 +25,6 @@ HF.Views.UserSearch = Backbone.View.extend({
     var newFriend = new HF.Models.Friendship
     newFriend.set({friend_id: friendId})
     HF.currentUser().get('friendships').create(newFriend, {parse: true, wait: true})
-    // find user do some join table 
-  	// magic render that SHIT SOMEWHERE
   }
 
 });

@@ -4,7 +4,8 @@ HF.Views.HeaderShow = Backbone.View.extend({
   },
 
   events: {
-    "click #member-search": "memberSearch"
+    "click #member-search": "memberSearch",
+
   },
 
   template: JST['header/header'],
@@ -19,12 +20,28 @@ HF.Views.HeaderShow = Backbone.View.extend({
 
   memberSearch: function(event){
     var username = this.$('#member-username').val();
-    var members = HF.Data.users.filter(function(user){
+
+    var allMembers = HF.Data.users.filter(function(user){
       return new RegExp("^" + username).test(user.get('username'))
     });
+
+    var friends = []
+    HF.currentUser().get('friendships').each(function(friendship){
+      friends.push(HF.Data.users.get(friendship.get('friend_id')))
+    })
+
+    var nonFriends = []
+    allMembers.forEach(function(member){
+      if(friends.indexOf(member) === -1){
+        nonFriends.push(member)
+      }
+    })
+
     var view = new HF.Views.UserSearch({
-      users: members
+      users: nonFriends
     })
     this.$('#member-insert').html(view.render().$el)
-  }
+  },
+
+
 });

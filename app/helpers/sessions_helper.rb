@@ -42,7 +42,7 @@ module SessionsHelper
     card5 = Card.create!({ title: "Boards are comprised of lists, which are comprised of cards.", list_id: list2.id, order: 2 })
     card6 = Card.create!({ title: "You can edit / create boards, lists or cards. Try it out!", list_id: list2.id, order: 3 })
 
-    card7 = Card.create!({ title: "This is the activity log ->", list_id: list3.id, order: 1 })
+    card7 = Card.create!({ title: "Your Friend List and Activity Log is on the right sidebar", list_id: list3.id, order: 1 })
     card8 = Card.create!({ title: "Try dragging and dropping the cards...", list_id: list3.id, order: 2 })
     card9 = Card.create!({ title: "Or the lists.", list_id: list3.id, order: 3 })
 
@@ -53,11 +53,15 @@ module SessionsHelper
     comment1 = Comment.create({ body: "I wonder how long you can make comments??", card_id: card9.id})
     comment1 = Comment.create({ body: "Comment!", card_id: card4.id})
     comment1 = Comment.create({ body: "Not a comment", card_id: card5.id})
-    comment1 = Comment.create({ body: "yes", card_id: card5.id})
-    comment1 = Comment.create({ body: "ok", card_id: card6.id})
-    comment1 = Comment.create({ body: "good", card_id: card7.id})
+    comment1 = Comment.create({ body: "Maybe a comment", card_id: card5.id})
+    comment1 = Comment.create({ body: "commmmmenting!", card_id: card6.id})
+    comment1 = Comment.create({ body: "good comment", card_id: card7.id})
 
     checklist1 = Checklist.create({ title: "A checklist", card_id: card3.id })
+
+    friendship1 = Friendship.create({ user_id: user.id, friend_id: 1})
+    friendship2 = Friendship.create({ user_id: user.id, friend_id: user.id})
+
 
   end
 end

@@ -1,6 +1,9 @@
 <h4 style="color: #DEDEDE;"><center>Friends</center></h4>
 <% friendships.each(function(friendship){ %>
-		<%= HF.Data.users.get(friendship.get('friend_id')).get('username') %>
+		<% var friend = HF.Data.users.get(friendship.get('friend_id')) %>
+		<% var friendEmail = friend.get('email') %>
+		<% var friendUsername = friend.get('username') %>
+		<img src='<%= Gravtastic(friendEmail, {default: 'identicon', size:50}) %>' data-toggle="tooltip" data-placement="top" title="<%= friendUsername %>">
 <% }); %>
 
 <h4 style="color: #DEDEDE;"><center>Activities</center></h4>

@@ -23,6 +23,7 @@
      type="hidden"
      value="<%= form_authenticity_token %>">
   <input type="hidden" name="user[username]" value="NewUser<%= rand(10000) %>">
+  <input type="hidden" name="user[email]" value="NewEmail<%= rand(10000) %>@hellofellow.com">
   <input type="hidden" name="user[password]" value="password">
   <center><button type="submit" class="btn btn-lg btn-primary">Demo Account</button></center>
 </form>

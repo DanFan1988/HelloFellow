@@ -1,3 +1,7 @@
-<% users.forEach(function(user){ %>
-	<li><a href="#" class="user-select" data-id="<%= user.id %>"><%= user.escape('username') %></a></li>
-<% }); %>
+<% if (users.length === 0) { %>
+<center>No Results Found</center>
+<% } else { %>
+	<% users.forEach(function(user){ %>
+		<li><a href="#" class="user-select" data-id="<%= user.id %>"><%= user.escape('username') %></a></li>
+	<% }); %>
+<% } %>
