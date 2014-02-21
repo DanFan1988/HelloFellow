@@ -34,17 +34,10 @@ body {
   border-color: rgba(0,0,0,.2);
 }
 
-.right-inner-addon {
-  position: relative;
-  border-color: black;
-  border: solid-thick;
-}
-
-.right-inner-addon i {
+.label-position {
   position: absolute;
-  padding-top: 5px;
-  padding-left: 110px;
-  pointer-events: none;
+  top: 2px;
+  right: 2px;
 }
 
 .invisible-textarea {

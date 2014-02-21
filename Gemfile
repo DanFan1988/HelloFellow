@@ -27,7 +27,6 @@ gem 'gravtastic'
 gem 'capybara'
 gem 'rspec-rails'
 gem 'selenium-webdriver'
-gem 'webkit'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
